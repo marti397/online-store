@@ -1,15 +1,15 @@
 <h1>Sign Up</h1>
-<div>validation errors</div>
+<div>{{messages}}</div>
 <form action="/user/signup" method="post">
   <input type="hidden" name="_csrf" value="{{csrfToken}}">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <input type="email" class="form-control" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" id="signUpPassword" name="signUpPassword" placeholder="Password">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
