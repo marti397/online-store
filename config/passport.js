@@ -2,7 +2,6 @@ var passport = require('passport');
 var User = require('../models/user');
 var LocalStrategy = require('passport-local').Strategy;
 
-
 passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -33,4 +32,23 @@ passport.use('local.signup', new LocalStrategy({
         });
       });
     }
+));
+
+passport.use('local.signin', new LocalStrategy({
+    usernameField: 'signInEmail',
+    passwordField: 'signInPassword',
+    passReqToCallback: true
+},
+function(req, signInEmail, signInPassword, done) {
+  User.findOne({ email: signInEmail }, function (err, user) {
+    if (err) { return done(err); }
+    if (!user) {
+      return done(null, false, { message: 'No se pudo encontrar al usuario' });
+    }
+    if (!user.validatePassword(signInPassword)) {
+        return done(null, false, { message: 'Contrasena incorrecta.' });
+    }
+    return done(null, user);
+  });
+}
 ));

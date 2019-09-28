@@ -1,5 +1,8 @@
 <h1>Sign Up</h1>
 <div>{{messages}}</div>
+{{#each messages}}
+    <div>{{this}}</div>
+{{/each}}
 <form action="/user/signup" method="post">
   <input type="hidden" name="_csrf" value="{{csrfToken}}">
   <div class="form-group">
