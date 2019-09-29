@@ -1,0 +1,15 @@
+<h1>shopping cart</h1>
+{{#if products}}
+    {{#each products}}
+    <div>{{item.title}}</div>
+    <div>{{item.descr}}</div>
+    <div>{{item.price}}</div>
+    <div>{{this.qty}}</div>
+    <div>add</div>
+    <div>remove</div>
+    <p></p>
+    {{/each}}
+    <div>{{totalPrice}}</div>
+{{else}}
+    <h2>No items in your cart</h2>
+{{/if}}

@@ -5,9 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var expressHbs = require('express-handlebars');
 var mongoose = require('mongoose');
-var session = require('express-session');
+var session = require('express-session');//express sessions
 var passport = require('passport');
 var flash = require('connect-flash');
+var MongoStore = require('connect-mongo')(session);//store session in mongoDB
 
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
@@ -27,6 +28,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({
   secret: 'OnlineStoreSecret',
+  store: new MongoStore({ 
+    mongooseConnection: mongoose.connection
+    //ttl: 14 * 24 * 60 * 60, // = tme to live 14 days. Default
+    //autoRemove: 'interval',
+    //autoRemoveInterval: 10 // In minutes. Default
+  }),
+  cookie: {maxAge: 180 * 60 * 1000},
   resave: false,
   saveUninitialized: false
 }));
@@ -38,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //setting a global variable
 app.use(function(req, res, next){
   res.locals.login = req.isAuthenticated();
+  res.locals.session = req.session; // you create a variable accesible via the views by res.locals."name of the variable"
   next();
 })
 
