@@ -10,6 +10,7 @@ var passport = require('passport');
 var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
 
 var app = express();
 
@@ -34,6 +35,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//setting a global variable
+app.use(function(req, res, next){
+  res.locals.login = req.isAuthenticated();
+  next();
+})
+
+app.use('/user', userRouter);
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
