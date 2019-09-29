@@ -1,7 +1,9 @@
-var passport = require('passport');
-var User = require('../models/user');
-var LocalStrategy = require('passport-local').Strategy;
+var passport = require('passport'); //passport forr authentication
+var User = require('../models/user'); //user model
+var LocalStrategy = require('passport-local').Strategy; //local strategy by passport
 
+//credentials used to authenticate a user will only be transmitted during the login request.
+//if authentication succeeds, a session will be established and maintained via a cookie set in the user's browser.
 passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -12,6 +14,7 @@ passport.deserializeUser(function(id, done) {
     });
 });  
 
+//signup strategy. validation is done at the user.js router
 passport.use('local.signup', new LocalStrategy({
         usernameField: 'signUpEmail',
         passwordField: 'signUpPassword',
