@@ -6,8 +6,9 @@ var Product = require('../models/product');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var flashMessage = req.flash('success')[0];
   Product.find({}, function(err, docs){
-    res.render('shop/index', { title: 'Online Store', products: docs});
+    res.render('shop/index', { title: 'Online Store', products: docs, messages: flashMessage, noMessage: !flashMessage});
   });
 });
 
@@ -41,7 +42,33 @@ router.get('/checkout', function(req, res, next) {
     return res.redirect('/shopping-cart');
   }
   var cart = new Cart(req.session.cart);
-  res.render('shop/checkout', {totalPrice: cart.totalPrice});
+  var flashMessage = req.flash('error')[0];
+  res.render('shop/checkout', {totalPrice: cart.totalPrice, messages: flashMessage, noError: !flashMessage});
+});
+
+//checkout post
+router.post('/checkout', function(req, res, next){
+  if (!req.session.cart){
+    return res.redirect('/shopping-cart');
+  }
+  var cart = new Cart(req.session.cart);
+  var stripe = require("stripe")("sk_test_zm6Fa5KELRS1ERYX19A7LvXz");
+  
+  stripe.charges.create({
+    amount: cart.totalPrice * 100,
+    currency: "usd",
+    source: req.body.stripeToken, // obtained with Stripe.js
+    description: "Test Charge for jenny.rosen@example.com"
+  }, function(err, charge) {
+    // asynchronously called
+    if (err){
+      req.flash('error', err.message);
+      return res.redirect('/checkout');
+    }
+    req.flash('success', "tu compra fue exitosa");
+    req.session.cart = null;
+    res.redirect('/');
+  });
 });
 
 module.exports = router;

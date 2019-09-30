@@ -1,6 +1,8 @@
 <h1>Checkout</h1>
 <h3>Your total is {{totalPrice}}</h3>
-<h3 id="payment-errors" class="hidden"></h3>
+<h3 id="payment-errors" class="{{#if noError}}hidden{{/if}}">
+{{messages}}
+</h3>
 <form action="/checkout" method="post" id="checkout-form">
   <div class="form-group">
     <label for="name">Name</label>
