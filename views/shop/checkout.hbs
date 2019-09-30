@@ -1,0 +1,39 @@
+<h1>Checkout</h1>
+<h3>Your total is {{totalPrice}}</h3>
+<h3 id="payment-errors" class="hidden"></h3>
+<form action="/checkout" method="post" id="checkout-form">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter Name">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address">
+  </div>
+  <div class="form-group">
+    <label for="card-name">Cardholder Name</label>
+    <input type="text" class="form-control" id="card-name">
+  </div>
+  <div class="form-group">
+    <label for="card-number">Credit Card number</label>
+    <input type="text" class="form-control" id="card-number">
+  </div>
+  <div class="form-group">
+    <label for="card-expiry-month">Expiration Month</label>
+    <input type="text" class="form-control" id="card-expiry-month">
+  </div>
+  <div class="form-group">
+    <label for="card-expiry-year">Expiration Year</label>
+    <input type="text" class="form-control" id="card-expiry-year">
+  </div>
+  <div class="form-group">
+    <label for="card-cvc">CVC</label>
+    <input type="text" class="form-control" id="card-cvc">
+  </div>
+  
+  <button type="submit" class="btn btn-primary" id="checkoutBtn">Submit</button>
+</form>
+<script src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="javascripts/checkout.js"></script>
