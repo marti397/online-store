@@ -5,12 +5,26 @@ var passport = require('passport')
 var { check, validationResult } = require('express-validator');
 var csrfProtection = csurf({ cookie: true });
 
+var Order = require('../models/order');
+var Cart = require('../models/cart');
+
 //to use in all routes of the router, but otherwise you can just - app.get('/user/signup', csrfProtection,  -
 router.use(csrfProtection);
 
 //location of routes matters for logged in users
 router.get('/profile', isLoggedIn, function(req, res, next){
-  res.render('user/profile');
+  Order.find({
+    user: req.user
+  }, function(err, orders){
+    if (err){return res.write('Error!');}
+    var cart;
+    orders.forEach(function(order){
+      cart = new Cart(order.cart);
+      order.items = cart.generateArray();
+    });
+    res.render('user/profile', {orders: orders});
+  });
+  
 });
 
 router.get('/logout', isLoggedIn, function(req, res, next){

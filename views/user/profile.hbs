@@ -1,1 +1,12 @@
 <h1>User Profile</h1>
+<h2>my orders</h2>
+{{#each orders}}
+    <p>{{orders}}</p>
+    {{#each this.items}}
+    <p>{{this.items}}</p>
+    <p>{{this.price}}</p>
+    <p>{{this.items.title}}</p>
+    <p>{{this.qty}} units</p>
+    {{/each}}
+    <p>{{this.cart.totalPrice}}</p>
+{{/each}}

@@ -1,2 +1,3 @@
 Change to stripe V3
 Chnage stripe keys from test to live
+change password
