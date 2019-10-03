@@ -5,8 +5,8 @@
     <div>{{item.descr}}</div>
     <div>{{item.price}}</div>
     <div>{{this.qty}}</div>
-    <div>add</div>
-    <div>remove</div>
+    <div> <a href="/reduce/{{item._id}}">reduce by one</a></div>
+    <div> <a href="/remove/{{item._id}}">remove</a></div>
     <p></p>
     {{/each}}
     <div>{{totalPrice}}</div>

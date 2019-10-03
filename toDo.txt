@@ -1,3 +1,6 @@
 Change to stripe V3
 Chnage stripe keys from test to live
 change password
+agree to terms and conditions
+
+if you reduce by 1, the shopping cart gets to be 0
