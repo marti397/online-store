@@ -1,3 +1,87 @@
-body{
-    color: darkblue;
+/*One font type*/
+.topBanner{
+    background-color: black;
+    font-size: 12px;
+    color: white;
+}
+/*Two font type*/
+.mainFont{
+    font-size: 14px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
+/*Three font type*/
+.secondFont{
+    font-size: 12px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
+.mainNavBar{
+    border-bottom: 0.5px solid white;
+}
+.navBarLinks{
+    border-left: 0.5px solid black;
+}
+.navBarDropdown{
+    border: none;
+    border-radius: 0px;
+    border-left: 0.5px solid black;
+    border-bottom: 0.5px solid black;
+}
+#navbarDropdownMenuLink {
+    color: black;
+}
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+/*Four font type*/
+.textFoot{
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+/*Five font type*/
+.smallFt{
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
+/*Six font type*/
+.smallerFt{
+    font-size: 8px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobileDropDown {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+    }
+    .topBanner{
+        display: none;
+    }
+    .testfont{
+        font-size: 6px;
+    }
+    .iconFooter{
+        height: 15px;
+        width: 15px;
+    }
+    .textFoot{
+        font-size: 6px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+    .smallFt{
+        font-size: 6px;
+        font-weight: 200;
+        letter-spacing: 0.5px;
+    }
+    .smallerFt{
+        font-size: 6px;
+        font-weight: 200;
+        letter-spacing: 0.5px;
+    }
 }

@@ -5,8 +5,15 @@ var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
 
-/* GET home page. */
+//Get main page
 router.get('/', function(req, res, next) {
+  var flashMessage = req.flash('success')[0];
+  res.render('shop/main', { title: 'Online Store'});
+
+});
+
+/* GET home page. */
+router.get('/index', function(req, res, next) {
   var flashMessage = req.flash('success')[0];
   Product.find({}, function(err, docs){
     res.render('shop/index', { title: 'Online Store', products: docs, messages: flashMessage, noMessage: !flashMessage});
