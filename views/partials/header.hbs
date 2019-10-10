@@ -26,12 +26,12 @@
           ACCESORIOS
         </a>
         <div class="dropdown-menu navBarDropdown secondFont" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Ver Todo</a>
-          <a class="dropdown-item" href="#">Collares</a>
-          <a class="dropdown-item" href="#">Aretes</a>
-          <a class="dropdown-item" href="#">Brazaletes</a>
-          <a class="dropdown-item" href="#">Anillos</a>
-          <a class="dropdown-item" href="#">Cinturones</a>
+          <a class="dropdown-item" href="/product/todo">Ver Todo</a>
+          <a class="dropdown-item" href="/product/collares">Collares</a>
+          <a class="dropdown-item" href="/product/aretes">Aretes</a>
+          <a class="dropdown-item" href="/product/brazaletes">Brazaletes</a>
+          <a class="dropdown-item" href="/product/anillos">Anillos</a>
+          <a class="dropdown-item" href="/product/cinturones">Cinturones</a>
         </div>
       </li>
       <li class="nav-item dropdown secondFont ml-sm-5 mobileDropDown">
@@ -61,8 +61,8 @@
     <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
   </a>
   <a class="navbar-brand mobileIcon" href="/shopping-cart">
-    <img src="/images/shopping-bag.svg" alt="shop" width="20" height="20">
-    <span class="badge badge-pill badge-info">{{session.cart.totalQty}}</span>
+    <img src="/images/shopping-bag.svg" alt="shop" width="20" height="20" style="z-index: -1;">
+    <span class="mainFont position-absolute mt-2 ml-1 font-weight-normal">{{session.cart.totalQty}}</span>
   </a>
 </nav>
 

@@ -8,7 +8,11 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 
 
 DEFINIR LETRA STANDARD
+see the badge when adding to cart and in small screen
 
+change db to accept mulitple images
+two image sizes for modal and quick view
+discounts/final sale - see photo in images
 
 FORCE to be logged in???
 Change to stripe V3
@@ -17,6 +21,12 @@ change password - how to do it?
 agree to terms and conditions when registering
 
 if you reduce by 1, the shopping cart gets to be 0 - should this be removed?
+
+encrypt database password/user connection for mongo db
+
+develop admin site for uploading productos
+develop admin site for looking up customer orders
+develop admit site for analytics
 
 FOR LUPITA REZA
 haver un carousel en el main page

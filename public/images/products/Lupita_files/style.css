@@ -62,27 +62,6 @@
 .modalBtn:hover{
     opacity: 1.0;
 }
-
-.productArrowPrev, .productArrowNext{
-    display: none;
-    background-image: none;
-}
-.productImg:hover .productArrowNext{
-    display: block;
-}
-.productImg:hover .productArrowPrev{
-    display: block;
-}
-.productArrowNext:after
-{
-  content: '>';
-  color: black;
-}
-.productArrowPrev:after {
-  content: '<';
-  color: black;
-}
-
 @media only screen and (max-width: 600px) {
     .mobileDropDown {
         margin-top: 5px;
