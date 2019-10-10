@@ -7,17 +7,21 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 -declaration forms
 
 
-DEFINIR LETRA STANDARD
-see the badge when adding to cart and in small screen
 
+fav icon
+safe and secure checkout - use phone number an email
+change validation errors to spanish
+add logout
 change db to accept mulitple images
 two image sizes for modal and quick view
 discounts/final sale - see photo in images
 
+checar ortografia de todo el sitio
+
 FORCE to be logged in???
 Change to stripe V3
 Chnage stripe keys from test to live
-change password - how to do it?
+change/reset password - how to do it?
 agree to terms and conditions when registering
 
 if you reduce by 1, the shopping cart gets to be 0 - should this be removed?

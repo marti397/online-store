@@ -1,7 +1,7 @@
 <div class="container-fluid topBanner">
   <div class="row ">
     <div class="col-12 text-center">
-      Entregas en toda la República | 20% en compras de marcas para hombre hasta el 1 de Noviembre 2019
+      Entregas en toda la República Mexicana | 20% en compras de marcas para hombre hasta el 1 de Noviembre 2019
     </div>
   </div>
 </div>
@@ -57,9 +57,15 @@
   <a class="navbar-brand mobileIcon" href="#">
     <img src="/images/info.svg" alt="info" width="20" height="20">
   </a>
-  <a class="navbar-brand mobileIcon" href="#">
-    <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
-  </a>
+  {{#if login }}
+    <a class="navbar-brand mobileIcon" href="/user/profile">
+      <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
+    </a>
+  {{else}}
+    <a class="navbar-brand mobileIcon" href="/user/cuenta">
+      <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
+    </a>
+  {{/if}}
   <a class="navbar-brand mobileIcon" href="/shopping-cart">
     <img src="/images/shopping-bag.svg" alt="shop" width="20" height="20" style="z-index: -1;">
     <span class="mainFont position-absolute mt-2 ml-1 font-weight-normal">{{session.cart.totalQty}}</span>

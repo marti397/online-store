@@ -24,7 +24,6 @@ router.get('/profile', isLoggedIn, function(req, res, next){
     });
     res.render('user/profile', {orders: orders});
   });
-  
 });
 
 router.get('/logout', isLoggedIn, function(req, res, next){
@@ -35,6 +34,13 @@ router.get('/logout', isLoggedIn, function(req, res, next){
 //the function below I could put the notLoggedIn function for the the routes I want to check the guy is not loggedin
 router.use('/', notLoggedIn, function(req, res, next){
   next();
+});
+
+//account
+router.get('/cuenta', function (req, res, next) {
+  var flashMessage = req.flash('error');
+  // pass the csrfToken to the view
+  res.render('user/account', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
 
 //signUpGet
@@ -69,12 +75,12 @@ router.post('/signup', [
         messages.push(error.msg);
       })
       req.flash('error', messages);
-      res.redirect('/user/signup');
+      res.redirect('/user/cuenta');
     }
     else{
       passport.authenticate('local.signup',{
         successRedirect: '/user/profile',
-        failureRedirect: '/user/signup',
+        failureRedirect: '/user/cuenta',
         failureFlash: true })
       (req,res);
     }
@@ -91,12 +97,12 @@ router.post('/signin', [
         messages.push(error.msg);
       })
       req.flash('error', messages);
-      res.redirect('/user/signin');
+      res.redirect('/user/cuenta');
     }
     else{
       passport.authenticate('local.signin',{
         successRedirect: '/user/profile',
-        failureRedirect: '/user/signin',
+        failureRedirect: '/user/cuenta',
         failureFlash: true })
       (req,res);
     }
