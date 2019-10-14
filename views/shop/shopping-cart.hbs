@@ -52,7 +52,52 @@
                 <div class="col-sm-6 col-6 text-right">${{totalPrice}} MXN</div>
             </div>
             <div class="row mt-sm-2 mt-2">
-                <div class="col text-right"><a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">Continuar con el pago</a></div>                
+                <!-- Button trigger modal -->
+                {{#if login }}
+                <div class="col text-right">
+                    <a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">Continuar</a>
+                </div>
+                {{else}}
+                <div class="col text-right">
+                    <button type="button" class="btn btn-dark secondFont rounded-0 text-right" data-toggle="modal" data-target="#modalContinuar">
+                        Continuar
+                    </button>
+                </div>
+                {{/if}}
+                
+                <!-- Modal -->
+                <div class="modal fade" id="modalContinuar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                                <div class="row">
+                                    <div class="col-sm-6 col-12 modalDivider">
+                                        <div class="text-center secondFont">Ingresa a tu cuenta.</div>
+                                        <form action="/user/signin" method="post">
+                                            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                                            <div class="form-group mt-sm-4 mt-3">
+                                                <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="Correo electronico">
+                                            </div>
+                                            <div class="form-group mt-sm-4 mt-3">
+                                                <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="Contraseña">
+                                            </div>
+                                            <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mb-sm-1 mt-1 mb-5">Entrar</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-6 col-12 border-left">
+                                        <div class="row">
+                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/cuenta" role="button">Crear cuenta</a></div>
+                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">Continuar sin cuenta</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
         {{else}}

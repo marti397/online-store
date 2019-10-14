@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var csurf = require('csurf');
 var Cart = require('../models/cart');
+var csrfProtection = csurf({ cookie: true });
 
 var Product = require('../models/product');
 var Order = require('../models/order');
@@ -64,13 +66,13 @@ router.get('/remove/:id', function(req, res, next){
 });
 
 /* Shopping Cart Page */
-router.get('/shopping-cart', function(req, res, next) {
+router.get('/shopping-cart', csrfProtection, function(req, res, next) {
   //res.render('shop/shopping-cart', { products: null});
   if (!req.session.cart){
     return res.render('shop/shopping-cart', { products: null});
   }
   var cart = new Cart(req.session.cart);
-  res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice});
+  res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken()});
 });
 
 /* Checkout Page */

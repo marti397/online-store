@@ -28,21 +28,24 @@
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Nombre">
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Nombre" required>
+                        <small class="form-text text-muted smallFt">Nombre y Apellidos</small>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Apellido">
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Telefono" required>
+                        <small class="form-text text-muted smallFt">Sin espacios: 5512345678</small>
                     </div>
                 </div>
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
-                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="Correo electronico">
+                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="Correo electronico" required>
                         <small id="emailHelp" class="form-text text-muted smallFt">No compartimos direcciones de correo electrónico con nadie más.</small>
                     </div>
                 </div>
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
                         <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="Contraseña">
+                        <small class="form-text text-muted smallFt">Minimo cuatro caracteres</small>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña">
@@ -67,3 +70,39 @@
         </div>
     </div>
 </div>
+
+<form class="needs-validation" novalidate>
+      
+      <input type="text" class="form-control"  placeholder="First name" value="Mark" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    
+      <input type="text" class="form-control" placeholder="City" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+      
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

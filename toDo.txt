@@ -9,7 +9,7 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 
 continua sin registrar
 ingresa
-tu compra fue exitosa - ve aqui los detalles de la compra
+tu compra fue exitosa - ve aqui los detalles de la compra - there is a check out thing in main top page
 
 borrrar index y index.js route
 
@@ -21,6 +21,8 @@ borrrar index y index.js route
 -do site admin to look at stats
 
 -streched link for detailed views
+
+filtros de productos
 
 safe and secure checkout - use phone number an email
 change validation errors to spanish
