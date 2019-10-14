@@ -8,7 +8,7 @@ var Order = require('../models/order');
 //Get main page
 router.get('/', function(req, res, next) {
   var flashMessage = req.flash('success')[0];
-  res.render('shop/main', { title: 'Online Store'});
+  res.render('shop/main', { title: 'Online Store', messages: flashMessage, noMessage: !flashMessage});
 
 });
 
@@ -94,9 +94,10 @@ router.post('/checkout', function(req, res, next){
   
   stripe.charges.create({
     amount: cart.totalPrice * 100,
-    currency: "usd",
+    currency: "mxn",
     source: req.body.stripeToken, // obtained with Stripe.js
-    description: "Test Charge for jenny.rosen@example.com"
+    statement_descriptor: 'Lupita Accesorios Co',
+    description: "Charge for " + req.body.name
   }, function(err, charge) {
     // asynchronously called
     if (err){
