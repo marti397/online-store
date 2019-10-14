@@ -42,20 +42,6 @@ router.get('/cuenta', function (req, res, next) {
   // pass the csrfToken to the view
   res.render('user/account', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
-
-//signUpGet
-router.get('/signup', function (req, res, next) {
-  // pass the csrfToken to the view
-  var flashMessage = req.flash('error');
-  res.render('user/signup', { csrfToken: req.csrfToken(), messages: flashMessage });
-});
-
-//signInGet
-router.get('/signin', function (req, res, next) {
-  // pass the csrfToken to the view
-  var flashMessage = req.flash('error');
-  res.render('user/signin', { csrfToken: req.csrfToken(), messages: flashMessage });
-});
   
 /*router.post('/user/signup', 
   passport.authenticate('local.signup',{failureRedirect: '/user/signup',

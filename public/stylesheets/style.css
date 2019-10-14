@@ -114,4 +114,7 @@
     .productImg:hover .modalBtn{
         display: none;
     }
+    .cartCol{
+        display: none;
+    }
 }

@@ -6,9 +6,13 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 -withdraw 15,000
 -declaration forms
 
+-do site admin site to look orders
+-do site admin to clear orders
+-do site admin to upload documents
+-do site admin to look at stats
 
+-streched link for detailed views
 
-fav icon
 safe and secure checkout - use phone number an email
 change validation errors to spanish
 add logout

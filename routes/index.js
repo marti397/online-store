@@ -38,11 +38,19 @@ router.get('/reduce/:id', function(req, res, next){
   var productId = req.params.id
   //create a cart object and do a terniary expression of passing an empty object or a cart if it exists
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-
   cart.reduceByOne(productId);
   req.session.cart = cart;
   res.redirect('/shopping-cart');
+});
 
+//increase by one
+router.get('/increase/:id', function(req, res, next){
+  var productId = req.params.id
+  //create a cart object and do a terniary expression of passing an empty object or a cart if it exists
+  var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
+  cart.increaseByOne(productId);
+  req.session.cart = cart;
+  res.redirect('/shopping-cart');
 });
 
 //remove all
@@ -50,11 +58,9 @@ router.get('/remove/:id', function(req, res, next){
   var productId = req.params.id
   //create a cart object and do a terniary expression of passing an empty object or a cart if it exists
   var cart = new Cart(req.session.cart ? req.session.cart : {items: {}});
-
   cart.removeItem(productId);
   req.session.cart = cart;
   res.redirect('/shopping-cart');
-
 });
 
 /* Shopping Cart Page */
