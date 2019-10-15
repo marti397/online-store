@@ -24,31 +24,47 @@
         <div class="col-sm-4 col-12 border-right">
             <div class="text-center secondFont text-uppercase mb-sm-2 mb-2">registrate</div>
             <div class="text-center secondFont">Crea una cuenta para obtener mas beneficios! Checa detalles sobre pagos y envios, rastrea ordenes, y ve el estado de articulos en devolucion.</div>
-            <form action="/user/signup" method="post">
+            <!--validate-->
+            <form action="/user/signup" method="post" class="needs-validation" novalidate>
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
                         <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Nombre" required>
                         <small class="form-text text-muted smallFt">Nombre y Apellidos</small>
+                        <div class="invalid-feedback secondFont">
+                            Ingresa un nombre
+                        </div>
                     </div>
                     <div class="col">
                         <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Telefono" required>
                         <small class="form-text text-muted smallFt">Sin espacios: 5512345678</small>
+                        <div class="invalid-feedback secondFont">
+                            Ingresa un telefono
+                        </div>
                     </div>
                 </div>
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
                         <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="Correo electronico" required>
                         <small id="emailHelp" class="form-text text-muted smallFt">No compartimos direcciones de correo electrónico con nadie más.</small>
+                        <div class="invalid-feedback secondFont">
+                            Ingresa un correo
+                        </div>
                     </div>
                 </div>
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
-                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="Contraseña">
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="Contraseña" required>
                         <small class="form-text text-muted smallFt">Minimo cuatro caracteres</small>
+                        <div class="invalid-feedback secondFont">
+                            Ingresa tu contraseña
+                        </div>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña">
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña" required>
+                        <div class="invalid-feedback secondFont">
+                            Repite tu contraseña
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-5">Registrar</button>
@@ -70,22 +86,6 @@
         </div>
     </div>
 </div>
-
-<form class="needs-validation" novalidate>
-      
-      <input type="text" class="form-control"  placeholder="First name" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    
-      <input type="text" class="form-control" placeholder="City" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
-      
-  <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
-
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
