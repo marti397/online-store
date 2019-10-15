@@ -25,7 +25,7 @@
             <div class="text-center secondFont text-uppercase mb-sm-2 mb-2">registrate</div>
             <div class="text-center secondFont">Crea una cuenta para obtener mas beneficios! Checa detalles sobre pagos y envios, rastrea ordenes, y ve el estado de articulos en devolucion.</div>
             <!--validate-->
-            <form action="/user/signup" method="post" class="needs-validation" novalidate>
+            <form action="/user/signup" method="post" class="needs-validation" id="registrar" novalidate>
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
@@ -61,8 +61,8 @@
                         </div>
                     </div>
                     <div class="col">
-                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña" required>
-                        <div class="invalid-feedback secondFont">
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña" id="secondPass" required>
+                        <div class="invalid-feedback secondFont" id="secondPassText">
                             Repite tu contraseña
                         </div>
                     </div>
@@ -106,3 +106,12 @@
   }, false);
 })();
 </script>
+<script>
+$( "#registrar" ).submit(function( event ) {
+    if ( $( "#signUpPassword" ).val() != $( "#secondPass" ).val() ) {
+        $( "#myspan" ).text( "not valid" ).show();
+        $( "#secondPassText" ).text( "Contraseña diferente" ).show();
+        event.preventDefault();
+    }
+});
+</script> 
