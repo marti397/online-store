@@ -51,8 +51,8 @@ router.get('/cuenta', function (req, res, next) {
 });*/
   
 router.post('/signup', [
-  check('signUpEmail').isEmail().withMessage('email invalido'),
-  check('signUpPassword').isLength({ min: 4 }).withMessage('must be at least 4 chars long')
+  check('signUpEmail').isEmail().withMessage('correo electrónico invalido'),
+  check('signUpPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres')
   ], function (req, res, next){
     var errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -73,8 +73,8 @@ router.post('/signup', [
 });
   
 router.post('/signin', [
-  check('signInEmail').isEmail().withMessage('email invalido'),
-  check('signInPassword').isLength({ min: 4 }).withMessage('must be at least 4 chars long')
+  check('signInEmail').isEmail().withMessage('correo electrónico invalido'),
+  check('signInPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres')
   ], function (req, res, next){
     var errors = validationResult(req);
     if (!errors.isEmpty()) {

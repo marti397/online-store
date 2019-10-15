@@ -29,14 +29,14 @@
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <div class="form-row mt-sm-5 mt-3">
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Nombre" required>
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Nombre" id="name" name="name" required>
                         <small class="form-text text-muted smallFt">Nombre y Apellidos</small>
                         <div class="invalid-feedback secondFont">
                             Ingresa un nombre
                         </div>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Telefono" required>
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Telefono" id="phone" name="phone" required>
                         <small class="form-text text-muted smallFt">Sin espacios: 5512345678</small>
                         <div class="invalid-feedback secondFont">
                             Ingresa un telefono
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña" required>
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña" required>
                         <div class="invalid-feedback secondFont">
                             Repite tu contraseña
                         </div>

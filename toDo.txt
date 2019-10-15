@@ -7,12 +7,19 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 -declaration forms
 
 
-continua sin registrar
-ingresa
+user profile page
+
+estatus de la orden debe estar en el modelo
+orden debe tener si se hizo un descuento
+
+check that the two passwords are the same
+add date to the order model
+continua sin registrar/protected routes
 tu compra fue exitosa - ve aqui los detalles de la compra - there is a check out thing in main top page
 
 borrrar index y index.js route
 
+en el check out poner numero de telefono y correo para aclaraciones como dreslyn
 
 
 -do site admin site to look orders
@@ -25,7 +32,6 @@ borrrar index y index.js route
 filtros de productos
 
 safe and secure checkout - use phone number an email
-change validation errors to spanish
 add logout
 change db to accept mulitple images
 two image sizes for modal and quick view

@@ -1,12 +1,55 @@
-<h1>User Profile</h1>
-<h2>my orders</h2>
-{{#each orders}}
-    <p>{{orders}}</p>
-    {{#each this.items}}
-    <p>{{this.items}}</p>
-    <p>{{this.price}}</p>
-    <p>{{this.items.title}}</p>
-    <p>{{this.qty}} units</p>
-    {{/each}}
-    <p>{{this.cart.totalPrice}}</p>
-{{/each}}
+<div class="container secondFont">
+    <div class="row text-uppercase mt-sm-3 mt-3">
+        <div class="col">Mi Perfil</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-12 mt-sm-3 mt-3 border-right">
+            <div class="row">
+                <div class="col">Ordenes</div>
+            </div>
+            {{#each orders}}
+            <div class="row-fluid mt-sm-3 mt-2">
+                <div class="accordion" id="accordionExample">
+                    <div class="card-fluid">
+                        <div class="card-header row" id="headingOne">
+                            <div class="col-sm-4">Fecha de la compra: Octubre 28, 2019</div>
+                            <div class="col-sm-4 mt-2 mt-sm-0">No. Orden: {{_id}}</div>
+                            <div class="col-sm-4 text-right mt-sm-0 mt-2"><a class="" type="button" data-toggle="collapse" data-target="#collapse{{_id}}">Ver detalles</a></div>  
+                        </div>
+                        <div id="collapse{{_id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body row">
+                                <div class="col-sm-12">Dirección de envio: {{address}}</div>
+                                <div class="col-sm-12">Nombre de la orden: {{name}}</div>
+                                <div class="col-sm-12">Codigo de pago: {{paymentId}}</div>
+                                <div class="col-sm-12">Productos</div>
+                                {{#each this.items}}
+                                <div class="col-sm-2 mb-sm-2 col-4"> <img src="{{item.imagePath}}" alt="product" class="img-fluid"></div>
+                                <div class="col-sm-2 col-8">{{item.title}}</div>
+                                <div class="col-sm-8 col-12 mb-sm-0 mb-3">${{item.price}} MXN x {{qty}} piezas = ${{price}} MXN</div>
+                                {{/each}}
+                                <div class="col-sm-12">Total de la compra: ${{cart.totalPrice}} MXN</div>
+                                <div class="col-sm-12">Total numero de productos ordenados: {{cart.totalQty}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="col-sm-6 col-12 mt-sm-3 mt-4">
+            <div class="row">
+                <div class="col-sm-6 text-left">Usuario</div>
+                <div class="col-sm-6 text-right"><a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">Salir</a></div>
+            </div>
+            <div class="row">
+                <div class="col">Nombre</div>
+            </div>
+            <div class="row">
+                <div class="col">Correo</div>
+            </div>
+            <div class="row">
+                <div class="col">Telefono</div>
+            </div>
+        </div>
+    </div>
+</div>

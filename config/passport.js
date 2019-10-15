@@ -24,11 +24,13 @@ passport.use('local.signup', new LocalStrategy({
       User.findOne({ email: signUpEmail }, function (err, user) {
         if (err) { return done(err); }
         if (user) {
-          return done(null, false, { message: 'Email already in use.' });
+          return done(null, false, { message: 'El correo electrónico ya esta en uso' });
         }
         var newUser = new User();
         newUser.email = signUpEmail;
         newUser.password = newUser.encryptPassword(signUpPassword);
+        newUser.name = req.body.name;
+        newUser.phone = req.body.phone;
         newUser.save(function(err, result){
             if (err) { return done(err); }
             return done(null, newUser);
@@ -49,7 +51,7 @@ function(req, signInEmail, signInPassword, done) {
       return done(null, false, { message: 'No se pudo encontrar al usuario' });
     }
     if (!user.validatePassword(signInPassword)) {
-        return done(null, false, { message: 'Contrasena incorrecta.' });
+        return done(null, false, { message: 'Contraseña incorrecta' });
     }
     return done(null, user);
   });
