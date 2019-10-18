@@ -3,6 +3,18 @@
         <div class="col">Mi Perfil</div>
     </div>
     <div class="row">
+        <div class="col secondFont text-uppercase mt-sm-1 mb-sm-1 text-danger">
+            {{#each messages}}
+                <div>{{this}}</div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col secondFont text-uppercase text-success">
+                <div>{{goodMessage}}</div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-6 col-12 mt-sm-3 mt-3 border-right">
             <div class="row">
                 <div class="col">Ordenes</div>
@@ -64,10 +76,11 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
-                            <form action="" method="">
+                            <form action="/user/update-user" method="post">
                                 <div class="row">
+                                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
                                     <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
-                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="nombre" name="nombre" class="secondFont" type="text" value="{{userInfo.name}}"></div>
+                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
                                     <div class="col-sm-6 mb-sm-2 col-7 mb-2">Email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
                                     <div class="col-sm-6 mb-sm-2 col-7 mb-2">Telefono: <input id="phone" name="phone" class="secondFont" type="text" value="{{userInfo.phone}}"></div>
                                     <div class="col-sm-6 mb-sm-2 mt-sm-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Guardar</button></div>

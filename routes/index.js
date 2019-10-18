@@ -14,14 +14,6 @@ router.get('/', function(req, res, next) {
 
 });
 
-/* GET home page. */
-router.get('/index', function(req, res, next) {
-  var flashMessage = req.flash('success')[0];
-  Product.find({}, function(err, docs){
-    res.render('shop/index', { title: 'Online Store', products: docs, messages: flashMessage, noMessage: !flashMessage});
-  });
-});
-
 router.get('/add-to-cart/:id', function(req, res, next) {
   var productId = req.params.id
   //create a cart object and do a terniary expression of passing an empty object or a cart if it exists

@@ -3,16 +3,20 @@ var router = express.Router();
 var csurf = require('csurf');
 var passport = require('passport')
 var { check, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
 var csrfProtection = csurf({ cookie: true });
 
 var Order = require('../models/order');
 var Cart = require('../models/cart');
+var User = require('../models/user');
 
 //to use in all routes of the router, but otherwise you can just - app.get('/user/signup', csrfProtection,  -
 router.use(csrfProtection);
 
 //location of routes matters for logged in users
 router.get('/profile', isLoggedIn, function(req, res, next){
+  var flashMessage = req.flash('error');
+  var flashMessageSuccess = req.flash('success')[0];
   Order.find({
     user: req.user
   }, function(err, orders){
@@ -22,13 +26,43 @@ router.get('/profile', isLoggedIn, function(req, res, next){
       cart = new Cart(order.cart);
       order.items = cart.generateArray();
     });
-    res.render('user/profile', {orders: orders, userInfo: req.user});
+    res.render('user/profile', {orders: orders, userInfo: req.user, csrfToken: req.csrfToken(), messages: flashMessage, goodMessage: flashMessageSuccess});
   });
 });
 
-router.post('/update-user', isLoggedIn, function(req, res, next){
-  
+//udpate user
+router.post('/update-user', isLoggedIn, [
+  //validate fields
+  check('name').isLength({ min: 1 }).withMessage('No se guardo tu informacion. El Nombre debe ser especificado')
+  .isAlphanumeric().withMessage('No se guardo tu informacion. El nombre solo debe llevar letras del alfabeto'),
+  check('email').isEmail().withMessage('No se guardo tu informacion. Correo electrónico invalido'),
+  check('phone').isNumeric().withMessage('No se guardo tu informacion. El telefono consiste solo de numeros'),
 
+  //sanitize fields
+  sanitizeBody('name').escape(),
+  sanitizeBody('email').escape(),
+  sanitizeBody('phone').escape()
+  ],function(req, res, next){
+    var errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      var messages = [];
+      errors.array().forEach(function(error){
+        messages.push(error.msg);
+      })
+      req.flash('error', messages);
+      res.redirect('/user/profile');
+    }
+    else{
+      User.findByIdAndUpdate(req.body.custId, {
+        email:req.body.email,
+        name:req.body.name,
+        phone:req.body.phone
+    }, function(err,result){
+        if (err) { return next(err); }
+        req.flash('success', "Tu información se guardo correctamente!");
+        res.redirect('/user/profile');
+      });
+    }
 });
 
 router.get('/logout', isLoggedIn, function(req, res, next){
