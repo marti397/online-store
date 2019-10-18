@@ -13,6 +13,7 @@ var MongoStore = require('connect-mongo')(session);//store session in mongoDB
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var productRouter = require('./routes/product');
+var adminRouter = require('./routes/admin')
 
 var app = express();
 
@@ -51,6 +52,7 @@ app.use(function(req, res, next){
   next();
 })
 
+app.use('/admin', adminRouter);
 app.use('/product', productRouter);
 app.use('/user', userRouter);
 app.use('/', indexRouter);

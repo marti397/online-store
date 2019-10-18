@@ -6,8 +6,18 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 -withdraw 15,000
 -declaration forms
 
+Mostrar informacion usuario
 
+ADD on stock field to product model
+choose what products to be displayed on the website
+
+--tipo y estilo en edit solo deben tener dropdown menu
+when adding the products make sure that you escape values (no spaces)
+--debe haber una tabla extra para add y edit styles and types
+
+--ver si admin es user type general o admin
 user profile page
+-if no orders - say no orders
 
 estatus de la orden debe estar en el modelo
 orden debe tener si se hizo un descuento
