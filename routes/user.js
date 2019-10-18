@@ -22,8 +22,13 @@ router.get('/profile', isLoggedIn, function(req, res, next){
       cart = new Cart(order.cart);
       order.items = cart.generateArray();
     });
-    res.render('user/profile', {orders: orders});
+    res.render('user/profile', {orders: orders, userInfo: req.user});
   });
+});
+
+router.post('/update-user', isLoggedIn, function(req, res, next){
+  
+
 });
 
 router.get('/logout', isLoggedIn, function(req, res, next){

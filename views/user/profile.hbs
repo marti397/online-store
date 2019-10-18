@@ -41,15 +41,43 @@
                 <div class="col-sm-6 text-left">Usuario</div>
                 <div class="col-sm-6 text-right"><a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">Salir</a></div>
             </div>
-            <div class="row">
-                <div class="col">Nombre</div>
+            <div class="row mb-sm-2 mb-2">
+                <div class="col">Nombre: {{userInfo.name}}</div>
             </div>
-            <div class="row">
-                <div class="col">Correo</div>
+            <div class="row mb-sm-2 mb-2">
+                <div class="col">Correo: {{userInfo.email}}</div>
             </div>
-            <div class="row">
-                <div class="col">Telefono</div>
+            <div class="row mb-sm-2 mb-2">
+                <div class="col">Telefono {{userInfo.phone}}</div>
             </div>
+            <div class="row mb-sm-2 mb-2">
+                <div class="col">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
+                    Editar datos
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            <form action="" method="">
+                                <div class="row">
+                                    <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
+                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="nombre" name="nombre" class="secondFont" type="text" value="{{userInfo.name}}"></div>
+                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
+                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Telefono: <input id="phone" name="phone" class="secondFont" type="text" value="{{userInfo.phone}}"></div>
+                                    <div class="col-sm-6 mb-sm-2 mt-sm-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Guardar</button></div>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+             </div>
         </div>
     </div>
 </div>
