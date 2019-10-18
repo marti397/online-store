@@ -10,6 +10,7 @@ do sanitation and validadion for signup data
 do sanitation and validation for admin data
 ADD on stock field to product model
 choose what products to be displayed on the website
+-----when doing check out post / i am assuming the user is logged in!!! needs to change that
 
 --tipo y estilo en edit solo deben tener dropdown menu
 when adding the products make sure that you escape values (no spaces)
@@ -25,9 +26,7 @@ orden debe tener si se hizo un descuento
 check that the two passwords are the same
 add date to the order model
 continua sin registrar/protected routes
-tu compra fue exitosa - ve aqui los detalles de la compra - there is a check out thing in main top page
 
-borrrar index y index.js route
 
 en el check out poner numero de telefono y correo para aclaraciones como dreslyn
 

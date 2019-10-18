@@ -6,7 +6,7 @@ var Product = require('../models/product');
 //Get the main admin page
 router.get('/', function(req, res, next) {
     var flashMessage = req.flash('error');
-  res.render('user/admin', {messages: flashMessage, noMessage: !flashMessage});
+    res.render('user/admin', {messages: flashMessage, noMessage: !flashMessage});
 });
 
 //read all products for admin
@@ -19,7 +19,6 @@ router.get('/product', function(req, res, next) {
 
 //update products
 router.post('/update-product', function(req, res, next){
-    var flashMessage = req.flash('error');
     Product.findByIdAndUpdate(req.body.custId, {
         title:req.body.title,
         descr:req.body.descr,
@@ -34,7 +33,6 @@ router.post('/update-product', function(req, res, next){
 
 //add product
 router.post('/add-product', function(req, res, next){
-    var flashMessage = req.flash('error');
     var newProduct = new Product({
         imagePath: req.body.img,
         title:req.body.title,
@@ -53,7 +51,6 @@ router.post('/add-product', function(req, res, next){
 
 //delete product
 router.post('/delete-product', function(req, res, next){
-    var flashMessage = req.flash('error');
     Product.findByIdAndRemove(req.body.custId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/product');
