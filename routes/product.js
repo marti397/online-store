@@ -19,4 +19,14 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+//get prroduct detail
+router.get('/:id/detail',function(req,res,next){
+  var productID = req.params.id;
+  var query = Product.findById(productID);
+  Product.findById(productID).exec(function(err,result){
+    if(err){return next(err)}
+    res.render('shop/product-view', {product:result});
+  });
+})
+
 module.exports = router;

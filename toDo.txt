@@ -62,6 +62,8 @@ develop admin site for uploading productos
 develop admin site for looking up customer orders
 develop admit site for analytics
 
+-after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
+
 FOR LUPITA REZA
 haver un carousel en el main page
 publicidad en top banner - cual sera?

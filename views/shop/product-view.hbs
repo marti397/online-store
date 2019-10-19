@@ -1,0 +1,52 @@
+<div class="container secondFont mt-sm-5 mt-3">
+    <div class="row">
+        <div class="col-sm-6 col-12">
+            <div class="row">
+                <div class="col-sm-9 col-9">
+                    <img src="{{product.imagePath}}" alt="img" class="img-fluid mySlides">
+                    <img src="/images/products/im1.jpg" alt="img" class="img-fluid mySlides" style="display:none;">
+                    <img src="/images/products/im9.jpg" alt="img" class="img-fluid mySlides" style="display:none;">
+                    </div>
+                <div class="col-sm-3 col-3">
+                    <div class="row">
+                        <div class="col-sm-12 mb-sm-2 mb-2"><img src="{{product.imagePath}}" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv(1)" style="cursor: pointer;"></div>
+                        <div class="col-sm-12 mb-sm-2 mb-2"><img src="/images/products/im1.jpg" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv(2)" style="cursor: pointer;"></div>
+                        <div class="col-sm-12 mb-sm-2 mb-2"><img src="/images/products/im9.jpg" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv(3)" style="cursor: pointer;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-12 mt-sm-0 mt-2">
+            <a href="/add-to-cart/{{product._id}}" class="btn btn-outline-dark mainFont rounded-0">Agregar</a>
+            <div class="mainFont mt-2">{{product.title}}</div>
+            <div class="mainFont mt-1 font-weight-normal">${{product.price}} MXN</div>
+            <div class="mainFont mt-1">{{product.descr}}</div>
+            <div class="mainFont mt-4">Envios y devoluciones gratis</div>
+            <div class="mainFont">En ordenes de mas de $2,000 MX</div>
+            <div class="mainFont mt-4">Descripción</div>
+            <div class="mainFont mb-2">{{product.details}}</div>
+        </div>
+    </div>
+</div>
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>

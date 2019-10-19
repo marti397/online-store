@@ -82,6 +82,17 @@
   content: '<';
   color: black;
 }
+.w3-opacity{
+    opacity: 1;
+    border: none;
+}
+.w3-opacity:hover{
+    opacity: 1;
+}
+.w3-opacity-off{
+    opacity: 1;
+    border: 0.2px solid gray;
+}
 
 @media only screen and (max-width: 600px) {
     .mobileDropDown {
