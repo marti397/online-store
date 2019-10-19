@@ -106,6 +106,7 @@ router.post('/checkout', function(req, res, next){
       paymentId: charge.id
     });
     order.save(function(err, result){
+      if (err) { return next(err); }
       req.flash('success', "correo: " +  req.user.email + " , confirmación: "  + charge.id);
       req.session.cart = null;
       res.redirect('/');

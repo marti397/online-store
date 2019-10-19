@@ -36,7 +36,7 @@ router.post('/update-user', isLoggedIn, [
   check('name').isLength({ min: 1 }).withMessage('No se guardo tu informacion. El Nombre debe ser especificado')
   .isAlphanumeric().withMessage('No se guardo tu informacion. El nombre solo debe llevar letras del alfabeto'),
   check('email').isEmail().withMessage('No se guardo tu informacion. Correo electrónico invalido'),
-  check('phone').isNumeric().withMessage('No se guardo tu informacion. El telefono consiste solo de numeros'),
+  check('phone').isNumeric().withMessage('No se guardo tu informacion. El telefono tiene que consistir solo de numeros'),
 
   //sanitize fields
   sanitizeBody('name').escape(),
@@ -82,6 +82,15 @@ router.get('/cuenta', function (req, res, next) {
   res.render('user/account', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
   
+router.post('/user/check-order', [
+  check('checkOrderEmail').isEmail().withMessage('correo electrónico invalido'),
+  check('checkOrderNo').isLength({ min: 1 }).withMessage('la orden debe ser especificada'),
+
+  sanitizeBody('checkOrderNo').trim().escape()
+
+  ],function(req, res, next){
+
+});
 /*router.post('/user/signup', 
   passport.authenticate('local.signup',{failureRedirect: '/user/signup',
       failureFlash: true }),
@@ -91,7 +100,14 @@ router.get('/cuenta', function (req, res, next) {
   
 router.post('/signup', [
   check('signUpEmail').isEmail().withMessage('correo electrónico invalido'),
-  check('signUpPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres')
+  check('signUpPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres'),
+  check('phone').isNumeric().withMessage('El telefono tiene que consistir solo de numeros'),
+  check('fullname').isLength({ min: 1 }).withMessage('El Nombre debe ser especificado'),
+
+  //sanitize fields
+  sanitizeBody('fullname').trim().escape(),
+  sanitizeBody('phone').trim().escape()
+
   ], function (req, res, next){
     var errors = validationResult(req);
     if (!errors.isEmpty()) {

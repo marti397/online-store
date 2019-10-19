@@ -6,7 +6,10 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 -withdraw 15,000
 -declaration forms
 
-do sanitation and validadion for signup data
+break the app when submitting a payment wihtout being logged in
+add check order when signed in
+for all models see if something is not required
+do sanitation and validadion for finalizar pago
 do sanitation and validation for admin data
 ADD on stock field to product model
 choose what products to be displayed on the website
