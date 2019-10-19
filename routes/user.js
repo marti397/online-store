@@ -81,7 +81,8 @@ router.get('/cuenta', function (req, res, next) {
   // pass the csrfToken to the view
   res.render('user/account', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
-  
+
+/*
 router.post('/user/check-order', [
   check('checkOrderEmail').isEmail().withMessage('correo electrónico invalido'),
   check('checkOrderNo').isLength({ min: 1 }).withMessage('la orden debe ser especificada'),
@@ -90,7 +91,8 @@ router.post('/user/check-order', [
 
   ],function(req, res, next){
 
-});
+});*/
+
 /*router.post('/user/signup', 
   passport.authenticate('local.signup',{failureRedirect: '/user/signup',
       failureFlash: true }),
