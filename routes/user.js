@@ -33,8 +33,7 @@ router.get('/profile', isLoggedIn, function(req, res, next){
 //udpate user
 router.post('/update-user', isLoggedIn, [
   //validate fields
-  check('name').isLength({ min: 1 }).withMessage('No se guardo tu informacion. El Nombre debe ser especificado')
-  .isAlphanumeric().withMessage('No se guardo tu informacion. El nombre solo debe llevar letras del alfabeto'),
+  check('name').isLength({ min: 1 }).withMessage('No se guardo tu informacion. El Nombre debe ser especificado'),
   check('email').isEmail().withMessage('No se guardo tu informacion. Correo electrónico invalido'),
   check('phone').isNumeric().withMessage('No se guardo tu informacion. El telefono tiene que consistir solo de numeros'),
 

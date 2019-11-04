@@ -9,6 +9,20 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
+-when dennying login do not errase data
+-logout success msg
+-check that the email is not in use when modfying data
+when creating user say congratulations
+-when loggin is success say something
+-add a hello or something
+-if nothing in the cart, there should not be anything
+-if nothing in orders, there should be nothing
+-space when registering as user should be allowed
+-when adding 1 more it takes a little to process (async)
+-search order
+-calculate tax
+-caluclate shipping
+-add discount coupon button, descuentos, en la compra de dos o mas monos llevate el tercero gratis, etc
 -to checout add credit cards accepted? -> https://stripe.com/payments/features#local-payment-methods
 -another good checkout site -> https://www.accesorioslupita.com/checkout?appSectionParams=%7B%22a11y%22%3Afalse%2C%22cartId%22%3A%225f2c5898-7355-42f6-a0f2-4d4fcf6a92da%22%2C%22storeUrl%22%3A%22https%3A%2F%2Fwww.accesorioslupita.com%2F%22%2C%22isFastFlow%22%3Afalse%2C%22isPickupFlow%22%3Afalse%2C%22cashierPaymentId%22%3A%22%22%7D
 -change check out to -> https://needsupply.com/on/demandware.store/Sites-NeedSupply-Site/en_US/Checkout-Begin?stage=payment#payment
