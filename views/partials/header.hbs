@@ -36,7 +36,7 @@
       </li>
       <li class="nav-item dropdown secondFont ml-sm-5 mobileDropDown">
         <a class="nav-link navBarLinks" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          OCACIONES
+          OCASIONES
         </a>
         <div class="dropdown-menu navBarDropdown secondFont" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item secondFont" href="#">Ejecutiva</a>
@@ -54,19 +54,20 @@
       </li>
     </ul>
   </div>
-  <a class="navbar-brand mobileIcon" href="#">
+  <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-3 ml-0 mr-0" href="#">
     <img src="/images/info.svg" alt="info" width="20" height="20">
   </a>
   {{#if login }}
-    <a class="navbar-brand mobileIcon" href="/user/profile">
+    <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-3 ml-0 mr-0" href="/user/profile">
       <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
+      <img src="/images/tick.svg" alt="tick" width="12" height="12">
     </a>
   {{else}}
-    <a class="navbar-brand mobileIcon" href="/user/cuenta">
+    <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-3 ml-0 mr-0" href="/user/cuenta">
       <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
     </a>
   {{/if}}
-  <a class="navbar-brand mobileIcon" href="/shopping-cart">
+  <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-5 ml-0 mr-0" href="/shopping-cart">
     <img src="/images/shopping-bag.svg" alt="shop" width="20" height="20" style="z-index: -1;">
     <span class="mainFont position-absolute mt-2 ml-1 font-weight-normal">{{session.cart.totalQty}}</span>
   </a>

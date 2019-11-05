@@ -10,6 +10,7 @@ EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
 -when dennying login do not errase data
+-hacer algo de destacados en user profile
 -logout success msg
 -check that the email is not in use when modfying data
 when creating user say congratulations

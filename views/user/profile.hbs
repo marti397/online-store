@@ -1,23 +1,45 @@
 <div class="container secondFont">
     <div class="row text-uppercase mt-sm-3 mt-3">
         <div class="col">Mi Perfil</div>
+        <div class="col text-right"><a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">Salir</a></div>
     </div>
-    <div class="row">
-        <div class="col secondFont text-uppercase mt-sm-1 mb-sm-1 text-danger">
+    <div class="row mt-1">
+        <div class="col secondFont text-uppercase">
             {{#each messages}}
-                <div>{{this}}</div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{this}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             {{/each}}
         </div>
     </div>
-    <div class="row">
-        <div class="col secondFont text-uppercase text-success">
-                <div id="goodMessage">{{goodMessage}}</div>
+    {{#if goodMessage}}
+    <div class="row mt-1">
+        <div class="col secondFont text-uppercase">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">{{goodMessage}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
     </div>
+    {{/if}}
     <div class="row">
-        <div class="col-sm-6 col-12 mt-sm-3 mt-3 border-right">
+        <div class="col-12">Nombre: {{userInfo.name}}</div>
+        <div class="col-12">Correo: {{userInfo.email}}</div>
+        <div class="col-12">Telefono: {{userInfo.phone}}</div>
+        <div class="col-12 mt-2">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
+                Editar datos
+            </button>
+        </div>
+    </div>
+    <div class="row mt-sm-4 mt-4">
+        <div class="col-sm-12 col-12">
             <div class="row">
-                <div class="col">Ordenes</div>
+                <div class="col">ORDENES</div>
             </div>
             {{#each orders}}
             <div class="row-fluid mt-sm-3 mt-2">
@@ -30,17 +52,17 @@
                         </div>
                         <div id="collapse{{_id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body row">
-                                <div class="col-sm-12">Dirección de envio: {{address}}</div>
-                                <div class="col-sm-12">Nombre de la orden: {{name}}</div>
-                                <div class="col-sm-12">Codigo de pago: {{paymentId}}</div>
-                                <div class="col-sm-12">Productos</div>
+                                <div class="col-sm-12">&#9900; Dirección de envio: {{address}}</div>
+                                <div class="col-sm-12">&#9900; Nombre en la orden: {{name}}</div>
+                                <div class="col-sm-12">&#9900; Codigo de pago: {{paymentId}}</div>
+                                <div class="col-sm-12">&#9900; Productos</div>
                                 {{#each this.items}}
                                 <div class="col-sm-2 mb-sm-2 col-4"> <img src="{{item.imagePath}}" alt="product" class="img-fluid"></div>
                                 <div class="col-sm-2 col-8">{{item.title}}</div>
                                 <div class="col-sm-8 col-12 mb-sm-0 mb-3">${{item.price}} MXN x {{qty}} piezas = ${{price}} MXN</div>
                                 {{/each}}
-                                <div class="col-sm-12">Total de la compra: ${{cart.totalPrice}} MXN</div>
-                                <div class="col-sm-12">Total numero de productos ordenados: {{cart.totalQty}}</div>
+                                <div class="col-sm-12">&#9900; Total de la compra: ${{cart.totalPrice}} MXN</div>
+                                <div class="col-sm-12">&#9900; Total de productos ordenados: {{cart.totalQty}}</div>
                             </div>
                         </div>
                     </div>
@@ -48,49 +70,31 @@
             </div>
             {{/each}}
         </div>
-        <div class="col-sm-6 col-12 mt-sm-3 mt-4">
-            <div class="row">
-                <div class="col-sm-6 text-left">Usuario</div>
-                <div class="col-sm-6 text-right"><a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">Salir</a></div>
-            </div>
-            <div class="row mb-sm-2 mb-2">
-                <div class="col">Nombre: {{userInfo.name}}</div>
-            </div>
-            <div class="row mb-sm-2 mb-2">
-                <div class="col">Correo: {{userInfo.email}}</div>
-            </div>
-            <div class="row mb-sm-2 mb-2">
-                <div class="col">Telefono {{userInfo.phone}}</div>
-            </div>
-            <div class="row mb-sm-2 mb-2">
-                <div class="col">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
-                    Editar datos
-                    </button>
-                    <!-- Modal -->
-                    <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                            <form action="/user/update-user" method="post">
-                                <div class="row">
-                                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
-                                    <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
-                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
-                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
-                                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Telefono: <input id="phone" name="phone" class="secondFont" type="text" value="{{userInfo.phone}}"></div>
-                                    <div class="col-sm-6 mb-sm-2 mt-sm-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Guardar</button></div>
-                                </div>
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-             </div>
+    </div>
+    <div class="row">
+        <div class="col-12"></div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            <form action="/user/update-user" method="post">
+                <div class="row">
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
+                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
+                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
+                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Telefono: <input id="phone" name="phone" class="secondFont" type="text" value="{{userInfo.phone}}"></div>
+                    <div class="col-sm-6 mb-sm-2 mt-sm-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Guardar</button></div>
+                </div>
+            </form>
+        </div>
         </div>
     </div>
+    </div>
+    <!-- Modal -->
 </div>
