@@ -20,9 +20,9 @@
                     <div class="col-3 col-sm-2"><img class="img-fluid" src="{{item.imagePath}}" alt="product"></div>
                     <div class="col-4 col-sm-2">{{item.title}}</div>
                     <div class="col-4 col-sm-2">${{item.price}} MXN</div>
-                    <div class="col-7 col-sm-2"><a href="/reduce/{{item._id}}"> - </a>{{this.qty}}<a href="/increase/{{item._id}}"> + </a></div>
+                    <div class="col-7 col-sm-2"><a href="/reduce/{{item._id}}" class="text-info"> - </a>{{this.qty}}<a href="/increase/{{item._id}}" class="text-info"> + </a></div>
                     <div class="col-4 col-sm-2">${{this.price}} MXN</div>
-                    <div class="col-12 col-sm-2"><a href="/remove/{{item._id}}">Remover</a></div>
+                    <div class="col-12 col-sm-2"><a href="/remove/{{item._id}}" class="text-info">Remover</a></div>
                 </div>
             {{/each}}
         </div>

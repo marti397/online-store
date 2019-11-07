@@ -14,6 +14,8 @@ var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user');
 var productRouter = require('./routes/product');
 var adminRouter = require('./routes/admin')
+var miscRouter = require('./routes/misc');
+var ocasionRouter = require('./routes/ocasion')
 
 var app = express();
 
@@ -52,6 +54,8 @@ app.use(function(req, res, next){
   next();
 })
 
+app.use('/ocasiones', ocasionRouter);
+app.use('/info', miscRouter);
 app.use('/admin', adminRouter);
 app.use('/product', productRouter);
 app.use('/user', userRouter);
