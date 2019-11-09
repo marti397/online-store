@@ -133,4 +133,17 @@
     padding: 10px 12px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
-}   
+}
+/*REVISE .active*/
+.active{
+    text-decoration: underline;
+}
+#ocnav{
+    color: black;
+}
+.secondsticky{
+    z-index: 1;
+}
+.section{
+    z-index: -1;
+}
