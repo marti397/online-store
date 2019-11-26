@@ -103,11 +103,13 @@ router.post('/checkout', function(req, res, next){
       cart: cart,
       address: req.body.address,
       name: req.body.name,
-      paymentId: charge.id
+      paymentId: charge.id,
+      orderId: Math.floor(Math.random() * 10) + Date.now().toString(),
+      orderStatus: "Tu orden está siendo procesada"
     });
     order.save(function(err, result){
       if (err) { return next(err); }
-      req.flash('success', "correo: " +  req.user.email + " , confirmación: "  + charge.id);
+      req.flash('success', "correo: " +  req.user.email + " , confirmación: "  + order.orderId);
       req.session.cart = null;
       res.redirect('/');
     });

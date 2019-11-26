@@ -1,3 +1,8 @@
+/*Main Lupita logo*/
+.mainLogo{
+    width: 132px;
+    height: 25px;
+}
 /*One font type*/
 .topBanner{
     background-color: black;
@@ -52,6 +57,7 @@
     font-weight: 200;
     letter-spacing: 0.5px;
 }
+/*boton de small Lupita Icon for products*/
 .modalBtn{
     display: none;
     opacity: 0.5;
@@ -62,7 +68,9 @@
 .modalBtn:hover{
     opacity: 1.0;
 }
+/*boton de small Lupita Icon for products*/
 
+/*arrrows del product image*/
 .productArrowPrev, .productArrowNext{
     display: none;
     background-image: none;
@@ -82,6 +90,9 @@
   content: '<';
   color: black;
 }
+/*arrrows del product image*/
+
+/*w3 is product view changes of images*/
 .w3-opacity{
     opacity: 1;
     border: none;
@@ -93,8 +104,24 @@
     opacity: 1;
     border: 0.2px solid gray;
 }
+/*ocasion icons*/
+.ocasionIcon{
+    height: 220px;
+    width: 220px;
+}
 
+/*media start for smaller devices*/
 @media only screen and (max-width: 600px) {
+    /*Main Lupita logo*/
+    .mainLogo{
+        width: 105px;
+        height: 20px;
+    }
+    /*ocasion icons*/
+    .ocasionIcon{
+        height: auto;
+        width: auto;
+    }
     .mobileDropDown {
         margin-top: 5px;
         margin-bottom: 5px;
@@ -129,12 +156,16 @@
         display: none;
     }
 }
+/*media end for smaller devices*/
+
+/*stripe checkout view*/
 .StripeElement {
     padding: 10px 12px;
     border-left: 1px solid black;
     border-bottom: 1px solid black;
 }
-/*REVISE .active*/
+
+/*REVISE .active in the tendencias site
 .active{
     text-decoration: underline;
 }
@@ -147,3 +178,4 @@
 .section{
     z-index: -1;
 }
+*/

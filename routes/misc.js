@@ -5,11 +5,18 @@ var { check, validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
 
 var Order = require('../models/order');
-var Cart = require('../models/cart');
 var User = require('../models/user');
 
 router.get('/', function(req, res, next){
-    res.render('misc/info');
+    if (req.query.checkOrderNo){
+        Order.find({orderId:req.query.checkOrderNo}, function(err, docs){
+            if (err){return res.write('Error!');}
+            res.render('misc/info', {mydata:docs});
+        })
+    }else{
+        console.log('HOLA')
+        res.render('misc/info');
+    }
 })
 
 module.exports = router;
