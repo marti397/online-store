@@ -1,15 +1,10 @@
 <div class="container">
     <div class="row">
-        <div class="col text-center mainFont font-weight-normal text-uppercase mt-sm-3">
+        <div class="col text-center secondFont text-uppercase mt-sm-3 mt-3">
             {{title}}
         </div>
     </div>
-    <div class="row">
-        <div id="success" class="col text-center mainFont font-weight-normal text-uppercase mt-sm-3 {{#if noMessage}}hidden{{/if}}">
-            {{messages}}
-        </div>
-    </div>
-    <div class="row mainFont mt-sm-3">
+    <div class="row secondFont mt-sm-3 mt-3">
         <div class="col">
             FILTROS
         </div>
@@ -17,7 +12,7 @@
     <!--bueno-->
     <div class="row">
         {{#each products}}
-        <div class="col-sm-3 col-6 mt-sm-5 mt-3 productImg">
+        <div class="col-sm-3 col-6 mt-sm-5 mt-4 productImg">
             <!--<img class="img-fluid" src="{{ imagePath }}" alt="product">-->
             <div id="carouselExampleControls{{this._id}}" class="carousel slide carousel-fade" data-ride="carousel">
                 <div class="carousel-inner">
@@ -58,7 +53,7 @@
                         <div class="row">
                             <!-- start of carousel inside modal -->
                             <div class="col">
-                                <div id="carousel{{this._id}}" class="carousel slide carousel-fade" data-ride="carousel">
+                                <div id="carousel{{this._id}}" class="carousel slide carousel-fade" data-interval="3000" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carousel{{this._id}}" data-slide-to="0" class="active"></li>
                                         <li data-target="#carousel{{this._id}}" data-slide-to="1"></li>
@@ -89,14 +84,14 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
-                                <div class="mainFont mt-3 font-weight-normal">{{title}}</div>
-                                <div class="mainFont mt-1">{{descr}}</div>
-                                <div class="mainFont mt-1 font-weight-normal">${{price}} MXN</div>
-                                <div class="mainFont mt-4">Envios y devoluciones gratis</div>
-                                <div class="mainFont">En ordenes de mas de $2,000 MX</div>
-                                <div class="mainFont mt-4">Descripción</div>
-                                <div class="mainFont">{{details}}</div>
-                                <a href="/add-to-cart/{{this._id}}" class="btn btn-outline-dark position-absolute fixed-bottom mainFont rounded-0">Agregar</a>
+                                <div class="secondFont mt-4 font-weight-normal">{{title}}</div>
+                                <div class="secondFont mt-1">{{descr}}</div>
+                                <div class="secondFont mt-1 font-weight-normal">${{price}} MXN</div>
+                                <div class="secondFont mt-4">Envios y devoluciones gratis</div>
+                                <div class="secondFont">En ordenes de mas de $2,000 MX</div>
+                                <div class="secondFont mt-4">Descripción</div>
+                                <div class="secondFont">{{details}}</div>
+                                <a href="/add-to-cart/{{this._id}}" class="btn btn-outline-dark position-absolute fixed-bottom secondFont rounded-0">Agregar</a>
                             </div>
                         </div>
                     </div>

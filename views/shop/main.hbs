@@ -17,11 +17,11 @@
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon mainArrowPrev" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon mainArrowNext" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
             </div>
@@ -30,28 +30,28 @@
     <div class="row mb-3">
         <div class="col-6">
             <img src="/images/test/im1.jpg" alt="img" class="img-fluid">
-            <div class="text-center textFoot text-uppercase mt-sm-2">In Deep with The Nue Co. </div>
+            <div class="text-center smallFt font-weight-bold text-uppercase mt-sm-2 mt-1">In Deep with The Nue Co. </div>
             <div class="text-center smallFt mt-sm-2">What you need, when you need it. </div>
-            <div class="text-center smallFt mt-sm-2">SHOP NOW </div>
+            <div class="text-center smallFt mt-sm-2 mt-1">SHOP NOW </div>
         </div>
         <div class="col-6">
             <img src="/images/test/im2.jpg" alt="img" class="img-fluid">
-            <div class="text-center textFoot text-uppercase mt-sm-2">The Shape of Things to Come</div>
+            <div class="text-center smallFt font-weight-bold text-uppercase mt-sm-2 mt-1">The Shape of Things to Come</div>
             <div class="text-center smallFt mt-sm-2">The future look. </div>
-            <div class="text-center smallFt mt-sm-2">SHOP NOW</div>
+            <div class="text-center smallFt mt-sm-2 mt-1">SHOP NOW</div>
         </div>
     </div>
     <div class="row mb-3">
-        <div class="col-3">
+        <div class="col-6 col-sm-3 mb-sm-0 mb-3">
             <img src="/images/test/im3.jpg" alt="img" class="img-fluid">
         </div>
-        <div class="col-3">
+        <div class="col-6 col-sm-3 mb-3">
             <img src="/images/test/im4.jpg" alt="img" class="img-fluid">
         </div>
-        <div class="col-3">
+        <div class="col-6 col-sm-3">
             <img src="/images/test/im5.jpg" alt="img" class="img-fluid">
         </div>
-        <div class="col-3">
+        <div class="col-6 col-sm-3">
             <img src="/images/test/im2.jpg" alt="img" class="img-fluid">
         </div>
     </div>
@@ -80,8 +80,8 @@
   compra exitosa
 </button>
 <!-- Modal -->
-<div class="modal fade mainFont text-uppercase" id="compraExitosa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade secondFont text-uppercase" id="compraExitosa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -89,9 +89,9 @@
         </button>
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-12 text-center mb-sm-3 mb-3">tu compra ha sido exitosa! en unos miutos recibiras un correo con la información de tu orden.</div>
-                <div class="col-sm-6 col-12 text-center mb-sm-3 mb-3">no olvides guardar tu numero de confirmación para cualquier duda o aclaración</div>
-                <div class="col-sm-12 col-12 text-center text-success text-lowercase">{{messages}}</div>
+                <div class="col-sm-12 col-12 text-center mb-sm-3 mb-3 font-weight-bold">tu compra ha sido exitosa!</div>
+                <div class="col-sm-12 col-12 text-center mb-sm-3 mb-3">recibiras un correo con la información de tu orden.</div>
+                <div class="col-sm-12 col-12 text-center mb-sm-3 mb-3">{{messages}}</div>
             </div>
         </div>
       </div>

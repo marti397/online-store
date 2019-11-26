@@ -109,7 +109,7 @@ router.post('/checkout', function(req, res, next){
     });
     order.save(function(err, result){
       if (err) { return next(err); }
-      req.flash('success', "correo: " +  req.user.email + " , confirmación: "  + order.orderId);
+      req.flash('success', "correo: " +  req.user.email + " - confirmación: "  + order.orderId);
       req.session.cart = null;
       res.redirect('/');
     });

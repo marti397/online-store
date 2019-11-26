@@ -3,24 +3,30 @@
     width: 132px;
     height: 25px;
 }
-/*One font type*/
+/*top banner for promotions*/
 .topBanner{
     background-color: black;
-    font-size: 12px;
     color: white;
 }
-/*Two font type*/
+/*one font type*/
 .mainFont{
     font-size: 14px;
     font-weight: 200;
     letter-spacing: 0.5px;
 }
-/*Three font type*/
+/*two font type*/
 .secondFont{
     font-size: 12px;
     font-weight: 200;
     letter-spacing: 0.5px;
 }
+/*three font type*/
+.smallFt{
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
+/*navigation bar*/
 .mainNavBar{
     border-bottom: 0.5px solid white;
 }
@@ -39,25 +45,7 @@
 .dropdown:hover>.dropdown-menu {
     display: block;
 }
-/*Four font type*/
-.textFoot{
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-}
-/*Five font type*/
-.smallFt{
-    font-size: 10px;
-    font-weight: 200;
-    letter-spacing: 0.5px;
-}
-/*Six font type*/
-.smallerFt{
-    font-size: 8px;
-    font-weight: 200;
-    letter-spacing: 0.5px;
-}
-/*boton de small Lupita Icon for products*/
+/*boton de small Lupita Icon for products page*/
 .modalBtn{
     display: none;
     opacity: 0.5;
@@ -81,8 +69,7 @@
 .productImg:hover .productArrowPrev{
     display: block;
 }
-.productArrowNext:after
-{
+.productArrowNext:after{
   content: '>';
   color: black;
 }
@@ -92,7 +79,7 @@
 }
 /*arrrows del product image*/
 
-/*w3 is product view changes of images*/
+/*w3 is product-view changes of images*/
 .w3-opacity{
     opacity: 1;
     border: none;
@@ -108,56 +95,11 @@
 .ocasionIcon{
     height: 220px;
     width: 220px;
+    border: #c1c1c1 0.25px solid;
 }
-
-/*media start for smaller devices*/
-@media only screen and (max-width: 600px) {
-    /*Main Lupita logo*/
-    .mainLogo{
-        width: 105px;
-        height: 20px;
-    }
-    /*ocasion icons*/
-    .ocasionIcon{
-        height: auto;
-        width: auto;
-    }
-    .mobileDropDown {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 5px;
-    }
-    .topBanner{
-        display: none;
-    }
-    .iconFooter{
-        height: 15px;
-        width: 15px;
-    }
-    .textFoot{
-        font-size: 7px;
-        font-weight: bold;
-        letter-spacing: 0.5px;
-    }
-    .smallFt{
-        font-size: 7px;
-        font-weight: 200;
-        letter-spacing: 0.5px;
-    }
-    .smallerFt{
-        font-size: 6px;
-        font-weight: 200;
-        letter-spacing: 0.5px;
-    }
-    .productImg:hover .modalBtn{
-        display: none;
-    }
-    .cartCol{
-        display: none;
-    }
+.ocasionIcon:hover{
+    border: black 0.25px solid;
 }
-/*media end for smaller devices*/
-
 /*stripe checkout view*/
 .StripeElement {
     padding: 10px 12px;
@@ -179,3 +121,57 @@
     z-index: -1;
 }
 */
+
+/*media start for smaller devices*/
+@media only screen and (max-width: 600px) {
+    /*main carousel*/
+    .mainArrowPrev, .mainArrowNext{
+        background-image: none;
+        display: block;
+    }
+    .mainArrowPrev:after{
+        content: '<';
+        color: white;
+    }
+    .mainArrowNext:after{
+        content: '>';
+        color: white;
+    }
+    /*main carousel*/
+
+    /*Main Lupita logo*/
+    .mainLogo{
+        width: 105px;
+        height: 20px;
+    }
+    /*ocasion icons*/
+    .ocasionIcon{
+        height: auto;
+        width: auto;
+    }
+    /*dropdown*/
+    .mobileDropDown {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-left: 5px;
+    }
+    .topBanner{
+        display: none;
+    }
+    .iconFooter{
+        height: 15px;
+        width: 15px;
+    }
+    .smallFt{
+        font-size: 8px;
+        font-weight: 200;
+        letter-spacing: 0.5px;
+    }
+    .productImg:hover .modalBtn{
+        display: none;
+    }
+    .cartCol{
+        display: none;
+    }
+}
+/*media end for smaller devices*/
