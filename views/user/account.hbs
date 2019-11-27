@@ -1,41 +1,44 @@
 <div class="container">
     <div class="row">
-        <div class="col text-center secondFont text-uppercase mt-sm-3 mb-sm-3 text-danger">
+        <div class="col text-center secondFont text-uppercase mt-sm-2">
             {{#each messages}}
-                <div>{{this}}</div>
+            <div class="alert alert-danger alert-dismissible fade show rounded-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{this}}
+            </div>
             {{/each}}
         </div>
     </div>
-    <div class="row mt-sm-1 mt-3">
-        <div class="col-sm-4 col-12 border-right">
+    <div class="row mt-sm-5 mt-3">
+        <div class="col-sm-6 col-12 border-right">
             <div class="text-center secondFont text-uppercase mb-sm-2 mb-2">Accesa a tu cuenta</div>
-            <div class="text-center secondFont">Bienvenido de regreso! clientes con cuentas existentes.</div>
             <form action="/user/signin" method="post">
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
-                <div class="form-group mt-sm-5 mt-3">
+                <div class="form-group mt-sm-5 mt-4">
                     <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="Correo electronico">
                 </div>
-                <div class="form-group mt-sm-5 mt-3">
+                <div class="form-group mt-sm-5 mt-5">
                     <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="Contraseña">
                 </div>
                 <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-5">Entrar</button>
             </form>
         </div>
-        <div class="col-sm-4 col-12 border-right">
+        <div class="col-sm-6 col-12">
             <div class="text-center secondFont text-uppercase mb-sm-2 mb-2">registrate</div>
-            <div class="text-center secondFont">Crea una cuenta para obtener mas beneficios! Checa detalles sobre pagos y envios, rastrea ordenes, y ve el estado de articulos en devolucion.</div>
             <!--validate-->
             <form action="/user/signup" method="post" class="needs-validation" id="registrar" novalidate>
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <div class="form-row mt-sm-5 mt-3">
-                    <div class="col">
+                    <div class="col-sm-6 col-12">
                         <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Nombre" id="fullname" name="fullname" required>
                         <small class="form-text text-muted smallFt">Nombre y Apellidos</small>
                         <div class="invalid-feedback secondFont">
                             Ingresa un nombre
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-6 col-12 mt-4 mt-sm-0">
                         <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Telefono" id="phone" name="phone" required>
                         <small class="form-text text-muted smallFt">Sin espacios: 5512345678</small>
                         <div class="invalid-feedback secondFont">
@@ -43,8 +46,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-row mt-sm-5 mt-3">
-                    <div class="col">
+                <div class="form-row mt-sm-5 mt-4">
+                    <div class="col-sm-12 col-12">
                         <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="Correo electronico" required>
                         <small id="emailHelp" class="form-text text-muted smallFt">No compartimos direcciones de correo electrónico con nadie más.</small>
                         <div class="invalid-feedback secondFont">
@@ -52,36 +55,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-row mt-sm-5 mt-3">
-                    <div class="col">
+                <div class="form-row mt-sm-5 mt-4">
+                    <div class="col-sm-6 col-12">
                         <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="Contraseña" required>
                         <small class="form-text text-muted smallFt">Minimo cuatro caracteres</small>
                         <div class="invalid-feedback secondFont">
                             Ingresa tu contraseña
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-6 col-12 mt-4 mt-sm-0">
                         <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Repite tu contraseña" id="secondPass" required>
                         <div class="invalid-feedback secondFont" id="secondPassText">
                             Repite tu contraseña
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-5">Registrar</button>
-            </form>
-        </div>
-        <div class="col-sm-4 col-12">
-            <div class="text-center secondFont text-uppercase mb-sm-2">checa tu orden</div>
-            <div class="text-center secondFont">Rastrea tu orden incluso si no eres un cliente registrado.</div>
-            <form action="" method="">
-                <input type="hidden" name="_csrf" value="{{csrfToken}}">
-                <div class="form-group mt-sm-5 mt-3">
-                    <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Correo electronico usado para la orden" id="checkOrderEmail" name="checkOrderEmail">
-                </div>
-                <div class="form-group mt-sm-5 mt-3">
-                    <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Numero de orden" id="checkOrderNo" name="checkOrderNo">
-                </div>
-                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-5">Buscar</button>
+                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-2">Registrar</button>
             </form>
         </div>
     </div>

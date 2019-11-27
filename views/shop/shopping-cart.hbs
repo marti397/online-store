@@ -1,33 +1,35 @@
 <div class="container">
+    {{#if products}}
     <div class="row">
-        <div class="col secondFont text-uppercase text-left mt-sm-4 mt-3">
-            Tu orden
+        <div class="col secondFont text-uppercase text-left mt-sm-5 mt-3">
+            Compras
         </div>
     </div>
-    <div class="row mt-sm-4 mt-3 secondFont">
+    {{/if}}
+    <div class="row mt-sm-4 mt-4 secondFont">
         {{#if products}}
         <div class="col-sm-9 col-12 border-right">
-            <div class="row border-bottom mb-sm-2 pb-sm-2 cartCol">
+            <div class="row border-bottom mb-sm-2 pb-sm-2 mb-2 pb-2">
                 <div class="col">Producto</div>
                 <div class="col">Nombre</div>
                 <div class="col">Precio unitario</div>
-                <div class="col">Cantidad</div>
-                <div class="col">Precio</div>
-                <div class="col"></div>
+                <div class="col cartCol">Cantidad</div>
+                <div class="col cartCol">Precio</div>
+                <div class="col cartCol"></div>
             </div>
             {{#each products}}
-                <div class="row border-bottom mb-sm-2 pb-sm-2 mb-2 pb-2">
-                    <div class="col-3 col-sm-2"><img class="img-fluid" src="{{item.imagePath}}" alt="product"></div>
+                <div class="row border-bottom mb-sm-2 pb-sm-2 mb-4 pb-4">
+                    <div class="col-4 col-sm-2"><img class="img-fluid" src="{{item.imagePath}}" alt="product"><a href="/product/{{item._id}}/detail" class="stretched-link"></a></div>
                     <div class="col-4 col-sm-2">{{item.title}}</div>
                     <div class="col-4 col-sm-2">${{item.price}} MXN</div>
-                    <div class="col-7 col-sm-2"><a href="/reduce/{{item._id}}" class="text-info"> - </a>{{this.qty}}<a href="/increase/{{item._id}}" class="text-info"> + </a></div>
-                    <div class="col-4 col-sm-2">${{this.price}} MXN</div>
-                    <div class="col-12 col-sm-2"><a href="/remove/{{item._id}}" class="text-info">Remover</a></div>
+                    <div class="col-12 col-sm-2"><a href="/reduce/{{item._id}}" class="text-primary"> - </a>{{this.qty}}<a href="/increase/{{item._id}}" class="text-primary"> + </a></div>
+                    <div class="col-6 col-sm-2">${{this.price}} MXN</div>
+                    <div class="col-6 col-sm-2"><a href="/remove/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0">Remover</a></div>
                 </div>
             {{/each}}
         </div>
         <div class="col-sm-3 mt-4">
-            <div class="row mb-sm-5 mb-3">
+            <div class="row mb-sm-5 mb-5">
                 <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Descuento"></div>
                 <div class="col-sm-4 col-4 text-right"><a class="btn btn-outline-dark secondFont rounded-0" href="#" role="button">Aplicar</a></div>
             </div>
@@ -51,7 +53,7 @@
                 <div class="col-sm-6 col-6 text-left">Total</div>
                 <div class="col-sm-6 col-6 text-right">${{totalPrice}} MXN</div>
             </div>
-            <div class="row mt-sm-2 mt-2">
+            <div class="row mt-sm-2 mt-3">
                 <!-- Button trigger modal -->
                 {{#if login }}
                 <div class="col text-right">
@@ -59,7 +61,7 @@
                 </div>
                 {{else}}
                 <div class="col text-right">
-                    <button type="button" class="btn btn-dark secondFont rounded-0 text-right" data-toggle="modal" data-target="#modalContinuar">
+                    <button type="button" class="btn btn-outline-dark secondFont rounded-0 text-right" data-toggle="modal" data-target="#modalContinuar">
                         Continuar
                     </button>
                 </div>
@@ -74,23 +76,23 @@
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                                 <div class="row">
-                                    <div class="col-sm-6 col-12 modalDivider">
+                                    <div class="col-sm-8 col-12 modalDivider">
                                         <div class="text-center secondFont">Ingresa a tu cuenta.</div>
                                         <form action="/user/signin" method="post">
                                             <input type="hidden" name="_csrf" value="{{csrfToken}}">
-                                            <div class="form-group mt-sm-4 mt-3">
+                                            <div class="form-group mt-sm-4 mt-4">
                                                 <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="Correo electronico">
                                             </div>
-                                            <div class="form-group mt-sm-4 mt-3">
+                                            <div class="form-group mt-sm-4 mt-5">
                                                 <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="Contraseña">
                                             </div>
-                                            <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mb-sm-1 mt-1 mb-5">Entrar</button>
+                                            <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mb-sm-1 mt-3 mb-5">Entrar</button>
                                         </form>
                                     </div>
-                                    <div class="col-sm-6 col-12 border-left">
+                                    <div class="col-sm-4 col-12 border-left">
                                         <div class="row">
                                             <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/cuenta" role="button">Crear cuenta</a></div>
-                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">Continuar sin cuenta</a></div>
+                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">Continuar sin cuenta</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -101,9 +103,13 @@
             </div>
         </div>
         {{else}}
-        <div class="col text-center mt-3">
-            <div class="mb-sm-3 mb-3 text-uppercase">no hay articulos en tu bolsa, Continua comprando</div>
-            <div><a class="btn btn-dark secondFont rounded-0" href="/product/todo" role="button">Regresar a la tienda</a></div>
+        <div class="col text-center mt-3 mt-sm-5">
+            <div class="mb-sm-5 mb-5 text-uppercase">no hay productos, Continua comprando</div>
+            <div><a class="btn btn-outline-dark secondFont rounded-0 mb-5" href="/product/todo" role="button">Regresar a la tienda</a></div>
+            <div class="mb-sm-5 invisible">.</div>
+            <div class="mb-sm-5 invisible">.</div>
+            <div class="mb-sm-5 invisible">.</div>
+            <div class="mb-sm-3 invisible">.</div>
         </div>
         {{/if}}
     </div>

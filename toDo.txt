@@ -59,7 +59,7 @@ when creating user say congratulations
 -agree to terms and conditions when registering
 -encrypt database password/user connection for mongo db
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
-
+-add rewards to profile page 
 rotar productos - dar lista de productos
 
 

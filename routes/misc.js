@@ -11,10 +11,13 @@ router.get('/', function(req, res, next){
     if (req.query.checkOrderNo){
         Order.find({orderId:req.query.checkOrderNo}, function(err, docs){
             if (err){return res.write('Error!');}
-            res.render('misc/info', {mydata:docs});
+            var isEmpty = false;
+            if (docs.length == 0){
+                isEmpty = true;
+            }
+            res.render('misc/info', {orderdata:docs, empty:isEmpty});
         })
     }else{
-        console.log('HOLA')
         res.render('misc/info');
     }
 })
