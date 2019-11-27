@@ -6,12 +6,47 @@
             <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#checkOrder">Checa tu orden</button>
         </div>
         {{#if empty}}
-        <div class="col-sm-12 text-center text-uppercase mb-3 mb-sm-0 font-weight-normal">No se encontró nada. Vuelve a intentar tu numero de orden o contactanos directamente &#8679;</div>
+        <div class="col-sm-12 text-center text-uppercase mb-3 mb-sm-0 font-weight-normal">No se encontró nada. Vuelve a intentar tu número de orden o contáctanos directamente &#8679;</div>
         {{/if}}
         {{#if orderdata}}
         <div class="col-sm-12 text-center mb-3 mb-sm-0">
-            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#checkOrder">Click para información de la orden</button>
+            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#checkOrderInfo" id="orderInfoBtn">Ver información de nuevo</button>
         </div>
+            {{#each orderdata}}
+            <!-- Modal for display order data-->
+            <div class="modal fade" id="checkOrderInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <div class="col-sm-12 col-12">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="text-uppercase">* Orden No. {{orderId}} *</div>
+                    </div>
+                    <div class="col-sm-12 mb-3">{{orderStatus}}</div>
+                    <div class="col-sm-12">&#9900; Fecha de la compra: Octubre 28, 2019</div>
+                    <div class="col-sm-12">&#9900; Dirección de envio: {{address}}</div>
+                    <div class="col-sm-12">&#9900; Nombre en la orden: {{name}}</div>
+                    <div class="col-sm-12">&#9900; Productos</div>
+                    {{#each cart.items}}
+                    <div class="col-sm-3 mb-sm-2 col-5"><img src="{{item.imagePath}}" alt="product" class="img-fluid"></div>
+                    <div class="col-sm-2 col-8">{{item.title}}</div>
+                    <div class="col-sm-8 col-12 mb-sm-3 mb-3">${{item.price}} MXN x {{qty}} piezas = ${{price}} MXN</div>
+                    {{/each}}
+                    <div class="col-sm-12">&#9900; Total de la compra: ${{cart.totalPrice}} MXN</div>
+                    <div class="col-sm-12">&#9900; Total de productos ordenados: {{cart.totalQty}}</div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <!-- Modal -->
+            {{/each}}
+        <script>    
+        jQuery(function(){
+            jQuery('#orderInfoBtn').click();
+        });
+        </script>
         {{/if}}
         <div class="col-sm-3 col-6 text-center mt-sm-5 mt-3">
             <a href="#" class="text-primary">Atención al cliente</a>
