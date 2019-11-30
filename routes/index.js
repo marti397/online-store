@@ -98,6 +98,8 @@ router.post('/checkout', function(req, res, next){
       req.flash('error', err.message);
       return res.redirect('/checkout');
     }
+    const purchaseEvent = new Date();
+    const dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric' };
     var order = new Order({
       user: req.user,
       cart: cart,
@@ -105,7 +107,8 @@ router.post('/checkout', function(req, res, next){
       name: req.body.name,
       paymentId: charge.id,
       orderId: Math.floor(Math.random() * 10) + Date.now().toString(),
-      orderStatus: "Tu orden está siendo procesada"
+      orderStatus: "Tu orden está siendo procesada",
+      orderDate: purchaseEvent.toLocaleString("en-GB", dateOptions)
     });
     order.save(function(err, result){
       if (err) { return next(err); }

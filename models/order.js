@@ -8,7 +8,8 @@ var orderSchema = new Schema({
     name:{type: String, required: true},
     paymentId:{type: String, required: true},
     orderId:{type: String, required: true},
-    orderStatus:{type: String, required: true}
+    orderStatus:{type: String, required: true},
+    orderDate:{type: String, required: true}
 });
 
 module.exports = mongoose.model('Order', orderSchema);
