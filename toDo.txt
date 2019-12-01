@@ -3,12 +3,13 @@ https://needsupply.com/womens?lang=en_US
 https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_hp_2
 
 -see china visa
--withdraw 15,000
+-withdraw 5,000
 -declaration forms
 
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
+-fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
 -when dennying login do not errase data
 -hacer algo de destacados en user profile
 -logout success msg

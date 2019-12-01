@@ -1,15 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var { check, validationResult } = require('express-validator');
-const { sanitizeBody } = require('express-validator');
-
 var Order = require('../models/order');
-var User = require('../models/user');
 
 router.get('/', function(req, res, next){
     if (req.query.checkOrderNo){
-        Order.find({orderId:req.query.checkOrderNo}, function(err, docs){
+        const regex = new RegExp(escapeRegex(req.query.checkOrderNo), 'gi');
+        Order.find({orderId:regex}, function(err, docs){
             if (err){return res.write('Error!');}
             var isEmpty = false;
             if (docs.length == 0){
@@ -20,6 +17,26 @@ router.get('/', function(req, res, next){
     }else{
         res.render('misc/info');
     }
-})
+});
+
+router.get('/atencion', function(req, res, next){
+    res.render('misc/atencion');
+});
+
+router.get('/envios', function(req, res, next){
+    res.render('misc/envios');
+});
+
+router.get('/condiciones', function(req, res, next){
+    res.render('misc/condiciones');
+});
+
+router.get('/politicas', function(req, res, next){
+    res.render('misc/politicas');
+});
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
