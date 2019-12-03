@@ -6,6 +6,7 @@ var csrfProtection = csurf({ cookie: true });
 
 var Product = require('../models/product');
 var Order = require('../models/order');
+var Discount = require('../models/discount');
 
 //Get main page
 router.get('/', function(req, res, next) {
@@ -22,7 +23,6 @@ router.get('/add-to-cart/:id', function(req, res, next) {
     if (err){return res.redirect('/')};
     cart.add(product, product.id);
     req.session.cart = cart;
-    console.log(req.session.cart);
     res.redirect('/product/todo')
   })
 });
@@ -59,17 +59,37 @@ router.get('/remove/:id', function(req, res, next){
 
 /* Shopping Cart Page */
 router.get('/shopping-cart', csrfProtection, function(req, res, next) {
-  //res.render('shop/shopping-cart', { products: null});
   if (!req.session.cart){
     return res.render('shop/shopping-cart', { products: null});
   }
+  //discount
   var cart = new Cart(req.session.cart);
-  res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken()});
+  if (cart.discountCodeName){
+    cart.addDiscount(cart.isDiscountPercent, cart.discountAmount);
+  }   
+  //
+  if(req.query.cartdiscount){
+    Discount.find({code:req.query.cartdiscount}, function (err, queryResults) {
+      if(queryResults.length > 0){
+        cart.changeIsDiscountPercent(queryResults[0].isPercent)
+        cart.changeDiscountCodeName(queryResults[0].code);
+        cart.addDiscountAmount(queryResults[0].amount)
+        cart.addDiscount(queryResults[0].isPercent, queryResults[0].amount);
+        req.session.cart = cart;
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent});
+      } else{
+        req.session.cart = cart;
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent});
+      }
+    });
+  } else{
+    req.session.cart = cart;
+    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent});
+  }
 });
 
 /* Checkout Page */
 router.get('/checkout', function(req, res, next) {
-  //res.render('shop/shopping-cart', { products: null});
   if (!req.session.cart){
     return res.redirect('/shopping-cart');
   }

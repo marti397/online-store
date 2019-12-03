@@ -29,17 +29,29 @@
             {{/each}}
         </div>
         <div class="col-sm-3 mt-4">
-            <div class="row mb-sm-5 mb-5">
-                <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Descuento"></div>
-                <div class="col-sm-4 col-4 text-right"><a class="btn btn-outline-dark secondFont rounded-0" href="#" role="button">Aplicar</a></div>
-            </div>
+            <form action="/shopping-cart" method="get">
+                <div class="row mb-sm-5 mb-5">
+                    <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Descuento" id="cartdiscount" name="cartdiscount"></div>
+                    <div class="col-sm-4 col-4 text-right"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Aplicar</button></div>
+                </div>
+            </form>
             <div class="row">
                 <div class="col-sm-6 col-6 text-left">Subtotal</div>
                 <div class="col-sm-6 col-6 text-right">${{totalPrice}} MXN</div>
             </div>
             <div class="row border-bottom">
                 <div class="col-sm-6 col-6 text-left">Descuento</div>
+                {{#if isdiscount}}
+                    {{#if isPercent}}
+                    <div class="col-sm-2 col-2 text-right">{{discountAmount}}%</div>
+                    <div class="col-sm-4 col-4 text-right">${{discount}} MXN</div>
+                    {{else}}
+                    <div class="col-sm-2 col-2 text-right">-</div>
+                    <div class="col-sm-4 col-4 text-right">${{discount}} MXN</div>
+                    {{/if}}
+                {{else}}
                 <div class="col-sm-6 col-6 text-right">$0 MXN</div>
+                {{/if}}
             </div>
             <div class="row mt-sm-5 mt-3">
                 <div class="col-sm-6 col-6 text-left">Envio</div>
