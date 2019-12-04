@@ -50,6 +50,7 @@ when creating user say congratulations
 -do site admin site to look orders
 -do site admin to update/clear orders
 -do site admin to look at stats
+-no dejar que dos codigos de descuentos tengan el mismo nombre
 -safe and secure checkout - use phone number an email
 -change db to accept mulitple images
 -two image sizes for modal and quick view

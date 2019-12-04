@@ -7,6 +7,7 @@ module.exports = function Cart(oldCart){
     this.discountCodeName = oldCart.discountCodeName || "";
     this.discountAmount = oldCart.discountAmount || 0;
     this.isDiscountPercent = oldCart.isDiscountPercent || false;
+    this.totalPriceWDiscount = oldCart.totalPriceWDiscount || 0;
 
     this.add = function(item, id){
         var storedItem = this.items[id];
@@ -57,12 +58,16 @@ module.exports = function Cart(oldCart){
         this.isDiscountPercent = trueOrFalse;
     };
 
+    this.changeTotalPriceWDiscount = function(value){
+        this.totalPriceWDiscount = this.totalPrice - this.discount;
+    }
+
     this.removeItem = function(id){
         this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;
         delete this.items[id];
     }
-
+    
 
     //convert the object to an arrray
     this.generateArray = function(){

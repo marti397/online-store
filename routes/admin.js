@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var Product = require('../models/product');
+var Discount = require('../models/discount');
 
 //Get the main admin page
 router.get('/', function(req, res, next) {
@@ -14,6 +15,14 @@ router.get('/product', function(req, res, next) {
     var flashMessage = req.flash('error');
     Product.find({}, function(err, docs){
         res.render('user/admin-product', {products: docs, messages: flashMessage, noMessage: !flashMessage});
+      });
+});
+
+//read all discounts for admin
+router.get('/discount', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    Discount.find({}, function(err, docs){
+        res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
       });
 });
 
@@ -49,11 +58,35 @@ router.post('/add-product', function(req, res, next){
     });
 });
 
+//add discount
+router.post('/add-discount', function(req, res, next){
+    var newDiscount = new Discount({
+        code: req.body.discountcode,
+        isPercent: req.body.percentage == 'true',
+        amount:req.body.discountamount,
+        expireDate:req.body.discountexpirydate,
+        isActive: req.body.active == 'true'
+    });
+
+    newDiscount.save(function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/discount');
+    });
+});
+
 //delete product
 router.post('/delete-product', function(req, res, next){
     Product.findByIdAndRemove(req.body.custId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/product');
+    });
+});
+
+//delete discount code
+router.post('/delete-discount', function(req, res, next){
+    Discount.findByIdAndRemove(req.body.discountId,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/discount');
     });
 });
 

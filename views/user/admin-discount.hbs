@@ -1,0 +1,124 @@
+<div class="container secondFont mt-sm-4 mt-3">
+    <div class="row mb-sm-3 mb-3">
+        <div class="col">ADMINISTRACIÓN DE DESCUENTOS</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1 mb-sm-0 mb-2"><a href="/admin" class="btn btn-outline-info secondFont rounded-0">Admin</a></div>
+        <div class="col-sm-1 mb-sm-0 mb-5">
+            <button type="button" class="btn btn-outline-primary secondFont rounded-0" data-toggle="modal" data-target="#add">Agregar</button>
+            <!-- Modal fo adding -->
+            <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    <form action="/admin/add-discount" method="post">
+                        <div class="row">
+                            <div class="col-sm-6 mb-sm-3 col-6">Nombre del codigo: <input id="discountcode" name="discountcode" class="secondFont" type="text" required></div>
+                            <div class="col-sm-6 mb-sm-3 col-7">
+                                <select class="custom-select secondFont" id="percentage" name="percentage">
+                                    <option selected>Es porcentage?</option>
+                                    <option value="true">Sí</option>
+                                    <option value="false">No</option> 
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 col-7">Cantidad de descuento: <input id="discountamount" name="discountamount" class="secondFont" type="number" required></div>
+                            <div class="col-sm-6 mb-sm-3 col-7">Fecha de caducidad: <input id="discountexpirydate" name="discountexpirydate" class="secondFont" type="text" required></div>
+                            <div class="col-sm-6 mb-sm-3 col-6">
+                                <select class="custom-select secondFont" id="active" name="active">
+                                    <option selected>Esta activo?</option>
+                                    <option value="true">Sí</option>
+                                    <option value="false">No</option> 
+                                </select>    
+                            </div>
+                            <div class="col-sm-12 mt-3"><button type="submit" class="btn btn-outline-primary secondFont rounded-0">Agregar</button></div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="row mb-3 mb-sm-4 border-bottom">
+                <div class="col-sm-3 col-3">Codigo</div>
+                <div class="col-sm-2 col-3">Es porcentage?</div>
+                <div class="col-sm-1 col-3">Cantidad</div>
+                <div class="col-sm-1 col-3">Caducidad</div>
+                <div class="col-sm-1 col-3">Activo?</div>
+            </div>
+            {{#each discounts}}
+            <div class="row mb-3 mb-sm-1 border-bottom">
+                <div class="col-sm-3 col-3">{{code}}</div>
+                <div class="col-sm-2 col-3">{{isPercent}}</div>
+                <div class="col-sm-1 col-3">{{amount}}</div>
+                <div class="col-sm-1 col-3">{{expireDate}}</div>
+                <div class="col-sm-1 col-3">{{isActive}}</div>
+                <!-- Button trigger modal -->
+                <div class="col-sm-1 col-12 mt-2 mt-sm-0">
+                    <button type="button" class="btn btn-outline-success secondFont rounded-0" data-toggle="modal" data-target="#modal{{this._id}}">Editar</button>
+                </div>
+                <!-- Button trigger modal -->
+                <div class="col-sm-1 col-12 mt-2 mt-sm-0"><button type="button" class="btn btn-outline-danger secondFont rounded-0" data-toggle="modal" data-target="#delete{{this._id}}">Borrar</button></div>
+                <!-- Modal for updating -->
+                <div class="modal fade" id="modal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form action="/admin/update-product" method="post">
+                            <div class="row">
+                                <input type="hidden" id="custId" name="custId" value="{{this._id}}">
+                                <div class="col-sm-6 mb-sm-3 col-6">Titulo: <input id="title" name="title" class="secondFont" type="text" value="{{title}}"></div>
+                                <div class="col-sm-6 mb-sm-3 col-7">Precio: MXN $<input id="price" name="price" class="secondFont" type="text" value="{{price}}"></div>
+                                <div class="col-sm-6 mb-sm-3 col-7">Descripción:<textarea class="secondFont" name="descr" id="descr" cols="20" rows="4">{{descr}}</textarea></div>
+                                <div class="col-sm-6 mb-sm-3 col-7">Detalles: <textarea class="secondFont" name="details" id="details" cols="20" rows="4">{{details}}</textarea></div>
+                                <div class="col-sm-6 mb-sm-3 col-6">Tipo: <input id="type" name="type" class="secondFont" type="text" value="{{type}}"></div>
+                                <div class="col-sm-6 mb-sm-3 col-7">Estilo: <input id="style" name="style" class="secondFont" type="text" value="{{style}}"></div>
+                                <div class="col-sm-12 mt-sm-0 mt-3"><button type="submit" class="btn btn-outline-success secondFont rounded-0">Guardar</button></div>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <!-- Modal for deleting-->
+                <div class="modal fade" id="delete{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        <form action="/admin/delete-discount" method="post">
+                            <input type="hidden" id="discountId" name="discountId" value="{{this._id}}">
+                            <div class="row">
+                                <div class="col-12 mb-sm-3 mb-3">Seguro que quieres elminiar el descuento?</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-6">Nombre: {{code}}</div>
+                                        <div class="col-12 col-sm-6">Es porcentage? {{isPercent}}</div>
+                                        <div class="col-6">Cantidad: {{amount}}</div>
+                                        <div class="col-6">Caducidad: {{expireDate}}</div>
+                                        <div class="col-6">Activo? {{isActive}}</div>
+                                    </div>
+                                    <button type="submit" class="btn fluid btn-outline-danger secondFont rounded-0 mt-3">Eliminar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    </div>
+                </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

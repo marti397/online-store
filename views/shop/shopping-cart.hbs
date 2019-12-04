@@ -63,7 +63,11 @@
             </div>
             <div class="row border-bottom mt-sm-5 mt-4 text-uppercase font-weight-bold">
                 <div class="col-sm-6 col-6 text-left">Total</div>
+                {{#if isdiscount}}
+                <div class="col-sm-6 col-6 text-right">${{totalPriceWDiscount}} MXN</div>
+                {{else}}
                 <div class="col-sm-6 col-6 text-right">${{totalPrice}} MXN</div>
+                {{/if}}
             </div>
             <div class="row mt-sm-2 mt-3">
                 <!-- Button trigger modal -->
