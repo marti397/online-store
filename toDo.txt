@@ -9,6 +9,17 @@ https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
+TERMINAR OCACIONES
+TERMINAR TENDENCIASS
+TERMINAR LUKBOOK
+TERMINAR FILTRO
+TERMINAR CHECKOUT IF NOT LOGGEDIN
+TERMINAR CHECKOUT FINAL page
+TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
+TERMINAR OCULTAR ADMIN ADRESSS
+TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
+
+-change expiry date automatically when someone uses it - check /shoping cart dsicount expiry date
 -fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
 -when dennying login do not errase data
 -hacer algo de destacados en user profile

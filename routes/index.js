@@ -72,7 +72,12 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
   if(req.query.cartdiscount){
     const regex = new RegExp(escapeRegex(req.query.cartdiscount), 'gi');
     Discount.find({code:regex}, function (err, queryResults) {
-      if(queryResults.length > 0){
+      if(queryResults.length > 0 && queryResults[0].isActive){  
+        var currentDate = new Date();
+        var expirationDate = new Date(queryResults[0].expireDate);         
+        if(currentDate > expirationDate){
+          console.log("el cupon debe estar inactivo")
+        }
         cart.changeIsDiscountPercent(queryResults[0].isPercent);
         cart.changeDiscountCodeName(queryResults[0].code);
         cart.addDiscountAmount(queryResults[0].amount);

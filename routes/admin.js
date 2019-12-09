@@ -40,6 +40,19 @@ router.post('/update-product', function(req, res, next){
     });
 });
 
+//update discounts
+router.post('/update-discount', function(req, res, next){
+    Discount.findByIdAndUpdate(req.body.updateDiscount, {
+        code: req.body.discountcode,
+        isPercent: req.body.percentage == 'true',
+        amount:req.body.discountamount,
+        expireDate:req.body.discountexpirydate,
+        isActive: req.body.active == 'true'
+    }, function(err,result){
+        res.redirect('/admin/discount');
+    });
+});
+
 //add product
 router.post('/add-product', function(req, res, next){
     var newProduct = new Product({

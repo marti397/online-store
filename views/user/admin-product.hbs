@@ -56,12 +56,12 @@
                         <form action="/admin/update-product" method="post">
                             <div class="row">
                                 <input type="hidden" id="custId" name="custId" value="{{this._id}}">
-                                <div class="col-sm-6 mb-sm-3 col-6">Titulo: <input id="title" name="title" class="secondFont" type="text" value="{{title}}"></div>
-                                <div class="col-sm-6 mb-sm-3 col-7">Precio: MXN $<input id="price" name="price" class="secondFont" type="text" value="{{price}}"></div>
+                                <div class="col-sm-6 mb-sm-3 col-6">Titulo: <input id="title" name="title" class="secondFont" type="text" value="{{title}}" required></div>
+                                <div class="col-sm-6 mb-sm-3 col-7">Precio: MXN $<input id="price" name="price" class="secondFont" type="text" value="{{price}}" required></div>
                                 <div class="col-sm-6 mb-sm-3 col-7">Descripción:<textarea class="secondFont" name="descr" id="descr" cols="20" rows="4">{{descr}}</textarea></div>
                                 <div class="col-sm-6 mb-sm-3 col-7">Detalles: <textarea class="secondFont" name="details" id="details" cols="20" rows="4">{{details}}</textarea></div>
-                                <div class="col-sm-6 mb-sm-3 col-6">Tipo: <input id="type" name="type" class="secondFont" type="text" value="{{type}}"></div>
-                                <div class="col-sm-6 mb-sm-3 col-7">Estilo: <input id="style" name="style" class="secondFont" type="text" value="{{style}}"></div>
+                                <div class="col-sm-6 mb-sm-3 col-6">Tipo: <input id="type" name="type" class="secondFont" type="text" value="{{type}}" required></div>
+                                <div class="col-sm-6 mb-sm-3 col-7">Estilo: <input id="style" name="style" class="secondFont" type="text" value="{{style}}" required></div>
                                 <div class="col-sm-12 mt-sm-0 mt-3"><button type="submit" class="btn btn-outline-success secondFont rounded-0">Guardar</button></div>
                             </div>
                         </form>
