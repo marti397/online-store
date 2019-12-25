@@ -2,14 +2,19 @@ https://www.thedreslyn.com/
 https://needsupply.com/womens?lang=en_US
 https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_hp_2
 
--timeline - viajes a mexico/china/cambios a la tienda
--acta constitutiva, persona fisica o persona moral
--tomar fotos de producto
--poner bodega producto mama y producto Piky
--ver cambios con la mama de lupita
--ver colores tienda
--ver fechas de tomas
--nombre de la tienda
+timeline - viajes a mexico/china
+acta constitutiva, persona fisica o persona moral
+poner bodega - formato EVA llevar cuentas - carpeta - dia que se gasto, cantidad, lugar, producto con nota
+forma de excel para inventario
+tienda remodelacion
+ver fechas de tomas
+logo
+letrero de la entrada
+cartones
+bolsas de despache
+fotos de prudcto
+fotos de pagina
+diseno de uniformes
 
 CHINA
 -hablar con agente de china
@@ -18,13 +23,13 @@ CHINA
 -withdraw 5,000
 -declaration forms
 
+-sistema de pago para tienda
+-sistema de inventario
+
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
-TERMINAR OCACIONES
-TERMINAR TENDENCIASS
-TERMINAR LUKBOOK
-TERMINAR FILTRO
+TERMINAR FILTROS
 TERMINAR CHECKOUT IF NOT LOGGEDIN
 TERMINAR CHECKOUT FINAL page
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
@@ -86,49 +91,3 @@ when creating user say congratulations
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
 -add rewards to profile page 
 rotar productos - dar lista de productos
-
-
-MEXICO
--lona de comming soon
-*****comprar chinos, agarar producto eva y ir a lugares para comprar plata
--Piky para ver que la tienda este en buenas condiciones incluyendo
---luces de techo
---luces de displays
---repizas/racks
---muebles
---pintar (cotiacion)
---vitrinas display ---------- DISENO LUPITA
---bodega arriba
---que se tiene como sistema de pago (mouse, teclado, etc.)
---hablar con tu hermana sobre que se va a llevar y que va a dejar de TODO (muebles, sistema, documentos)
-
-USA
--Nombre letrero de Lupita de la entrada de tienda
--
-
-Abrir tienda en la ultima semana de febrero
-
-CHRIS
-formato impreso a mama para llevar cuentas - carpeta hojas con mica - dia que se gasto, cantidad, lugar, producto con nota
-BOdega 
-
-LUPITA
--terminar logo y econotipi - letrero de la entrada, sitio web, cartones, bolsas de despache, redes sociales.
--terminar la secciones de tendencias
--fotos de prudcto - minimo 3 views
-fotos de baner - 4 fotos por mes a 4 meses
-fotos de main page 9 fotos x 4 meses
-diseno de uniformes
-
-JUNTOS
--promociones del ano y hacer calendario de promociones y hacer el concepto de publicidad
---concepto de tienda en el ano
--hacer publicidad de dos meses
--1 de febrero es coming soon
--preparar eventos de comunidad para el opening y todo el ano()
--abrir redes sociales (tik tok)
-lupita store domain
-
-FEB 2020
--cambio de diseno de tienda
--disenar la publicidad de las fechas que vienen
