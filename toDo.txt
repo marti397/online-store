@@ -2,21 +2,24 @@ https://www.thedreslyn.com/
 https://needsupply.com/womens?lang=en_US
 https://www.asos.com/us/women/halloween/cat/?cid=14264&ctaref=shop|halloween|ww_hp_2
 
-square dashboard for inventory
+square dashboard for inventory (qr code)
 
-timeline - viajes a mexico/china
-acta constitutiva, persona fisica o persona moral
+acta constitutiva
 poner bodega - formato EVA llevar cuentas - carpeta - dia que se gasto, cantidad, lugar, producto con nota
-forma de excel para inventario
+hacer lista de compra para Eva Rosales y poner en el sistema
 tienda remodelacion
-ver fechas de tomas
-logo
-letrero de la entrada
+logo - letrero de la entrada
 cartones
 bolsas de despache
 fotos de prudcto
-fotos de pagina
 diseno de uniformes
+reglamento gran sur
+
+-enter product information (follow pictures that Lupita took from EVA and from Square POS, norma 004 para codigo de barras
+-enter costs and expenses
+-enter photos
+-sistema de pago para tienda
+-sistema de inventario, norma 004 para codigo de barras
 
 CHINA
 -hablar con agente de china
@@ -24,9 +27,6 @@ CHINA
 -ver transporte china
 -withdraw 5,000
 -declaration forms
-
--sistema de pago para tienda
--sistema de inventario
 
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
