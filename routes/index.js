@@ -64,6 +64,7 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
   }
   //discount
   var cart = new Cart(req.session.cart);
+  cart.addTax();
   if (cart.discountCodeName){
     cart.addDiscount(cart.isDiscountPercent, cart.discountAmount);
     cart.changeTotalPriceWDiscount(cart.discount);
@@ -83,16 +84,18 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
         cart.addDiscountAmount(queryResults[0].amount);
         cart.addDiscount(queryResults[0].isPercent, queryResults[0].amount);
         cart.changeTotalPriceWDiscount(cart.discount);
+        //add tax
+        cart.addTax();
         req.session.cart = cart;
-        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent});
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax});
       } else{
         req.session.cart = cart;
-        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent});
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax});
       }
     });
   } else{
     req.session.cart = cart;
-    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent});
+    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax});
   }
 });
 

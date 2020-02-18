@@ -8,7 +8,9 @@ module.exports = function Cart(oldCart){
     this.discountAmount = oldCart.discountAmount || 0;
     this.isDiscountPercent = oldCart.isDiscountPercent || false;
     this.totalPriceWDiscount = oldCart.totalPriceWDiscount || 0;
-
+     //taxes
+     this.tax = oldCart.tax || 0;
+    
     this.add = function(item, id){
         var storedItem = this.items[id];
         if (!storedItem){
@@ -62,12 +64,20 @@ module.exports = function Cart(oldCart){
         this.totalPriceWDiscount = this.totalPrice - this.discount;
     }
 
+    //add tax
+    this.addTax = function(){
+        if (this.totalPriceWDiscount == 0){
+            this.tax = Math.round(this.totalPrice * 0.16);
+        } else{
+            this.tax = Math.round(this.totalPriceWDiscount * 0.16);
+        }
+    }
+
     this.removeItem = function(id){
         this.totalQty -= this.items[id].qty;
         this.totalPrice -= this.items[id].price;
         delete this.items[id];
     }
-    
 
     //convert the object to an arrray
     this.generateArray = function(){
