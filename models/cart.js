@@ -8,8 +8,10 @@ module.exports = function Cart(oldCart){
     this.discountAmount = oldCart.discountAmount || 0;
     this.isDiscountPercent = oldCart.isDiscountPercent || false;
     this.totalPriceWDiscount = oldCart.totalPriceWDiscount || 0;
-     //taxes
-     this.tax = oldCart.tax || 0;
+    //taxes
+    this.tax = oldCart.tax || 0;
+    //final price
+    this.finalPrice = oldCart.finalPrice || 0;
     
     this.add = function(item, id){
         var storedItem = this.items[id];
@@ -70,6 +72,15 @@ module.exports = function Cart(oldCart){
             this.tax = Math.round(this.totalPrice * 0.16);
         } else{
             this.tax = Math.round(this.totalPriceWDiscount * 0.16);
+        }
+    }
+
+    //get final price
+    this.getFinalPrice = function(){
+        if (this.totalPriceWDiscount == 0){
+            this.finalPrice = this.totalPrice + this.tax;
+        } else{
+            this.finalPrice = this.totalPriceWDiscount + this.tax;
         }
     }
 

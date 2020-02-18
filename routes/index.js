@@ -62,23 +62,27 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
   if (!req.session.cart){
     return res.render('shop/shopping-cart', { products: null});
   }
-  //discount
+  //discount and final price
   var cart = new Cart(req.session.cart);
   cart.addTax();
   if (cart.discountCodeName){
     cart.addDiscount(cart.isDiscountPercent, cart.discountAmount);
     cart.changeTotalPriceWDiscount(cart.discount);
-  }   
+  }
+  cart.getFinalPrice();
   //
   if(req.query.cartdiscount){
     const regex = new RegExp(escapeRegex(req.query.cartdiscount), 'gi');
     Discount.find({code:regex}, function (err, queryResults) {
-      if(queryResults.length > 0 && queryResults[0].isActive){  
+      if(queryResults.length > 0 && queryResults[0].isActive){
         var currentDate = new Date();
         var expirationDate = new Date(queryResults[0].expireDate);         
         if(currentDate > expirationDate){
-          console.log("el cupon debe estar inactivo")
-        }
+          var maquery = { code:regex };
+          Discount.findOneAndUpdate(maquery, { isActive: false  }, function(err, doc){
+            if (err){return res.redirect('/')};
+          });
+        };
         cart.changeIsDiscountPercent(queryResults[0].isPercent);
         cart.changeDiscountCodeName(queryResults[0].code);
         cart.addDiscountAmount(queryResults[0].amount);
@@ -86,16 +90,17 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
         cart.changeTotalPriceWDiscount(cart.discount);
         //add tax
         cart.addTax();
+        cart.getFinalPrice();
         req.session.cart = cart;
-        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax});
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
       } else{
         req.session.cart = cart;
-        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax});
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
       }
     });
   } else{
     req.session.cart = cart;
-    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, totalPriceWDiscount: cart.totalPriceWDiscount, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax});
+    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
   }
 });
 
@@ -106,7 +111,7 @@ router.get('/checkout', function(req, res, next) {
   }
   var cart = new Cart(req.session.cart);
   var flashMessage = req.flash('error')[0];
-  res.render('shop/checkout', {totalPrice: cart.totalPrice, messages: flashMessage, noError: !flashMessage});
+  res.render('shop/checkout', {finalPrice: cart.finalPrice, messages: flashMessage, noError: !flashMessage});
 });
 
 //checkout post
@@ -118,7 +123,7 @@ router.post('/checkout', function(req, res, next){
   var stripe = require("stripe")("sk_test_zm6Fa5KELRS1ERYX19A7LvXz");
   
   stripe.charges.create({
-    amount: cart.totalPrice * 100,
+    amount: cart.finalPrice * 100,
     currency: "mxn",
     source: req.body.stripeToken, // obtained with Stripe.js
     statement_descriptor: 'Lupita Accesorios Co',
