@@ -5,9 +5,26 @@ var Product = require('../models/product');
 
 //Get all products page
 router.get('/todo', function(req, res, next) {
-  Product.find({}, function(err, docs){
-    res.render('shop/product', { title: 'MUJER / ACCESORIOS', products: docs});
-  });
+  if (req.query.filtroPrecio){
+    console.log(req.query.filtroPrecio)
+    const regex = new RegExp(escapeRegex(req.query.filtroPrecio), 'gi');
+    if(req.query.filtroPrecio == 'caro'){
+      console.log('yes!')
+    }
+    if(req.query.filtroPrecio == 'caro'){
+      Product.find({}).sort('-price').exec(function(err, docs) {
+        res.render('shop/product', { title: 'MUJER / ACCESORIOS', products: docs});
+      });
+    }else{
+      Product.find({}).sort('price').exec(function(err, docs) {
+        res.render('shop/product', { title: 'MUJER / ACCESORIOS', products: docs});
+      });
+    }
+  } else{
+    Product.find({}, function(err, docs){
+      res.render('shop/product', { title: 'MUJER / ACCESORIOS', products: docs});
+    });
+  }
 });
 
 //Get products page
@@ -30,3 +47,7 @@ router.get('/:id/detail',function(req,res,next){
 })
 
 module.exports = router;
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
