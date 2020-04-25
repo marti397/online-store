@@ -1,12 +1,12 @@
 <div class="container-fluid topBanner secondFont">
   <div class="row">
     <div class="col-12 text-center">
-      Entregas en toda la República Mexicana | 20% en compras de marcas para hombre hasta el 1 de Febrero 2020
+      Entregas en toda la República Mexicana | 20% en toda la tienda hasta el 1 de Julio 2020
     </div>
   </div>
 </div>
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-white mainNavBar">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler rounded-0 border-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <a class="navbar-brand" href="/">
@@ -14,26 +14,28 @@
   </a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item dropdown secondFont ml-sm-5 mobileDropDown">
-        <a class="nav-link navBarLinks pl-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          ACCESORIOS
-        </a>
-        <div class="dropdown-menu navBarDropdown secondFont" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item secondFont" href="/product/todo">Ver Todo</a>
-          <a class="dropdown-item secondFont" href="/product/collares">Collares</a>
-          <a class="dropdown-item secondFont" href="/product/aretes">Aretes</a>
-          <a class="dropdown-item secondFont" href="/product/brazaletes">Brazaletes</a>
-          <a class="dropdown-item secondFont" href="/product/anillos">Anillos</a>
-          <a class="dropdown-item secondFont" href="/product/cinturones">Cinturones</a>
-        </div>
+      <li class="nav-item dropdown mainFont ml-sm-5 mobileDropDown">
+        <a class="nav-link navBarLinks pl-1" id="navbarDropdownMenuLink" href="/product/todo">accesorios</a>
       </li>
-      <li class="nav-item dropdown secondFont ml-sm-5 mobileDropDown">
-        <a class="nav-link navBarLinks pl-2" id="navbarDropdownMenuLink" href="/ocasiones">OCASIONES</a>
+      <li class="nav-item dropdown mainFont ml-sm-5 mobileDropDown">
+        <a class="nav-link navBarLinks pl-1" id="navbarDropdownMenuLink" href="/product/collares">collares</a>
+      </li>
+      <li class="nav-item dropdown mainFont ml-sm-5 mobileDropDown">
+        <a class="nav-link navBarLinks pl-1" id="navbarDropdownMenuLink" href="/product/aretes">aretes</a>
+      </li>
+      <li class="nav-item dropdown mainFont ml-sm-5 mobileDropDown">
+        <a class="nav-link navBarLinks pl-1" id="navbarDropdownMenuLink" href="/product/brazaletes">brazaletes</a>
+      </li>
+      <li class="nav-item dropdown mainFont ml-sm-5 mobileDropDown">
+        <a class="nav-link navBarLinks pl-1" id="navbarDropdownMenuLink" href="/product/anillos">anillos</a>
+      </li>
+      <li class="nav-item dropdown mainFont ml-sm-5 mobileDropDown">
+        <a class="nav-link navBarLinks pl-1" id="navbarDropdownMenuLink" href="/ocasiones">ocasiones</a>
       </li>
     </ul>
   </div>
   <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-5 ml-0 mr-0" href="/shopping-cart">
-    <img src="/images/shopping-bag.svg" alt="shop" width="20" height="20" style="z-index: -1;">
+    <img src="/images/shopping-bag.svg" alt="shop" width="20px" height="20px" style="z-index: -1;">
     <span class="mainFont position-absolute mt-2 ml-1 font-weight-normal">{{session.cart.totalQty}}</span>
   </a>
 </nav>

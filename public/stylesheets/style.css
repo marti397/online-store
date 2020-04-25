@@ -30,15 +30,6 @@
 .mainNavBar{
     border-bottom: 0.5px solid white;
 }
-.navBarLinks{
-    border-left: 0.5px solid black;
-}
-.navBarDropdown{
-    border: none;
-    border-radius: 0px;
-    border-left: 0.5px solid black;
-    border-bottom: 0.5px solid black;
-}
 #navbarDropdownMenuLink {
     color: black;
 }
@@ -107,21 +98,6 @@
     border-bottom: 1px solid black;
 }
 
-/*REVISE .active in the tendencias site
-.active{
-    text-decoration: underline;
-}
-#ocnav{
-    color: black;
-}
-.secondsticky{
-    z-index: 1;
-}
-.section{
-    z-index: -1;
-}
-*/
-
 /*media start for smaller devices*/
 @media only screen and (max-width: 600px) {
     /*main carousel*/
@@ -151,16 +127,16 @@
     }
     /*dropdown*/
     .mobileDropDown {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        margin-left: 5px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 3px;
     }
     .topBanner{
         display: none;
     }
     .iconFooter{
-        height: 15px;
-        width: 15px;
+        height: 17px;
+        width: 17px;
     }
     .smallFt{
         font-size: 8px;
