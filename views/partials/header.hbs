@@ -14,15 +14,6 @@
   </a>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active secondFont ml-sm-5">
-        <a class="nav-link font-weight-normal" href="/">MUJER <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item secondFont">
-        <a class="nav-link" href="#">NI&#209;A</a>
-      </li>
-      <li class="nav-item secondFont">
-        <a class="nav-link" href="#">HOMBRE</a>
-      </li>
       <li class="nav-item dropdown secondFont ml-sm-5 mobileDropDown">
         <a class="nav-link navBarLinks pl-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           ACCESORIOS
@@ -39,27 +30,8 @@
       <li class="nav-item dropdown secondFont ml-sm-5 mobileDropDown">
         <a class="nav-link navBarLinks pl-2" id="navbarDropdownMenuLink" href="/ocasiones">OCASIONES</a>
       </li>
-      <li class="nav-item secondFont ml-sm-5 mobileDropDown">
-        <a class="nav-link navBarLinks pl-2" id="navbarDropdownMenuLink" href="/tendencias">TENDENCIAS</a>
-      </li>
-      <li class="nav-item secondFont ml-sm-5 mobileDropDown">
-        <a class="nav-link navBarLinks pl-2" id="navbarDropdownMenuLink" href="#">LUPITA LUKBUK</a>
-      </li>
     </ul>
   </div>
-  <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-3 ml-0 mr-0" href="/info">
-    <img src="/images/info.svg" alt="info" width="20" height="20">
-  </a>
-  {{#if login }}
-    <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-3 ml-0 mr-0" href="/user/profile">
-      <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
-      <img src="/images/tick.svg" alt="tick" width="10" height="10">
-    </a>
-  {{else}}
-    <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-3 ml-0 mr-0" href="/user/cuenta">
-      <img src="/images/avatar.svg" alt="avatar" width="20" height="20">
-    </a>
-  {{/if}}
   <a class="navbar-brand mobileIcon ml-sm-3 mr-sm-5 ml-0 mr-0" href="/shopping-cart">
     <img src="/images/shopping-bag.svg" alt="shop" width="20" height="20" style="z-index: -1;">
     <span class="mainFont position-absolute mt-2 ml-1 font-weight-normal">{{session.cart.totalQty}}</span>

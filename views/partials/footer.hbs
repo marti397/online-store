@@ -1,20 +1,4 @@
 <div class="container mb-2 mb-sm-3 mt-sm-5 mt-5">
-    <div class="row mb-3 mb-sm-3">
-        <div class="col-6 text-right">
-            <div class="smallFt font-weight-bold">SHOWROOM</div>
-            <div class="smallFt">CENTRO COMERCIAL</div>
-            <div class="smallFt text-uppercase">GRAN SUR / A2-115 Y 116</div>
-            <div class="smallFt text-uppercase">CIUDAD DE MÉXICO, MÉXICO</div>
-        </div>
-        <div class="col-6 text-left">
-            <div class="smallFt font-weight-bold">
-                <a href="/info/atencion" class="text-dark">SERVICIO AL CLIENTE</a>
-            </div>
-             <div class="smallFt font-weight-bold mt-sm-4 mt-4">
-                <a href="/info/envios" class="text-dark">ENVÍOS Y DEVOLUCIONES</a>
-            </div>
-        </div>
-    </div>
     <div class="row mb-5 mt-sm-4">
         <div class="col-12 text-center smallFt">
             &copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> LUPITA CO. | <a href="/info/condiciones" class="text-dark">TÉRMINOS</a> | <a href="/info/politicas" class="text-dark">POLÍTICAS</a>
@@ -22,8 +6,19 @@
     </div>
 </div>
 <div class="fixed-bottom bg-white text-center pb-sm-1 pt-sm-1 pb-1 pt-1">
+    <a class="ml-sm-3 mr-sm-3 ml-0 mr-0" href="/info">
+        <img src="/images/info.svg" alt="info" width="20px" height="20px" class="iconFooter">
+    </a>
     <a href="#" class="ml-sm-3 mr-sm-3 ml-2 mr-2"><img src="/images/instagram.svg" alt="insta" width="20px" height="20px" class="iconFooter"></a>
-    <a href="#" class="ml-sm-3 mr-sm-3 ml-2 mr-2"><img src="/images/facebook.svg" alt="face" width="20px" height="20px" class="iconFooter"></a>
-    <a href="#" class="ml-sm-3 mr-sm-3 ml-2 mr-2"><img src="/images/twitter.svg" alt="twitter" width="20px" height="20px" class="iconFooter"></a>
     <a href="https://wa.me/16262337315" target="_blank" class="ml-sm-3 mr-sm-3 ml-2 mr-2"><img src="/images/whatsapp.svg" alt="whats" width="20px" height="20px" class="iconFooter"></a>
+    {{#if login }}
+    <a class="ml-sm-3 mr-sm-3 ml-2 mr-2" href="/user/profile">
+      <img src="/images/avatar.svg" alt="avatar" width="20px" height="20px" class="iconFooter">
+      <img src="/images/tick.svg" alt="tick" width="10px" height="10px">
+    </a>
+    {{else}}
+    <a class="ml-sm-3 mr-sm-3 ml-2 mr-2" href="/user/cuenta">
+        <img src="/images/avatar.svg" alt="avatar" width="20px" height="20px" class="iconFooter">
+    </a>
+    {{/if}}
 </div>

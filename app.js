@@ -16,7 +16,6 @@ var productRouter = require('./routes/product');
 var adminRouter = require('./routes/admin');
 var miscRouter = require('./routes/misc');
 var ocasionRouter = require('./routes/ocasion');
-var tendenciaRouter = require('./routes/tendencia');
 
 var app = express();
 
@@ -55,7 +54,6 @@ app.use(function(req, res, next){
   next();
 })
 
-app.use('/tendencias', tendenciaRouter);
 app.use('/ocasiones', ocasionRouter);
 app.use('/info', miscRouter);
 app.use('/admin', adminRouter);
