@@ -1,13 +1,14 @@
 <div class="container secondFont">
-    <div class="row mt-sm-5 mt-3">
-        <div class="col-12 text-center">AYUDA</div>
+    <div class="row mt-sm-3 mt-3">
+        <div class="col-12 text-center mainFont">ayuda</div>
         <div class="col-12 text-center mt-sm-5 mt-4">
-            WhatsApp
-            <a href="https://wa.me/16262337315" target="_blank" class="ml-sm-3 mr-sm-3 ml-2 mr-2"><img src="/images/whatsapp.svg" alt="whats" width="20px" height="20px" class="iconFooter"></a>
-            WhatsApp | hola@lupitabrand.com
+            <a href="https://wa.me/16262337315" target="_blank" class="">
+                <img src="/images/whatsapp.svg" alt="whats" width="20px" height="20px"> WhatsApp
+            </a>
+            | hola@lupitabrand.com
         </div>
         <div class="col-sm-12 text-center mt-sm-5 mt-4 mb-4">
-            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#checkOrder">Checa tu orden</button>
+            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#checkOrder">checa tu orden</button>
         </div>
         {{#if empty}}
         <div class="col-sm-12 text-center text-uppercase mb-3 mb-sm-0 font-weight-normal">No se encontró nada. Vuelve a intentar tu número de orden o contáctanos directamente &#8679;</div>
@@ -52,22 +53,22 @@
         });
         </script>
         {{/if}}
-        <div class="col-sm-3 col-6 text-center mt-sm-5 mt-3">
-            <a href="/info/atencion" class="text-primary">Atención al cliente</a>
+        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3">
+            <a href="/info/atencion" class="text-primary">atención al cliente</a>
         </div>
-        <div class="col-sm-3 col-6 text-center mt-sm-5 mt-3">
-            <a href="/info/envios" class="text-primary">Envios y Devoluciones</a>
+        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3">
+            <a href="/info/envios" class="text-primary">envios y devoluciones</a>
         </div>
-        <div class="col-sm-3 col-6 text-center mt-sm-5 mt-3">
-            <a href="/info/condiciones" class="text-primary">Términos y Condiciones</a>
+        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3">
+            <a href="/info/condiciones" class="text-primary">términos y condiciones</a>
         </div>
-        <div class="col-sm-3 col-6 text-center mt-sm-5 mt-3 mb-sm-5">
-            <a href="/info/politicas" class="text-primary">Políticas</a>
+        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3 mb-sm-5">
+            <a href="/info/politicas" class="text-primary">políticas</a>
         </div>
     </div>
-    <div class="row mt-sm-5 mt-5">
-        <div class="col-12 text-center">NOSOTROS</div>
-        <div class="col-12 mt-sm-2 mt-2 text-center">Lupita es una tienda especializada en línea con sede en la Ciudad de Mexico, MX de indumentaria y accesorios. Nuestro punto de vista es crear un estilo a la vanguardia del cambio con un atractivo atemporal. Lupita es estilo antes que moda.</div>
+    <div class="row mt-sm-4 mt-4">
+        <div class="col-12 text-center mainFont">nosotros</div>
+        <div class="col-12 mt-sm-2 mt-2 text-center">somos una tienda en línea con sede en la Ciudad de Mexico, MX. nuestro ojetivo es proponer estilos a la vanguardia del cambio con un atractivo atemporal. Lupita es estilo antes que moda.</div>
     </div>
 
 <!-- Modal for check order -->
@@ -79,13 +80,13 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
-            <div class="text-center secondFont text-uppercase mb-sm-2">checa tu orden</div>
+            <div class="text-center mainFont mb-sm-2">checa tu orden</div>
             <form action="/info" method="get">
                 <div class="form-group mt-sm-5 mt-3">
                     <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Numero de orden" id="checkOrderNo" name="checkOrderNo">
                 </div>
-                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-5">Buscar</button>
-                <div class="text-center secondFont">*** Si no cuentas con tu numero de orden, porfavor contactanos por correo electronico y escribenos el correo que usaste para tu compra **</div>
+                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-3">buscar</button>
+                <div class="text-center secondFont">*** si tienes problemas, porfavor contactanos ***</div>
                 <div class="text-center secondFont"><strong>hola@lupitabrand.com</strong></div>
             </form>
         </div>

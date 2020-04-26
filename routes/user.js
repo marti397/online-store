@@ -35,12 +35,10 @@ router.post('/update-user', isLoggedIn, [
   //validate fields
   check('name').isLength({ min: 1 }).withMessage('No se guardo tu informacion. El Nombre debe ser especificado'),
   check('email').isEmail().withMessage('No se guardo tu informacion. Correo electrónico invalido'),
-  check('phone').isNumeric().withMessage('No se guardo tu informacion. El telefono tiene que consistir solo de numeros'),
 
   //sanitize fields
   sanitizeBody('name').escape(),
-  sanitizeBody('email').escape(),
-  sanitizeBody('phone').escape()
+  sanitizeBody('email').escape()
   ],function(req, res, next){
     var errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -54,8 +52,7 @@ router.post('/update-user', isLoggedIn, [
     else{
       User.findByIdAndUpdate(req.body.custId, {
         email:req.body.email,
-        name:req.body.name,
-        phone:req.body.phone
+        name:req.body.name
     }, function(err,result){
         if (err) { return next(err); }
         req.flash('success', "Tu información se guardo correctamente!");
@@ -72,13 +69,6 @@ router.get('/logout', isLoggedIn, function(req, res, next){
 //the function below I could put the notLoggedIn function for the the routes I want to check the guy is not loggedin
 router.use('/', notLoggedIn, function(req, res, next){
   next();
-});
-
-//account
-router.get('/micuenta', function (req, res, next) {
-  var flashMessage = req.flash('error');
-  // pass the csrfToken to the view
-  res.render('user/account', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
 
 router.get('/cuenta', function(req, res, next){
@@ -118,12 +108,10 @@ router.post('/user/check-order', [
 router.post('/signup', [
   check('signUpEmail').isEmail().withMessage('correo electrónico invalido'),
   check('signUpPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres'),
-  check('phone').isNumeric().withMessage('el telefono tiene que consistir solo de numeros'),
   check('fullname').isLength({ min: 1 }).withMessage('el Nombre debe ser especificado'),
 
   //sanitize fields
   sanitizeBody('fullname').trim().escape(),
-  sanitizeBody('phone').trim().escape()
 
   ], function (req, res, next){
     var errors = validationResult(req);

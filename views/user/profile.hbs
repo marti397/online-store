@@ -28,7 +28,6 @@
     <div class="row">
         <div class="col-12">Nombre: {{userInfo.name}}</div>
         <div class="col-12">Correo: {{userInfo.email}}</div>
-        <div class="col-12">Telefono: {{userInfo.phone}}</div>
         <div class="col-12 mt-2">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
@@ -95,7 +94,6 @@
                     <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
                     <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
                     <div class="col-sm-6 mb-sm-2 col-7 mb-2">Email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
-                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Telefono: <input id="phone" name="phone" class="secondFont" type="text" value="{{userInfo.phone}}"></div>
                     <div class="col-sm-6 mb-sm-2 mt-sm-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Guardar</button></div>
                 </div>
             </form>
