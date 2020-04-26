@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+        <div class="col text-center secondFont text-lowercase mt-sm-2">
+            {{#each messages}}
+            <div class="alert alert-danger alert-dismissible fade show rounded-0" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{this}}
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="row mt-sm-3 mt-3">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 col-12">
+            <div class="text-center mainFont">registrate</div>
+            <!--validate-->
+            <form action="/user/signup" method="post" class="needs-validation" id="registrar" novalidate>
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                <div class="form-row mt-sm-4 mt-3">
+                    <div class="col-sm-6 col-12">
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="nombre" id="fullname" name="fullname" required>
+                        <small class="form-text text-muted smallFt">nombre</small>
+                        <div class="invalid-feedback secondFont">
+                            Ingresa un nombre
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12 mt-4 mt-sm-0">
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="telefono" id="phone" name="phone" required>
+                        <small class="form-text text-muted smallFt">sin espacios, ejemplo/ 5512345678</small>
+                        <div class="invalid-feedback secondFont">
+                            ingresa un telefono
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-sm-4 mt-4">
+                    <div class="col-sm-12 col-12">
+                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="correo electronico" required>
+                        <small id="emailHelp" class="form-text text-muted smallFt">no compartimos direcciones de correo electrónico con nadie más.</small>
+                        <div class="invalid-feedback secondFont">
+                            ingresa un correo
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row mt-sm-5 mt-4">
+                    <div class="col-sm-6 col-12">
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="contraseña" required>
+                        <small class="form-text text-muted smallFt">minimo cuatro caracteres</small>
+                        <div class="invalid-feedback secondFont">
+                            ingresa tu contraseña
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-12 mt-4 mt-sm-0">
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="repite tu contraseña" id="secondPass" required>
+                        <div class="invalid-feedback secondFont" id="secondPassText">
+                            repite tu contraseña
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-2">registrar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+<script>
+$( "#registrar" ).submit(function( event ) {
+    if ( $( "#signUpPassword" ).val() != $( "#secondPass" ).val() ) {
+        $( "#myspan" ).text( "not valid" ).show();
+        $( "#secondPassText" ).text( "Contraseña diferente" ).show();
+        event.preventDefault();
+    }
+});
+</script> 

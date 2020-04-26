@@ -75,10 +75,26 @@ router.use('/', notLoggedIn, function(req, res, next){
 });
 
 //account
-router.get('/cuenta', function (req, res, next) {
+router.get('/micuenta', function (req, res, next) {
   var flashMessage = req.flash('error');
   // pass the csrfToken to the view
   res.render('user/account', { csrfToken: req.csrfToken(), messages: flashMessage });
+});
+
+router.get('/cuenta', function(req, res, next){
+  res.render('user/registerorcreate');
+})
+
+router.get('/access', function (req, res, next) {
+  var flashMessage = req.flash('error');
+  // pass the csrfToken to the view
+  res.render('user/access', { csrfToken: req.csrfToken(), messages: flashMessage });
+});
+
+router.get('/register', function (req, res, next) {
+  var flashMessage = req.flash('error');
+  // pass the csrfToken to the view
+  res.render('user/register', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
 
 /*
@@ -102,8 +118,8 @@ router.post('/user/check-order', [
 router.post('/signup', [
   check('signUpEmail').isEmail().withMessage('correo electrónico invalido'),
   check('signUpPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres'),
-  check('phone').isNumeric().withMessage('El telefono tiene que consistir solo de numeros'),
-  check('fullname').isLength({ min: 1 }).withMessage('El Nombre debe ser especificado'),
+  check('phone').isNumeric().withMessage('el telefono tiene que consistir solo de numeros'),
+  check('fullname').isLength({ min: 1 }).withMessage('el Nombre debe ser especificado'),
 
   //sanitize fields
   sanitizeBody('fullname').trim().escape(),
@@ -117,12 +133,12 @@ router.post('/signup', [
         messages.push(error.msg);
       })
       req.flash('error', messages);
-      res.redirect('/user/cuenta');
+      res.redirect('/user/register');
     }
     else{
       passport.authenticate('local.signup',{
         successRedirect: '/user/profile',
-        failureRedirect: '/user/cuenta',
+        failureRedirect: '/user/register',
         failureFlash: true })
       (req,res);
     }
@@ -139,12 +155,12 @@ router.post('/signin', [
         messages.push(error.msg);
       })
       req.flash('error', messages);
-      res.redirect('/user/cuenta');
+      res.redirect('/user/access');
     }
     else{
       passport.authenticate('local.signin',{
         successRedirect: '/user/profile',
-        failureRedirect: '/user/cuenta',
+        failureRedirect: '/user/access',
         failureFlash: true })
       (req,res);
     }
