@@ -1,10 +1,12 @@
 <div class="container secondFont">
-    <div class="row text-uppercase mt-sm-4 mt-3">
-        <div class="col">Mi Perfil</div>
-        <div class="col text-right"><a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">Salir</a></div>
+    <div class="row mt-sm-3 mt-3">
+        <div class="col text-center mainFont">mi perfil</div>
+        <div class="col text-center">
+            <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">salir</a>
+        </div>
     </div>
     <div class="row mt-1">
-        <div class="col secondFont text-uppercase">
+        <div class="col secondFont text-lowercase">
             {{#each messages}}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">{{this}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -16,7 +18,7 @@
     </div>
     {{#if goodMessage}}
     <div class="row mt-1">
-        <div class="col secondFont text-uppercase">
+        <div class="col secondFont text-lowercase">
             <div class="alert alert-success alert-dismissible fade show" role="alert">{{goodMessage}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -26,12 +28,12 @@
     </div>
     {{/if}}
     <div class="row">
-        <div class="col-12">Nombre: {{userInfo.name}}</div>
-        <div class="col-12">Correo: {{userInfo.email}}</div>
-        <div class="col-12 mt-2">
+        <div class="col-12 text-center">nombre: {{userInfo.name}}</div>
+        <div class="col-12 text-center">correo: {{userInfo.email}}</div>
+        <div class="col-12 text-center mt-2">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
-                Editar datos
+                editar datos
             </button>
         </div>
     </div>
@@ -42,9 +44,9 @@
                 <div class="col">ORDENES</div>
             </div>
             {{else}}
-            <div class="col text-center mt-3 mt-sm-5">
-                <div class="mb-sm-5 mb-5 text-uppercase">no hay ordenes, Continua comprando</div>
-                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-5" href="/product/todo" role="button">Regresar a la tienda</a></div>
+            <div class="col text-center mt-3 mt-sm-2">
+                <div class="mb-sm-2 mb-3">no hay ordenes, continua comprando</div>
+                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-4" href="/product/todo" role="button">regresar a la tienda</a></div>
             </div>
             {{/if}}
             {{#each orders}}
@@ -92,9 +94,9 @@
                 <div class="row">
                     <input type="hidden" name="_csrf" value="{{csrfToken}}">
                     <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
-                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
-                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">Email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
-                    <div class="col-sm-6 mb-sm-2 mt-sm-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Guardar</button></div>
+                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
+                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">correo: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
+                    <div class="col-sm-12 mb-sm-2 mt-sm-2 mt-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">guardar</button></div>
                 </div>
             </form>
         </div>

@@ -3,16 +3,10 @@ check order design/when order displays
 carrito should be same as display todo products
 do search user - admin or customer
 
--enter product information (follow pictures that Lupita took from EVA and from Square POS, norma 004 para codigo de barras
--enter costs and expenses
--enter photos
--sistema de inventario, norma 004 para codigo de barras
-
-
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
-TERMINAR FILTROS
+
 TERMINAR CHECKOUT IF NOT LOGGEDIN
 TERMINAR CHECKOUT FINAL page
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
@@ -68,3 +62,7 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
 -add rewards to profile page 
 rotar productos - dar lista de productos
+
+
+WISHLIST
+-add filters color, style, price

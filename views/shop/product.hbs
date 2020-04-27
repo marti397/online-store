@@ -1,32 +1,25 @@
 <div class="container">
     <div class="row">
-        <div class="col text-center secondFont text-uppercase mt-sm-3 mt-3">
+        <div class="col text-center mainFont mt-sm-3 mt-3">
             {{title}}
         </div>
     </div>
+    <!-- FILTERS
     <div class="row secondFont mt-sm-3 mt-3">
-        <div class="col">
-            FILTROS
-
-            <form action="/product/todo" method="get">
-                <div class="col-sm-6 mb-sm-3 col-6">
-                                <select class="custom-select secondFont" id="filtroPrecio" name="filtroPrecio">
-                                    <option selected>Precio?</option>
-                                    <option value="caro">Caro</option>
-                                    <option value="barato">Barato</option> 
-                                </select>    
-                            </div>
-                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-5">Filtrar</button>
-            </form>
-
-
-
-
-
-
-
-        </div>
+        <form action="/product/todo" method="get">
+            <div class="mb-sm-3 col-6">
+                <select class="custom-select secondFont" id="filtroPrecio" name="filtroPrecio">
+                    <option selected>precio</option>
+                    <option value="barato">$</option>
+                    <option value="caro">$$</option> 
+                </select> 
+            </div>
+            <div class="">
+                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-1 mt-3">filtrar</button>
+            </div>
+        </form>
     </div>
+    -->
     <!--bueno-->
     <div class="row">
         {{#each products}}
@@ -109,7 +102,7 @@
                                 <div class="secondFont">En ordenes de mas de $2,000 MX</div>
                                 <div class="secondFont mt-4">Descripción</div>
                                 <div class="secondFont">{{details}}</div>
-                                <a href="/add-to-cart/{{this._id}}" class="btn btn-outline-dark position-absolute fixed-bottom secondFont rounded-0">Agregar</a>
+                                <a href="/add-to-cart/{{this._id}}" class="btn btn-outline-dark position-absolute fixed-bottom secondFont rounded-0">agregar</a>
                             </div>
                         </div>
                     </div>

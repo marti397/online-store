@@ -33,8 +33,8 @@ router.get('/profile', isLoggedIn, function(req, res, next){
 //udpate user
 router.post('/update-user', isLoggedIn, [
   //validate fields
-  check('name').isLength({ min: 1 }).withMessage('No se guardo tu informacion. El Nombre debe ser especificado'),
-  check('email').isEmail().withMessage('No se guardo tu informacion. Correo electrónico invalido'),
+  check('name').isLength({ min: 1 }).withMessage('especifica un nombre'),
+  check('email').isEmail().withMessage('correo electrónico invalido'),
 
   //sanitize fields
   sanitizeBody('name').escape(),
@@ -55,7 +55,7 @@ router.post('/update-user', isLoggedIn, [
         name:req.body.name
     }, function(err,result){
         if (err) { return next(err); }
-        req.flash('success', "Tu información se guardo correctamente!");
+        req.flash('success', "tu información se ha guardado!");
         res.redirect('/user/profile');
       });
     }
@@ -86,24 +86,6 @@ router.get('/register', function (req, res, next) {
   // pass the csrfToken to the view
   res.render('user/register', { csrfToken: req.csrfToken(), messages: flashMessage });
 });
-
-/*
-router.post('/user/check-order', [
-  check('checkOrderEmail').isEmail().withMessage('correo electrónico invalido'),
-  check('checkOrderNo').isLength({ min: 1 }).withMessage('la orden debe ser especificada'),
-
-  sanitizeBody('checkOrderNo').trim().escape()
-
-  ],function(req, res, next){
-
-});*/
-
-/*router.post('/user/signup', 
-  passport.authenticate('local.signup',{failureRedirect: '/user/signup',
-      failureFlash: true }),
-    function (req, res, next){
-      res.redirect('/user/profile')
-});*/
   
 router.post('/signup', [
   check('signUpEmail').isEmail().withMessage('correo electrónico invalido'),
