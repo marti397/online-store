@@ -1,46 +1,50 @@
 <div class="container">
     {{#if products}}
     <div class="row">
-        <div class="col secondFont text-uppercase text-left mt-sm-5 mt-3">
-            Compras
+        <div class="col mainFont text-center mt-sm-3 mt-2">
+            mi carrito
         </div>
     </div>
     {{/if}}
-    <div class="row mt-4 secondFont">
+    <div class="row mt-sm-3 secondFont">
         {{#if products}}
         <div class="col-sm-9 col-12 border-right">
-            <div class="row border-bottom mb-sm-2 pb-sm-2 mb-2 pb-2">
-                <div class="col">Producto</div>
-                <div class="col">Nombre</div>
-                <div class="col">Precio unitario</div>
-                <div class="col cartCol">Cantidad</div>
-                <div class="col cartCol">Precio</div>
-                <div class="col cartCol"></div>
-            </div>
+            <div class="row">
             {{#each products}}
-                <div class="row border-bottom mb-sm-2 pb-sm-2 mb-4 pb-4">
-                    <div class="col-4 col-sm-2"><img class="img-fluid" src="{{item.imagePath}}" alt="product"><a href="/product/{{item._id}}/detail" class="stretched-link"></a></div>
-                    <div class="col-4 col-sm-2">{{item.title}}</div>
-                    <div class="col-4 col-sm-2">${{item.price}} MXN</div>
-                    <div class="col-12 col-sm-2"><a href="/reduce/{{item._id}}" class="text-primary"> - </a>{{this.qty}}<a href="/increase/{{item._id}}" class="text-primary"> + </a></div>
-                    <div class="col-6 col-sm-2">${{this.price}} MXN</div>
-                    <div class="col-6 col-sm-2"><a href="/remove/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0">Remover</a></div>
+                <div class="col-sm-5 col-7 border border-secondary mt-sm-3 mt-3 ml-5 ml-sm-5 pt-1 pl-1 pr-1 pb-1">
+                    <div class="row">
+                        <div class="col-sm-6 col-12">
+                            <img class="img-fluid" src="{{item.imagePath}}" alt="product">
+                            <a href="/product/{{item._id}}/detail" class="stretched-link"></a>
+                        </div>
+                        <div class="col-sm-6 col-12">
+                            <div class="text-right">
+                                <a href="/product/{{item._id}}/detail" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> &#x2315; </a>
+                                <a href="/reduce/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> - </a>
+                                <a href="/increase/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> + </a>
+                                <a href="/remove/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> x </a>
+                            </div>
+                            <div class="mt-sm-3">{{item.title}}</div>
+                            <div>${{item.price}} x {{this.qty}} = ${{this.price}}</div>
+                        </div>
+                    </div>
                 </div>
             {{/each}}
+            </div>
         </div>
-        <div class="col-sm-3 mt-4">
+        <div class="col-sm-3 col-11 mt-5 mt-sm-0 ml-2 ml-sm-0">
             <form action="/shopping-cart" method="get">
-                <div class="row mb-sm-5 mb-5">
-                    <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="Descuento" id="cartdiscount" name="cartdiscount"></div>
-                    <div class="col-sm-4 col-4 text-right"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">Aplicar</button></div>
+                <div class="row mb-sm-5 mb-4 mt-sm-0">
+                    <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="descuento" id="cartdiscount" name="cartdiscount"></div>
+                    <div class="col-sm-4 col-4 text-right"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">aplicar</button></div>
                 </div>
             </form>
             <div class="row">
-                <div class="col-sm-6 col-6 text-left">Subtotal</div>
+                <div class="col-sm-6 col-6 text-left">subtotal</div>
                 <div class="col-sm-6 col-6 text-right">${{totalPrice}} MXN</div>
             </div>
             <div class="row border-bottom">
-                <div class="col-sm-6 col-6 text-left">Descuento</div>
+                <div class="col-sm-6 col-6 text-left">descuento</div>
                 {{#if isdiscount}}
                     {{#if isPercent}}
                     <div class="col-sm-2 col-2 text-right">{{discountAmount}}%</div>
@@ -54,27 +58,27 @@
                 {{/if}}
             </div>
             <div class="row mt-sm-5 mt-3">
-                <div class="col-sm-6 col-6 text-left">Envio</div>
-                <div class="col-sm-6 col-6 text-right">Gratis</div>
+                <div class="col-sm-6 col-6 text-left">envio</div>
+                <div class="col-sm-6 col-6 text-right">gratis</div>
             </div>
             <div class="row border-bottom">
-                <div class="col-sm-6 col-6 text-left">Impuesto</div>
+                <div class="col-sm-6 col-6 text-left">impuesto 16%</div>
                 <div class="col-sm-6 col-6 text-right">${{tax}} MXN</div>
             </div>
             <div class="row border-bottom mt-sm-5 mt-4 text-uppercase font-weight-bold">
-                <div class="col-sm-6 col-6 text-left">Total</div>
+                <div class="col-sm-6 col-6 text-left">total</div>
                 <div class="col-sm-6 col-6 text-right">${{finalPrice}} MXN</div>
             </div>
             <div class="row mt-sm-2 mt-3">
                 <!-- Button trigger modal -->
                 {{#if login}}
                 <div class="col text-right">
-                    <a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">Continuar</a>
+                    <a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">continuar</a>
                 </div>
                 {{else}}
                 <div class="col text-right">
                     <button type="button" class="btn btn-outline-dark secondFont rounded-0 text-right" data-toggle="modal" data-target="#modalContinuar">
-                        Continuar
+                        continuar
                     </button>
                 </div>
                 {{/if}}
@@ -88,23 +92,23 @@
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                                 <div class="row">
-                                    <div class="col-sm-8 col-12 modalDivider">
-                                        <div class="text-center secondFont">Ingresa a tu cuenta.</div>
+                                    <div class="col-sm-7 col-12 modalDivider">
+                                        <div class="text-center secondFont">ingresa a tu cuenta</div>
                                         <form action="/user/signin" method="post">
                                             <input type="hidden" name="_csrf" value="{{csrfToken}}">
                                             <div class="form-group mt-sm-4 mt-4">
-                                                <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="Correo electronico">
+                                                <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="correo electronico">
                                             </div>
                                             <div class="form-group mt-sm-4 mt-5">
-                                                <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="Contraseña">
+                                                <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="contraseña">
                                             </div>
-                                            <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mb-sm-1 mt-3 mb-5">Entrar</button>
+                                            <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mb-sm-1 mt-3 mb-5">entrar</button>
                                         </form>
                                     </div>
-                                    <div class="col-sm-4 col-12 border-left">
+                                    <div class="col-sm-5 col-12 border-left">
                                         <div class="row">
-                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/cuenta" role="button">Crear cuenta</a></div>
-                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">Continuar sin cuenta</a></div>
+                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">crear cuenta</a></div>
+                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continuar sin cuenta</a></div>
                                         </div>
                                     </div>
                                 </div>
