@@ -6,7 +6,7 @@
         </div>
     </div>
     {{/if}}
-    <div class="row mt-sm-4 mt-4 secondFont">
+    <div class="row mt-4 secondFont">
         {{#if products}}
         <div class="col-sm-9 col-12 border-right">
             <div class="row border-bottom mb-sm-2 pb-sm-2 mb-2 pb-2">
@@ -115,13 +115,11 @@
             </div>
         </div>
         {{else}}
-        <div class="col text-center mt-3 mt-sm-5">
-            <div class="mb-sm-5 mb-5 text-uppercase">no hay productos, Continua comprando</div>
-            <div><a class="btn btn-outline-dark secondFont rounded-0 mb-5" href="/product/todo" role="button">Regresar a la tienda</a></div>
+        <div class="col text-center mt-1 mt-sm-2">
+            <div class="mainFont">no has elegido ningun producto</div>
+            <div><a class="btn btn-outline-dark rounded-0 mt-sm-5 mt-5 mb-5 secondFont" href="/product/todo" role="button">regresar a la tienda</a></div>
             <div class="mb-sm-5 invisible">.</div>
             <div class="mb-sm-5 invisible">.</div>
-            <div class="mb-sm-5 invisible">.</div>
-            <div class="mb-sm-3 invisible">.</div>
         </div>
         {{/if}}
     </div>
