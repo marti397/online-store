@@ -1,10 +1,4 @@
 <div class="container secondFont">
-    <div class="row mt-sm-3 mt-3">
-        <div class="col text-center mainFont">mi perfil</div>
-        <div class="col text-center">
-            <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">salir</a>
-        </div>
-    </div>
     <div class="row mt-1">
         <div class="col secondFont text-lowercase">
             {{#each messages}}
@@ -27,29 +21,43 @@
         </div>
     </div>
     {{/if}}
-    <div class="row">
-        <div class="col-12 text-center">nombre: {{userInfo.name}}</div>
-        <div class="col-12 text-center">correo: {{userInfo.email}}</div>
-        <div class="col-12 text-center mt-2">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
-                editar datos
-            </button>
+    <div class="row mt-sm-4 mt-3">
+        <div class="col text-center secondFont">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
+                        editar datos
+                    </button>
+                </div>
+                <div class="col-12">nombre: {{userInfo.name}}</div>
+                <div class="col-12">correo: {{userInfo.email}}</div>
+            </div>
+        </div>
+        <div class="col text-center">
+            <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">salir</a>
         </div>
     </div>
     <div class="row mt-sm-5 mt-4">
         <div class="col-sm-12 col-12">
             {{#if orders}}
-            <div class="row">
-                <div class="col">ORDENES</div>
-            </div>
             {{else}}
             <div class="col text-center mt-3 mt-sm-2">
-                <div class="mb-sm-2 mb-3">no hay ordenes, continua comprando</div>
+                <div class="mb-sm-2 mb-3">no tienes ninguna compra</div>
                 <div><a class="btn btn-outline-dark secondFont rounded-0 mb-4" href="/product/todo" role="button">regresar a la tienda</a></div>
+                <div class="mb-sm-5 mb-4 invisible">.</div>
+                <div class="mb-sm-3 invisible">.</div>
             </div>
             {{/if}}
+            <div class="row mt-sm-3">
             {{#each orders}}
+                <div class="col-5 col-sm-3 ml-3 ml-sm-5 mt-3 mt-sm-3 text-center border border-dark">
+                    <div class="mt-2">{{orderDate}}</div>
+                    <div class="mt-2">{{orderId}}</div>
+                    <div class="mt-2 text-lowercase">{{orderStatus}}</div>
+                    <div class="mt-2 mb-2">ver detalles</div>
+                </div>
+            <!-- 
             <div class="row-fluid mt-sm-4 mt-4 pl-2 pr-2 pl-sm-0 pr-sm-0">
                 <div class="accordion" id="accordionExample">
                     <div class="card-fluid">
@@ -75,8 +83,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             {{/each}}
+            </div>
+            <div class="mb-sm-5 mb-1 invisible">.</div>
         </div>
     </div>
     <div class="row">

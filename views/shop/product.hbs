@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col text-center mainFont mt-sm-3 mt-3">
+        <div class="col text-center mainFont mt-sm-3 mt-2">
             {{title}}
         </div>
     </div>
@@ -48,8 +48,9 @@
                 </a>
             </div>
             <!--End of Carousel-->
-            <div class="secondFont">{{title}}</div>
-            <div class="secondFont">${{price}} MXN</div>
+            <div class="secondFont text-lowercase">{{title}}</div>
+            <div class="secondFont">${{price}}</div>
+            <div class="secondFont text-dark"> <a href="/add-to-cart/{{this._id}}" class="text-dark"> agregar</a></div>
             
             <!-- Button trigger modal -->
             <button type="button" class="btn modalBtn position-absolute fixed-top ml-2" data-toggle="modal" data-target="#exampleModalCenter{{this._id}}">
@@ -91,17 +92,15 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col text-lowercase">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
-                                <div class="secondFont mt-4 font-weight-normal">{{title}}</div>
+                                <div class="secondFont mt-4 font-weight-normal">{{title}} - ${{price}}</div>
                                 <div class="secondFont mt-1">{{descr}}</div>
-                                <div class="secondFont mt-1 font-weight-normal">${{price}} MXN</div>
-                                <div class="secondFont mt-4">Envios y devoluciones gratis</div>
-                                <div class="secondFont">En ordenes de mas de $2,000 MX</div>
-                                <div class="secondFont mt-4">Descripción</div>
-                                <div class="secondFont">{{details}}</div>
+                                <div class="secondFont mt-4">envios y devoluciones gratis</div>
+                                <div class="secondFont">en ordenes de mas de $2,000</div>
+                                <div class="secondFont mt-4">{{details}}</div>
                                 <a href="/add-to-cart/{{this._id}}" class="btn btn-outline-dark position-absolute fixed-bottom secondFont rounded-0">agregar</a>
                             </div>
                         </div>

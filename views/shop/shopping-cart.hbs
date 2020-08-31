@@ -1,17 +1,10 @@
 <div class="container">
-    {{#if products}}
-    <div class="row">
-        <div class="col mainFont text-center mt-sm-3 mt-2">
-            mi carrito
-        </div>
-    </div>
-    {{/if}}
-    <div class="row mt-sm-3 secondFont">
+    <div class="row mt-sm-4 secondFont">
         {{#if products}}
         <div class="col-sm-9 col-12 border-right">
             <div class="row">
             {{#each products}}
-                <div class="col-sm-5 col-7 border border-secondary mt-sm-3 mt-3 ml-5 ml-sm-5 pt-1 pl-1 pr-1 pb-1">
+                <div class="col-sm-5 col-5 border border-dark mt-sm-3 mt-3 ml-3 ml-sm-5 pt-1 pl-1 pr-1 pb-1">
                     <div class="row">
                         <div class="col-sm-6 col-12">
                             <img class="img-fluid" src="{{item.imagePath}}" alt="product">
@@ -24,7 +17,7 @@
                                 <a href="/increase/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> + </a>
                                 <a href="/remove/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> x </a>
                             </div>
-                            <div class="mt-sm-3">{{item.title}}</div>
+                            <div class="mt-sm-3 text-lowercase">{{item.title}}</div>
                             <div>${{item.price}} x {{this.qty}} = ${{this.price}}</div>
                         </div>
                     </div>
@@ -89,29 +82,15 @@
                         <div class="modal-content">
                             <div class="modal-body">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                                    <span aria-hidden="true">&times;</span>
                                 </button>
-                                <div class="row">
-                                    <div class="col-sm-7 col-12 modalDivider">
-                                        <div class="text-center secondFont">ingresa a tu cuenta</div>
-                                        <form action="/user/signin" method="post">
-                                            <input type="hidden" name="_csrf" value="{{csrfToken}}">
-                                            <div class="form-group mt-sm-4 mt-4">
-                                                <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="correo electronico">
-                                            </div>
-                                            <div class="form-group mt-sm-4 mt-5">
-                                                <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="contraseña">
-                                            </div>
-                                            <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mb-sm-1 mt-3 mb-5">entrar</button>
-                                        </form>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continuar sin cuenta</a></div>
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">crear una cuenta</a></div>
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/access" role="button">acceder a tu cuenta</a></div>  
                                     </div>
-                                    <div class="col-sm-5 col-12 border-left">
-                                        <div class="row">
-                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">crear cuenta</a></div>
-                                            <div class="col-sm-12 mt-sm-5 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continuar sin cuenta</a></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -119,9 +98,10 @@
             </div>
         </div>
         {{else}}
-        <div class="col text-center mt-1 mt-sm-2">
-            <div class="mainFont">no has elegido ningun producto</div>
+        <div class="col text-center mt-5 mt-sm-5">
+            <div class="secondFont">no has elegido ningun producto</div>
             <div><a class="btn btn-outline-dark rounded-0 mt-sm-5 mt-5 mb-5 secondFont" href="/product/todo" role="button">regresar a la tienda</a></div>
+            <div class="mb-sm-5 mb-5 invisible">.</div>
             <div class="mb-sm-5 invisible">.</div>
             <div class="mb-sm-5 invisible">.</div>
         </div>

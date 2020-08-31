@@ -1,4 +1,4 @@
-<div class="container secondFont mt-sm-5 mt-3">
+<div class="container secondFont mt-sm-5 mt-3 text-lowercase">
     <div class="row">
         <div class="col-sm-6 col-12">
             <div class="row">
@@ -18,13 +18,11 @@
         </div>
         <div class="col-sm-6 col-12 mt-sm-0 mt-2">
             <a href="/add-to-cart/{{product._id}}" class="btn btn-outline-dark secondFont rounded-0">agregar</a>
-            <div class="secondFont mt-2 mt-sm-4">{{product.title}}</div>
-            <div class="secondFont mt-1 font-weight-normal">${{product.price}} MXN</div>
+            <div class="secondFont mt-2 mt-sm-4 font-weight-normal">{{product.title}} - ${{product.price}}</div>
             <div class="secondFont mt-1">{{product.descr}}</div>
             <div class="secondFont mt-4">Envios y devoluciones gratis</div>
-            <div class="secondFont">En ordenes de mas de $2,000 MX</div>
-            <div class="secondFont mt-4">Descripción</div>
-            <div class="secondFont">{{product.details}}</div>
+            <div class="secondFont">En ordenes de mas de $2,000</div>
+            <div class="secondFont mt-4">{{product.details}}</div>
         </div>
     </div>
 </div>

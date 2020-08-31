@@ -2,14 +2,16 @@
   <div class="row mt-sm-3 mt-3">
     <div class="col-sm-4 col-1"></div>
      <div class="col-sm-4 col-10">
-       <div class="text-center mainFont">finalizar pago</div>
-       <div class="text-center font-weight-bold mt-sm-3 mt-3">${{finalPrice}} MXN
+       <div class="text-center font-weight-bold mt-sm-4 mt-3">${{finalPrice}} MXN
        </div>
        <div id="payment-errors" class="{{#if noError}}hidden{{/if}} text-danger mt-sm-3 mt-3 secondFont">{{messages}}</div>
        <form action="/checkout" method="post" id="payment-form">
         <div class="row">
           <div class="col-sm-12 mt-sm-3 mt-2">
-            <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="name" placeholder="nombre" name="name" required>
+            <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="name" placeholder="nombre" name="name" value="{{userInfo.name}}" required>
+          </div>
+          <div class="col-sm-12 mt-sm-4 mt-4">
+            <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="email" placeholder="email" name="email" value="{{userInfo.email}}" required>
           </div>
           <div class="col-sm-12 mt-sm-4 mt-4">
             <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="address" placeholder="direccion" name="address" required>

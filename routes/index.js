@@ -7,6 +7,7 @@ var csrfProtection = csurf({ cookie: true });
 var Product = require('../models/product');
 var Order = require('../models/order');
 var Discount = require('../models/discount');
+var User = require('../models/user');
 
 //Get main page
 router.get('/', function(req, res, next) {
@@ -111,7 +112,7 @@ router.get('/checkout', function(req, res, next) {
   }
   var cart = new Cart(req.session.cart);
   var flashMessage = req.flash('error')[0];
-  res.render('shop/checkout', {finalPrice: cart.finalPrice, messages: flashMessage, noError: !flashMessage});
+  res.render('shop/checkout', {finalPrice: cart.finalPrice, messages: flashMessage, noError: !flashMessage, userInfo: req.user});
 });
 
 //checkout post
@@ -136,6 +137,16 @@ router.post('/checkout', function(req, res, next){
     }
     const purchaseEvent = new Date();
     const dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric' };
+    const regexEmail = new RegExp(escapeRegex(req.body.email), 'gi');
+    const regexName= new RegExp(escapeRegex(req.body.name), 'gi');
+    if(!req.user){
+      var myperson = new User({
+        email: regexEmail,
+        password:"default",
+        name: regexName
+      });
+      req.user = myperson
+    }
     var order = new Order({
       user: req.user,
       cart: cart,

@@ -9,16 +9,16 @@ router.get('/todo', function(req, res, next) {
     const regex = new RegExp(escapeRegex(req.query.filtroPrecio), 'gi');
     if(req.query.filtroPrecio == 'caro'){
       Product.find({}).sort('-price').exec(function(err, docs) {
-        res.render('shop/product', { title: 'mujer / accesorios', products: docs});
+        res.render('shop/product', { title: 'accesorios', products: docs});
       });
     }else{
       Product.find({}).sort('price').exec(function(err, docs) {
-        res.render('shop/product', { title: 'mujer / accesorios', products: docs});
+        res.render('shop/product', { title: 'accesorios', products: docs});
       });
     }
   } else{
     Product.find({}, function(err, docs){
-      res.render('shop/product', { title: 'mujer / accesorios', products: docs});
+      res.render('shop/product', { title: 'accesorios', products: docs});
     });
   }
 });
@@ -26,13 +26,13 @@ router.get('/todo', function(req, res, next) {
 //Get products page
 router.get('/:id', function(req, res, next) {
     var productType = req.params.id
-    var myTitle = 'mujer / ' + productType
+    var myTitle = productType
     Product.find({type: productType}, function(err, docs){
       res.render('shop/product', { title: myTitle, products: docs});
     });
 });
 
-//get prroduct detail
+//get product detail
 router.get('/:id/detail',function(req,res,next){
   var productID = req.params.id;
   var query = Product.findById(productID);

@@ -1,4 +1,4 @@
-change all
+dar puntos por cada compra
 
 check user account and orders page
 check order design/when order displays
