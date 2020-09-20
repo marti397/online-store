@@ -1,0 +1,24 @@
+<div class="container secondFont mt-sm-3 mt-3">
+    <div class="row">
+        <div class="col-sm-2 col-4 mt-5">
+            <a href="/admin" class="btn btn-outline-primary secondFont rounded-0">regresar</a>
+        </div>
+        <div class="col-sm-2 col-4 mt-5">
+            <form action="/admin/add-category" method="post">
+            <div class="row">
+                <div class="col-sm-12 mb-sm-3 col-6">categoria: <br>
+                    <input id="category" name="category" class="secondFont" type="text" required>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-outline-primary secondFont rounded-0">agregar</button>
+                </div>
+            </div>
+            </form>
+        </div>
+        {{#each categories}}
+        <div class="col-sm-2 col-4 mt-sm-5 mt-5">
+            {{category}}
+        </div>
+        {{/each}}
+    </div>
+</div>

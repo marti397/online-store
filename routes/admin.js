@@ -3,6 +3,7 @@ var router = express.Router();
 
 var Product = require('../models/product');
 var Discount = require('../models/discount');
+var Categories = require('../models/category');
 
 //Get the main admin page
 router.get('/', function(req, res, next) {
@@ -25,6 +26,15 @@ router.get('/discount', function(req, res, next) {
         res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
       });
 });
+
+//read all categories for admin
+router.get('/categories', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    Categories.find({}, function(err, docs){
+        res.render('user/admin-categories', {categories: docs, messages: flashMessage, noMessage: !flashMessage});
+      });
+});
+
 
 //update products
 router.post('/update-product', function(req, res, next){
@@ -84,6 +94,18 @@ router.post('/add-discount', function(req, res, next){
     newDiscount.save(function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/discount');
+    });
+});
+
+//add category
+router.post('/add-category', function(req, res, next){
+    var newCategory = new Categories({
+        category: req.body.category
+    });
+
+    newCategory.save(function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/categories');
     });
 });
 
