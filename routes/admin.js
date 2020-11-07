@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var async = require('async');
 
 var Product = require('../models/product');
 var Discount = require('../models/discount');
@@ -17,9 +18,16 @@ router.get('/', function(req, res, next) {
 //read all products for admin
 router.get('/product', function(req, res, next) {
     var flashMessage = req.flash('error');
-    Product.find({}, function(err, docs){
-        res.render('user/admin-product', {products: docs, messages: flashMessage, noMessage: !flashMessage});
-      });
+    async.parallel({
+        categories: function(callback) {
+            Category.find({},callback);
+        },
+        products: function(callback){
+            Product.find({},callback);
+        }
+    }, function (err,results){
+        res.render('user/admin-product', {data: results, messages: flashMessage, noMessage: !flashMessage});
+    });
 });
 
 //read all discounts for admin

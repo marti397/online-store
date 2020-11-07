@@ -47,7 +47,7 @@
             </div>
             <!-- Modal fo adding -->
         </div>
-        {{#each products}}
+        {{#each data.products}}
         <div class="col-sm-2 col-4 mt-sm-5 mt-5">
             <div class="row">
                 <div class="col-sm-12 col-12"><img src="{{imagePath}}" class="img-fluid" alt="img"></div>
@@ -66,7 +66,7 @@
             </div>
         </div>
         {{/each}}
-        {{#each products}}
+        {{#each data.products}}
             <!-- Modal for updating -->
             <div class="modal fade" id="modal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -90,10 +90,15 @@
                             <div class="col-sm-6 mb-sm-3 col-7">detalles: <br>
                                 <textarea class="secondFont" name="details" id="details" cols="20" rows="4">{{details}}</textarea>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">tipo: <br>
-                                <input id="type" name="type" class="secondFont" type="text" value="{{type}}" required>
+                            <div class="col-sm-6 mb-sm-3 col-7">category:<br>
+                                <select class="custom-select custom-select-sm secondFont" id="type" name="type">
+                                    <option selected>{{type}}</option>
+                                    {{#each ../data.categories}}
+                                    <option value="{{category}}">{{category}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">estilo: <br>
+                             <div class="col-sm-6 mb-sm-3 col-7">estilo: <br>
                                 <input id="style" name="style" class="secondFont" type="text" value="{{style}}" required>
                             </div>
                             <div class="col-sm-12 mt-sm-3 mt-3 text-center">
