@@ -1,10 +1,10 @@
-<div class="container secondFont mt-sm-3 mt-3">
-    <div class="row">
-        <div class="col-sm-2 col-4 mt-5">
-            <a href="/admin" class="btn btn-outline-primary secondFont rounded-0">regresar</a>
+<div class="container secondFont">
+    <div class="row mt-sm-4 mt-3">
+        <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
+            <a href="/admin" class="btn btn-outline-primary secondFont rounded-0">return</a>
         </div>
-        <div class="col-sm-2 col-4 mt-5">
-            <button type="button" class="btn btn-outline-primary secondFont rounded-0" data-toggle="modal" data-target="#add">agregar</button>
+        <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
+            <button type="button" class="btn btn-outline-primary secondFont rounded-0" data-toggle="modal" data-target="#add">add</button>
             <!-- Modal fo adding -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -15,29 +15,34 @@
                     </button>
                     <form action="/admin/add-product" method="post">
                         <div class="row">
-                            <div class="col-sm-6 mb-sm-3 col-6">titulo: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">title: <br>
                                 <input id="title" name="title" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">precio: MXN $ <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">price: USD $ <br>
                                 <input id="price" name="price" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">descripción: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">description: <br>
                                 <textarea class="secondFont" name="descr" id="descr" cols="20" rows="4"></textarea>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">detalles: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">details: <br>
                                 <textarea class="secondFont" name="details" id="details" cols="20" rows="4"></textarea>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-6">tipo: <br>
-                                <input id="type" name="type" class="secondFont" type="text" required>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">category:<br>
+                                <select class="custom-select custom-select-sm secondFont" id="type" name="type">
+                                    <option selected></option>
+                                    {{#each data.categories}}
+                                    <option value="{{category}}">{{category}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">estilo: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">style: <br>
                                 <input id="style" name="style" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-6">foto: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">photo: <br>
                                 <input id="img" name="img" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-12 mt-3">
-                                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">agregar</button>
+                            <div class="col-sm-12 col-12 mt-3">
+                                <button type="submit" class="btn btn-outline-success secondFont rounded-0">add</button>
                             </div>
                         </div>
                     </form>
