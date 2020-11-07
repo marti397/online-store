@@ -154,7 +154,7 @@ router.post('/checkout', function(req, res, next){
       name: req.body.name,
       paymentId: charge.id,
       orderId: Math.floor(Math.random() * 10) + Date.now().toString(),
-      orderStatus: "Tu orden está siendo procesada",
+      orderStatus: "processing",
       orderDate: purchaseEvent.toLocaleString("en-GB", dateOptions)
     });
     order.save(function(err, result){

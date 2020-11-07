@@ -1,3 +1,12 @@
+1)subwurty to look up user
+2) how to search for more than order id, like name
+3)order details cart on the check orders?
+on orders, shuld have a number for just showing a few of them.
+orders should have a section for comments
+Products should be able to search
+set DEBUG=online-store:* & npm start
+
+
 Change name to Glammy
 
 dar puntos por cada compra

@@ -4,6 +4,9 @@ var router = express.Router();
 var Product = require('../models/product');
 var Discount = require('../models/discount');
 var Categories = require('../models/category');
+var Order = require('../models/order');
+var User = require('../models/user');
+var Category = require('../models/category');
 
 //Get the main admin page
 router.get('/', function(req, res, next) {
@@ -35,6 +38,20 @@ router.get('/categories', function(req, res, next) {
       });
 });
 
+//read all orders for admin
+router.get('/order', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    if (req.query.checkData){
+        Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},function(err, docs){
+            if (err){return res.write('Error!');}
+            res.render('user/admin-order', {order: docs});
+        })
+    }else{
+        Order.find({}, function(err, docs){
+            res.render('user/admin-order', {order: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    }
+});
 
 //update products
 router.post('/update-product', function(req, res, next){
@@ -60,6 +77,17 @@ router.post('/update-discount', function(req, res, next){
         isActive: req.body.active == 'true'
     }, function(err,result){
         res.redirect('/admin/discount');
+    });
+});
+
+//update order
+router.post('/update-order', function(req, res, next){
+    Order.findByIdAndUpdate(req.body.orderId, {
+        name:req.body.orderName,
+        orderStatus:req.body.orderStatus,
+        address:req.body.orderAddress
+    }, function(err,result){
+        res.redirect('/admin/order');
     });
 });
 
@@ -122,6 +150,14 @@ router.post('/delete-discount', function(req, res, next){
     Discount.findByIdAndRemove(req.body.discountId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/discount');
+    });
+});
+
+//delete category
+router.post('/delete-category', function(req, res, next){
+    Category.findByIdAndRemove(req.body.categoryId,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/categories');
     });
 });
 
