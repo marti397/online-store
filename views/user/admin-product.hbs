@@ -1,11 +1,11 @@
 <div class="container secondFont">
     <div class="row mt-sm-4 mt-3">
-        <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
+        <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
             <a href="/admin" class="btn btn-outline-primary secondFont rounded-0">return</a>
         </div>
-        <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
+        <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
             <button type="button" class="btn btn-outline-primary secondFont rounded-0" data-toggle="modal" data-target="#add">add</button>
-            <!-- Modal fo adding -->
+            <!-- Modal for adding -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -38,8 +38,8 @@
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">style: <br>
                                 <input id="style" name="style" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">photo: <br>
-                                <input id="img" name="img" class="secondFont" type="text" required>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">photos: <br>
+                                <input type="file" id="myphotofile" name="myphotofile" class="secondFont" multiple required>
                             </div>
                             <div class="col-sm-12 col-12 mt-3">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">add</button>
@@ -50,12 +50,20 @@
                 </div>
             </div>
             </div>
-            <!-- Modal fo adding -->
+            <!-- Modal for adding -->
         </div>
+        <!-- search feature -->
+        <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
+             <form action="/admin/product" method="get">
+                <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="product" id="checkData" name="checkData">
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0 mt-sm-4 mt-4 mb-4">search</button>
+            </form>
+        </div>
+        <!-- end of search feature -->
         {{#each data.products}}
         <div class="col-sm-2 col-4 mt-sm-5 mt-5">
             <div class="row">
-                <div class="col-sm-12 col-12"><img src="{{imagePath}}" class="img-fluid" alt="img"></div>
+                <div class="col-sm-12 col-12"><img src="{{imagePath.[0]}}" class="img-fluid" alt="img"></div>
                 <div class="col-sm-12 col-12">{{title}}</div>
                 <div class="col-sm-12 col-12">${{price}}</div>
                 <div class="col-sm-12 col-12">{{type}}</div>
@@ -130,7 +138,7 @@
                                 <img src="{{imagePath}}" class="img-fluid" alt="img">
                             </div>
                             <div class="col-sm-5 col-12 mt-1">
-                                <button type="submit" class="btn fluid btn-outline-danger secondFont rounded-0">eliminar para siempre</button>
+                                <button type="submit" class="btn fluid btn-outline-danger secondFont rounded-0">delete forever</button>
                             </div>
                         </div>
                     </form>

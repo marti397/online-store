@@ -1,30 +1,34 @@
 <div class="container secondFont mt-sm-5 mt-3 text-lowercase">
-    <div class="row">
-        <div class="col-sm-6 col-12">
-            <div class="row">
-                <div class="col-sm-9 col-9">
-                    <img src="{{product.imagePath}}" alt="img" class="img-fluid mySlides">
-                    <img src="/images/products/im9.jpg" alt="img" class="img-fluid mySlides" style="display:none;">
-                    <img src="{{product.imagePath}}" alt="img" class="img-fluid mySlides" style="display:none;">
-                    </div>
-                <div class="col-sm-3 col-3">
-                    <div class="row">
-                        <div class="col-sm-12 mb-sm-2 mb-2"><img src="{{product.imagePath}}" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv(1)" style="cursor: pointer;"></div>
-                        <div class="col-sm-12 mb-sm-2 mb-2"><img src="/images/products/im9.jpg" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv(2)" style="cursor: pointer;"></div>
-                        <div class="col-sm-12 mb-sm-2 mb-2"><img src="{{product.imagePath}}" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv(3)" style="cursor: pointer;"></div>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <div class="row">
+        <div class="col-sm-9 col-9">
+          {{#each product.imagePath}}
+            {{#if @index}}
+              <img src="{{this}}" alt="img" class="img-fluid mySlides">
+            {{else}}
+              <img src="{{this}}" alt="img" class="img-fluid mySlides" style="display:none;">
+            {{/if}}
+          {{/each}}
         </div>
-        <div class="col-sm-6 col-12 mt-sm-0 mt-2">
-            <a href="/add-to-cart/{{product._id}}" class="btn btn-outline-dark secondFont rounded-0">agregar</a>
-            <div class="secondFont mt-2 mt-sm-4 font-weight-normal">{{product.title}} - ${{product.price}}</div>
-            <div class="secondFont mt-1">{{product.descr}}</div>
-            <div class="secondFont mt-4">Envios y devoluciones gratis</div>
-            <div class="secondFont">En ordenes de mas de $2,000</div>
-            <div class="secondFont mt-4">{{product.details}}</div>
+        <div class="col-sm-3 col-3">
+          <div class="row">
+            {{#each product.imagePath}}
+              <div class="col-sm-12 mb-sm-2 mb-2"><img src="{{this}}" alt="img" class="img-fluid demo w3-opacity w3-opacity-off" onclick="currentDiv({{@index}} + 1)" style="cursor: pointer;"></div>
+            {{/each}}
+          </div>
         </div>
+      </div>
     </div>
+    <div class="col-sm-6 col-12 mt-sm-0 mt-2">
+      <a href="/add-to-cart/{{product._id}}" class="btn btn-outline-dark secondFont rounded-0">add</a>
+      <div class="secondFont mt-2 mt-sm-4 font-weight-normal">{{product.title}} - ${{product.price}}</div>
+      <div class="secondFont mt-1">{{product.descr}}</div>
+      <div class="secondFont mt-4">Envios y devoluciones gratis</div>
+      <div class="secondFont">En ordenes de mas de $2,000</div>
+      <div class="secondFont mt-4">{{product.details}}</div>
+    </div>
+  </div>
 </div>
 <script>
 var slideIndex = 1;

@@ -4,38 +4,23 @@
             {{title}}
         </div>
     </div>
-    <!-- FILTERS
-    <div class="row secondFont mt-sm-3 mt-3">
-        <form action="/product/todo" method="get">
-            <div class="mb-sm-3 col-6">
-                <select class="custom-select secondFont" id="filtroPrecio" name="filtroPrecio">
-                    <option selected>precio</option>
-                    <option value="barato">$</option>
-                    <option value="caro">$$</option> 
-                </select> 
-            </div>
-            <div class="">
-                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-1 mt-3">filtrar</button>
-            </div>
-        </form>
-    </div>
-    -->
     <!--bueno-->
     <div class="row">
         {{#each products}}
         <div class="col-sm-3 col-6 mt-sm-5 mt-4 productImg">
-            <!--<img class="img-fluid" src="{{ imagePath }}" alt="product">-->
             <div id="carouselExampleControls{{this._id}}" class="carousel slide carousel-fade" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img class="d-block w-100" src="{{ imagePath }}" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ imagePath }}" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                    <img class="d-block w-100" src="{{ imagePath }}" alt="Third slide">
-                    </div>
+                    {{#each imagePath}}
+                        {{#if @index}}
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="{{ this }}" alt="{{@index}}">
+                            </div>
+                        {{else}}
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="{{ this }}" alt="{{@index}}">
+                            </div>
+                        {{/if}}
+                    {{/each}}
                     <div class="secondFont"><a href="/product/{{this._id}}/detail" class="stretched-link"></a></div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls{{this._id}}" role="button" data-slide="prev">
@@ -50,7 +35,7 @@
             <!--End of Carousel-->
             <div class="secondFont text-lowercase">{{title}}</div>
             <div class="secondFont">${{price}}</div>
-            <div class="secondFont text-dark"> <a href="/add-to-cart/{{this._id}}" class="text-dark"> agregar</a></div>
+            <div class="secondFont text-dark"> <a href="/add-to-cart/{{this._id}}" class="text-dark">add</a></div>
             
             <!-- Button trigger modal -->
             <button type="button" class="btn modalBtn position-absolute fixed-top ml-2" data-toggle="modal" data-target="#exampleModalCenter{{this._id}}">
@@ -72,15 +57,17 @@
                                         <li data-target="#carousel{{this._id}}" data-slide-to="2"></li>
                                     </ol>
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                        <img class="img-fluid" src="{{ imagePath }}" alt="product">
-                                        </div>
-                                        <div class="carousel-item">
-                                        <img class="img-fluid" src="/images/products/im9.jpg" alt="product">
-                                        </div>
-                                        <div class="carousel-item">
-                                        <img class="img-fluid" src="{{ imagePath }}" alt="product">
-                                        </div>
+                                        {{#each imagePath}}
+                                            {{#if @index}}
+                                                <div class="carousel-item">
+                                                    <img class="img-fluid" src="{{ this }}" alt="product">
+                                                </div>
+                                            {{else}}
+                                                <div class="carousel-item active">
+                                                    <img class="img-fluid" src="{{ this }}" alt="product">
+                                                </div>
+                                            {{/if}}
+                                        {{/each}}
                                     </div>
                                     <a class="carousel-control-prev" href="#carousel{{this._id}}" role="button" data-slide="prev">
                                         <span class="" aria-hidden="true"></span>

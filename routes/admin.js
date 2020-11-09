@@ -101,8 +101,12 @@ router.post('/update-order', function(req, res, next){
 
 //add product
 router.post('/add-product', function(req, res, next){
+    var myphotoarr = req.body.myphotofile;
+    myphotoarr.forEach(function(item,index,myphotoarr){
+        myphotoarr[index] = "/images/products/" + item;
+    })
     var newProduct = new Product({
-        imagePath: req.body.img,
+        imagePath: myphotoarr,
         title:req.body.title,
         descr:req.body.descr,
         details:req.body.details,

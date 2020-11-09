@@ -5,22 +5,9 @@ var Product = require('../models/product');
 
 //filter for all products
 router.get('/todo', function(req, res, next) {
-  if (req.query.filtroPrecio){
-    const regex = new RegExp(escapeRegex(req.query.filtroPrecio), 'gi');
-    if(req.query.filtroPrecio == 'caro'){
-      Product.find({}).sort('-price').exec(function(err, docs) {
-        res.render('shop/product', { title: 'accesorios', products: docs});
-      });
-    }else{
-      Product.find({}).sort('price').exec(function(err, docs) {
-        res.render('shop/product', { title: 'accesorios', products: docs});
-      });
-    }
-  } else{
-    Product.find({}, function(err, docs){
-      res.render('shop/product', { title: 'accesorios', products: docs});
-    });
-  }
+  Product.find({}, function(err, docs){
+    res.render('shop/product', { title: 'accesorios', products: docs});
+  });
 });
 
 //Get products page
