@@ -50,6 +50,11 @@ router.get('/discount', function(req, res, next) {
         Discount.find({isActive:true}, function(err, docs){
             res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
         });
+    } else if(req.query.checkDiscount){
+        var search = req.query.checkDiscount;
+        Discount.find({code:search}, function(err, docs){
+            res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
     } else{
         Discount.find({}, function(err, docs){
             res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});

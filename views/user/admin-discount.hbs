@@ -31,17 +31,17 @@
                     </button>
                     <form action="/admin/add-discount" method="post">
                         <div class="row">
-                            <div class="col-sm-6 mb-sm-3 col-6">code name: <input id="discountcode" name="discountcode" class="secondFont" type="text" required></div>
-                            <div class="col-sm-6 mb-sm-3 col-7 mt-sm-2">
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-4">code name: <input id="discountcode" name="discountcode" class="secondFont" type="text" required></div>
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-4 mt-sm-2">
                                 <select class="custom-select secondFont" id="percentage" name="percentage">
                                     <option selected>is it percentage?</option>
                                     <option value="true">yes</option>
                                     <option value="false">no</option> 
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">discount amount: <input id="discountamount" name="discountamount" class="secondFont" type="number" required></div>
-                            <div class="col-sm-6 mb-sm-3 col-7">expiration date: <input id="discountexpirydate" name="discountexpirydate" class="secondFont" type="date" required></div>
-                            <div class="col-sm-6 mb-sm-3 col-6">
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-4">discount amount: <input id="discountamount" name="discountamount" class="secondFont" type="number" required></div>
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-4">expiration date: <input id="discountexpirydate" name="discountexpirydate" class="secondFont" type="date" required></div>
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-3">
                                 <select class="custom-select secondFont" id="active" name="active">
                                     <option selected>is active?</option>
                                     <option value="true">yes</option>
@@ -57,36 +57,42 @@
             </div>
             <!-- End of modal fo adding -->
         </div>
-        <div class="col-sm-12 mt-sm-5">
+        <div class="col-sm-2 col-4 mb-sm-0 mb-4 text-center">
+            <form action="/admin/discount" method="get">
+                <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="discount" id="checkDiscount" name="checkDiscount">
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0 mt-sm-4 mt-4 mb-4">search</button>
+            </form>
+        </div>
+        <div class="col-sm-12 mt-sm-3">
             <div class="row mb-3 mb-sm-4 border-bottom">
-                <div class="col-sm-2 col-3">code</div>
-                <div class="col-sm-2 col-3">is percentage?</div>
-                <div class="col-sm-1 col-3">amount</div>
-                <div class="col-sm-2 col-3">expiration</div>
-                <div class="col-sm-1 col-3">active?</div>
+                <div class="col-sm-2 col-4">code</div>
+                <div class="col-sm-2 col-4">is percentage?</div>
+                <div class="col-sm-1 col-4">amount</div>
+                <div class="col-sm-2 col-4">expiration</div>
+                <div class="col-sm-1 col-4">active?</div>
             </div>
             {{#each discounts}}
-            <div class="row mb-3 mb-sm-1 border-bottom">
-                <div class="col-sm-2 col-3">{{code}}</div>
+            <div class="row mb-4 mb-sm-2 border-bottom">
+                <div class="col-sm-2 col-4">{{code}}</div>
                 {{#if isPercent}}
-                <div class="col-sm-2 col-3">yes</div>
-                <div class="col-sm-1 col-3">{{amount}}%</div>
+                <div class="col-sm-2 col-4">yes</div>
+                <div class="col-sm-1 col-4">{{amount}}%</div>
                 {{else}}
-                <div class="col-sm-2 col-3">no</div>
-                <div class="col-sm-1 col-3">${{amount}}</div>
+                <div class="col-sm-2 col-4">no</div>
+                <div class="col-sm-1 col-4">${{amount}}</div>
                 {{/if}}
-                <div class="col-sm-2 col-3">{{expireDate}}</div>
+                <div class="col-sm-2 col-4">{{expireDate}}</div>
                 {{#if isActive}}
-                <div class="col-sm-1 col-3">yes</div>
+                <div class="col-sm-1 col-4">yes</div>
                 {{else}}
-                <div class="col-sm-1 col-3">no</div>
+                <div class="col-sm-1 col-4">no</div>
                 {{/if}}
                 <!-- Button trigger modal -->
-                <div class="col-sm-1 col-12 mt-2 mt-sm-0">
+                <div class="col-sm-1 col-6 mt-2 mt-sm-0">
                     <button type="button" class="btn btn-outline-success secondFont rounded-0" data-toggle="modal" data-target="#modal{{this._id}}">edit</button>
                 </div>
                 <!-- Button trigger modal -->
-                <div class="col-sm-1 col-12 mt-2 mt-sm-0"><button type="button" class="btn btn-outline-danger secondFont rounded-0" data-toggle="modal" data-target="#delete{{this._id}}">delete</button></div>
+                <div class="col-sm-1 col-6 mt-2 mt-sm-0"><button type="button" class="btn btn-outline-danger secondFont rounded-0" data-toggle="modal" data-target="#delete{{this._id}}">delete</button></div>
                 <!-- Modal for updating -->
                 <div class="modal fade" id="modal{{this._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -98,8 +104,8 @@
                         <form action="/admin/update-discount" method="post">
                             <div class="row">
                                 <input type="hidden" id="updateDiscount" name="updateDiscount" value="{{this._id}}">
-                                <div class="col-sm-6 mb-sm-3 col-6">code name: <input id="discountcode" name="discountcode" class="secondFont" type="text" value="{{code}}" required></div>
-                                <div class="col-sm-6 mb-sm-3 col-7">is percentage?
+                                <div class="col-sm-6 mb-sm-3 col-12 mb-4">code name: <input id="discountcode" name="discountcode" class="secondFont" type="text" value="{{code}}" required></div>
+                                <div class="col-sm-6 mb-sm-3 col-12 mb-4">is percentage?
                                     <select class="custom-select secondFont" id="percentage" name="percentage">
                                         {{#if isPercent}}
                                         <option selected value="true">yes</option>
@@ -111,12 +117,12 @@
                                     </select>
                                 </div>
                                 {{#if isPercent}}
-                                <div class="col-sm-6 mb-sm-3 col-7">discount amount: <input id="discountamount" name="discountamount" class="secondFont" type="number" value="{{amount}}" required>%</div>
+                                <div class="col-sm-6 mb-sm-3 col-11 mb-4">discount amount: <input id="discountamount" name="discountamount" class="secondFont" type="number" value="{{amount}}" required>%</div>
                                 {{else}}
-                                <div class="col-sm-6 mb-sm-3 col-7">discount amount: <input id="discountamount" name="discountamount" class="secondFont" type="number" value="{{amount}}" required>$</div>
+                                <div class="col-sm-6 mb-sm-3 col-11 mb-4">discount amount: <input id="discountamount" name="discountamount" class="secondFont" type="number" value="{{amount}}" required>$</div>
                                 {{/if}}
-                                <div class="col-sm-6 mb-sm-3 col-7">expiration date: <input id="discountexpirydate" name="discountexpirydate" class="secondFont" type="date" value="{{expireDate}}" required></div>
-                                <div class="col-sm-6 mb-sm-3 col-6">is active?
+                                <div class="col-sm-6 mb-sm-3 col-12 mb-4">expiration date: <input id="discountexpirydate" name="discountexpirydate" class="secondFont" type="date" value="{{expireDate}}" required></div>
+                                <div class="col-sm-6 mb-sm-3 col-12">is active?
                                     <select class="custom-select secondFont" id="active" name="active">
                                         {{#if isActive}}
                                         <option selected value="true">yes</option>
@@ -150,18 +156,18 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="row">
-                                        <div class="col-6">name: {{code}}</div>
+                                        <div class="col-12">name: {{code}}</div>
                                         {{#if isPercent}}
                                         <div class="col-12 col-sm-6">is percentage? yes</div>
                                         {{else}}
                                         <div class="col-12 col-sm-6">is percentage? No</div>
                                         {{/if}}
-                                        <div class="col-6">amount: {{amount}}</div>
-                                        <div class="col-6">expiration date: {{expireDate}}</div>
+                                        <div class="col-12">amount: {{amount}}</div>
+                                        <div class="col-12">expiration date: {{expireDate}}</div>
                                         {{#if isActive}}
-                                        <div class="col-6">active? yes</div>
+                                        <div class="col-12">active? yes</div>
                                         {{else}}
-                                        <div class="col-6">active? no</div>
+                                        <div class="col-12">active? no</div>
                                         {{/if}}
                                     </div>
                                     <button type="submit" class="btn fluid btn-outline-danger secondFont rounded-0 mt-3">delete forever</button>
