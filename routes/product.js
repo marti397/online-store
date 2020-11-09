@@ -4,9 +4,9 @@ var router = express.Router();
 var Product = require('../models/product');
 
 //filter for all products
-router.get('/todo', function(req, res, next) {
-  Product.find({}, function(err, docs){
-    res.render('shop/product', { title: 'accesorios', products: docs});
+router.get('/all', function(req, res, next) {
+  Product.find({showOnWeb:true}, function(err, docs){
+    res.render('shop/product', { title: 'all accessories', products: docs});
   });
 });
 

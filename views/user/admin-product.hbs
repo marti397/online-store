@@ -41,6 +41,9 @@
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">photos: <br>
                                 <input type="file" id="myphotofile" name="myphotofile" class="secondFont" multiple required>
                             </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">show in website? <br>
+                                <input class="form-check-input secondFont" type="checkbox" value="nochange" id="showProduct" name="showProduct" checked>
+                            </div>
                             <div class="col-sm-12 col-12 mt-3">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">add</button>
                             </div>
@@ -65,7 +68,12 @@
             <div class="row">
                 <div class="col-sm-12 col-12"><img src="{{imagePath.[0]}}" class="img-fluid" alt="img"></div>
                 <div class="col-sm-12 col-12">{{title}}</div>
-                <div class="col-sm-12 col-12">${{price}}</div>
+                <div class="col-sm-8 col-12">${{price}}</div>
+                {{#if showOnWeb}}
+                    <div class="col-sm-4 col-12">&#10003;</div>
+                {{else}}
+                    <div class="col-sm-4 col-12">&#10005;</div>
+                {{/if}}
                 <div class="col-sm-12 col-12">{{type}}</div>
                 <div class="col-sm-12 col-12">{{style}}</div>
                 <!-- Button trigger modal -->
@@ -114,7 +122,19 @@
                              <div class="col-sm-6 mb-sm-3 mb-3 col-12">estilo: <br>
                                 <input id="style" name="style" class="secondFont" type="text" value="{{style}}" required>
                             </div>
-                            <div class="col-sm-12 mt-sm-3 mt-3 text-center">
+                            <div class="col-sm-3 col-3 mt-sm-3 mt-3 text-center">
+                                <div class="form-check">
+                                    {{#if showOnWeb}}
+                                        <input class="form-check-input secondFont" type="checkbox" value="nochange" id="showProduct" name="showProduct" checked>
+                                    {{else}}
+                                        <input class="form-check-input secondFont" type="checkbox" value="yeschange" id="showProduct" name="showProduct">
+                                    {{/if}}
+                                    <label class="form-check-label secondFont" for="showProduct">
+                                        show?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-9 mt-sm-3 mt-3 text-center">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">guardar</button>
                             </div>
                         </div>

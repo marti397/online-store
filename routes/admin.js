@@ -38,9 +38,23 @@ router.get('/product', function(req, res, next) {
 //read all discounts for admin
 router.get('/discount', function(req, res, next) {
     var flashMessage = req.flash('error');
-    Discount.find({}, function(err, docs){
-        res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
-      });
+    if(req.query.onlyPercentage){
+        Discount.find({isPercent:true}, function(err, docs){
+            res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    }else if(req.query.onlyDollar){
+        Discount.find({isPercent:false}, function(err, docs){
+            res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    }else if(req.query.onlyActive){
+        Discount.find({isActive:true}, function(err, docs){
+            res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    } else{
+        Discount.find({}, function(err, docs){
+            res.render('user/admin-discount', {discounts: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    }
 });
 
 //read all categories for admin
@@ -68,13 +82,18 @@ router.get('/order', function(req, res, next) {
 
 //update products
 router.post('/update-product', function(req, res, next){
+    var showOnWeb = true;
+    if(req.body.showProduct==undefined){
+        showOnWeb = false;
+    }
     Product.findByIdAndUpdate(req.body.custId, {
         title:req.body.title,
         descr:req.body.descr,
         details:req.body.details,
         price:req.body.price,
         type:req.body.type,
-        style:req.body.style
+        style:req.body.style,
+        showOnWeb:showOnWeb
     }, function(err,result){
         res.redirect('/admin/product');
     });
@@ -110,6 +129,10 @@ router.post('/add-product', function(req, res, next){
     myphotoarr.forEach(function(item,index,myphotoarr){
         myphotoarr[index] = "/images/products/" + item;
     })
+    var showOnWeb = true;
+    if(req.body.showProduct==undefined){
+        var showOnWeb = false;
+    }
     var newProduct = new Product({
         imagePath: myphotoarr,
         title:req.body.title,
@@ -117,7 +140,8 @@ router.post('/add-product', function(req, res, next){
         details:req.body.details,
         price:req.body.price,
         type:req.body.type,
-        style:req.body.style
+        style:req.body.style,
+        showOnWeb:showOnWeb
     });
 
     newProduct.save(function(err,result){

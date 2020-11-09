@@ -10,8 +10,9 @@ var products = [
         descr: 'Ciara Spiral Hair Tie in Brown and Silver',
         details:'Set of hair ties from Stelen. Elasticized spiral construction with metallic finish. Sold as pair.',
         price: 140,
-        type: 'brazaletes',
-        style: 'casual'
+        type: 'bracelets',
+        style: 'casual',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im2.jpg',
@@ -19,8 +20,9 @@ var products = [
         descr: 'Ciara Spiral Hair Tie in Gold and Bronze',
         details: 'Set of hair ties from Stelen. Elasticized spiral construction with metallic finish. Sold as pair.',
         price: 140,
-        type: 'brazaletes',
-        style: 'ejecutiva'
+        type: 'bracelets',
+        style: 'ejecutiva',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im3.jpg',
@@ -28,8 +30,9 @@ var products = [
         descr: 'Fendy Pearl Hair Pin',
         details: 'Feminine hairpin from Farrow. Pearlescent beaded motif. Silvertone jumbo pin back holds medium to thick hair.',
         price: 360,
-        type: 'collares',
-        style: 'especiales'
+        type: 'necklaces',
+        style: 'especiales',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im4.jpg',
@@ -37,8 +40,9 @@ var products = [
         descr: 'Renée Hair Clip in Tortoise',
         details: 'Rectangular alligator clip from Farrow. Acetate front with brown flecks and rounded edges. Goldtone spring back with toothed edges for gripping hair. Best for fine to medium thickness hair.',
         price: 360,
-        type: 'aretes',
-        style: 'invierno'
+        type: 'earings',
+        style: 'invierno',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im5.jpg',
@@ -46,8 +50,9 @@ var products = [
         descr: 'Baby Gucci Anklet',
         details: 'Classic anklet from Loren Stewart. Delicate 14k yellow gold gucci chain. Clasp closure and triangular logo charm. Handmade.',
         price: 1340,
-        type: 'cinturones',
-        style: 'noche'
+        type: 'bracelets',
+        style: 'noche',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im6.jpg',
@@ -55,8 +60,9 @@ var products = [
         descr: 'Agrafe 017 XL Hair Pin',
         details: 'Angular hair pin from Sylvain Le Hen. Mirrored metallic finish. Hand-soldered twist at side with hand-mounted side screw. Stamped HDA logo at back.',
         price: 1600,
-        type: 'anillos',
-        style: 'especiales'
+        type: 'rings',
+        style: 'especiales',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im7.jpg',
@@ -64,8 +70,9 @@ var products = [
         descr: 'Bruno Leather Belt in Auburn Snake',
         details:'Classic belt from Maryam Nassir Zadeh. Snake-embossed calfskin. Wrapped round buckle. Six notches. Pointed end.',
         price: 900,
-        type: 'cinturones',
-        style: 'ejecutiva'
+        type: 'earings',
+        style: 'ejecutiva',
+        showOnWeb: true
     }),
     new Product({
         imagePath: '/images/products/im8.jpg',
@@ -73,8 +80,9 @@ var products = [
         descr: 'Ilana Acetate Hair Tie',
         details:'Contemporary hair tie from Farrow. Curved oval plate in multicolored acetate hugs ponytail. Covered elastic band. ',
         price: 100,
-        type: 'anillos',
-        style: 'invierno'
+        type: 'rings',
+        style: 'invierno',
+        showOnWeb: true
     })
 ];
 
