@@ -23,7 +23,12 @@ router.get('/product', function(req, res, next) {
             Category.find({},callback);
         },
         products: function(callback){
-            Product.find({},callback);
+            if(req.query.checkData){
+                var search = req.query.checkData
+                Product.find({$or:[{title:search},{type:search},{style:search}]},callback);
+            }else{
+                Product.find({},callback);
+            }
         }
     }, function (err,results){
         res.render('user/admin-product', {data: results, messages: flashMessage, noMessage: !flashMessage});

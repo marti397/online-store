@@ -91,19 +91,19 @@
                     <form action="/admin/update-product" method="post">
                         <div class="row">
                             <input type="hidden" id="custId" name="custId" value="{{this._id}}">
-                            <div class="col-sm-6 mb-sm-3 col-7">titulo: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">titulo: <br>
                                 <input id="title" name="title" class="secondFont" type="text" value="{{title}}" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">precio: MXN $ <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">precio: MXN $ <br>
                                 <input id="price" name="price" class="secondFont" type="text" value="{{price}}" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">descripción: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">descripción: <br>
                                 <textarea class="secondFont" name="descr" id="descr" cols="20" rows="4">{{descr}}</textarea>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">detalles: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">detalles: <br>
                                 <textarea class="secondFont" name="details" id="details" cols="20" rows="4">{{details}}</textarea>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 col-7">category:<br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">category:<br>
                                 <select class="custom-select custom-select-sm secondFont" id="type" name="type">
                                     <option selected>{{type}}</option>
                                     {{#each ../data.categories}}
@@ -111,7 +111,7 @@
                                     {{/each}}
                                 </select>
                             </div>
-                             <div class="col-sm-6 mb-sm-3 col-7">estilo: <br>
+                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">estilo: <br>
                                 <input id="style" name="style" class="secondFont" type="text" value="{{style}}" required>
                             </div>
                             <div class="col-sm-12 mt-sm-3 mt-3 text-center">
@@ -135,7 +135,7 @@
                         <input type="hidden" id="custId" name="custId" value="{{this._id}}">
                         <div class="row">
                             <div class="col-sm-7 col-12">
-                                <img src="{{imagePath}}" class="img-fluid" alt="img">
+                                <img src="{{imagePath.[0]}}" class="img-fluid" alt="img">
                             </div>
                             <div class="col-sm-5 col-12 mt-1">
                                 <button type="submit" class="btn fluid btn-outline-danger secondFont rounded-0">delete forever</button>
