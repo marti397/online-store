@@ -8,6 +8,7 @@ var Categories = require('../models/category');
 var Order = require('../models/order');
 var User = require('../models/user');
 var Category = require('../models/category');
+var OrderSatus = require('../models/order-status');
 
 //Get the main admin page
 router.get('/', function(req, res, next) {
@@ -62,7 +63,7 @@ router.get('/discount', function(req, res, next) {
     }
 });
 
-//read all categories for admin
+//read all product categories for admin
 router.get('/categories', function(req, res, next) {
     var flashMessage = req.flash('error');
     Categories.find({}, function(err, docs){
@@ -83,6 +84,22 @@ router.get('/order', function(req, res, next) {
             res.render('user/admin-order', {order: docs, messages: flashMessage, noMessage: !flashMessage});
         });
     }
+});
+
+//read all users for admin
+router.get('/users', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    User.find({}, function(err, docs){
+        res.render('user/admin-user', {users: docs, messages: flashMessage, noMessage: !flashMessage});
+      });
+});
+
+//read all order categories for admin
+router.get('/order-status', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    OrderSatus.find({}, function(err, docs){
+        res.render('user/admin-order-status', {orderStatus: docs, messages: flashMessage, noMessage: !flashMessage});
+      });
 });
 
 //update products
@@ -176,10 +193,20 @@ router.post('/add-category', function(req, res, next){
     var newCategory = new Categories({
         category: req.body.category
     });
-
     newCategory.save(function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/categories');
+    });
+});
+
+//add order status
+router.post('/add-order-status', function(req, res, next){
+    var newOrderStatus = new OrderSatus({
+        status: req.body.orderStatus
+    });
+    newOrderStatus.save(function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/order-status');
     });
 });
 
@@ -204,6 +231,14 @@ router.post('/delete-category', function(req, res, next){
     Category.findByIdAndRemove(req.body.categoryId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/categories');
+    });
+});
+
+//delete order status
+router.post('/delete-order-status', function(req, res, next){
+    OrderSatus.findByIdAndRemove(req.body.orderStatusId,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/order-status');
     });
 });
 

@@ -24,7 +24,7 @@ router.get('/add-to-cart/:id', function(req, res, next) {
     if (err){return res.redirect('/')};
     cart.add(product, product.id);
     req.session.cart = cart;
-    res.redirect('/product/todo')
+    res.redirect('/product/all')
   })
 });
 

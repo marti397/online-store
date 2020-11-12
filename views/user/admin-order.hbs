@@ -1,24 +1,24 @@
-<div class="container secondFont mt-sm-3 mt-1">
-    <div class="row">
-        <div class="col-sm-2 col-6 mt-5">
+<div class="container secondFont">
+    <div class="row mt-sm-4 mt-3">
+        <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
             <a href="/admin" class="btn btn-outline-primary secondFont rounded-0">return</a>
         </div>
-        <div class="col-sm-2 col-6 mt-5">
+        <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
             <form action="/admin/order" method="get">
                 <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="order" id="checkData" name="checkData">
-                <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-4 mt-4 mb-4">search</button>
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0 mt-sm-4 mt-4 mb-4">search</button>
             </form>
         </div>
         {{#each order}}
-        <div class="col-sm-2 col-6 mt-sm-5 mt-5">
+        <div class="col-sm-2 col-6 mt-sm-5 mt-4 mr-sm-3 pb-sm-2">
             <div class="row">
                 <div class="col-sm-12 col-12">order id: {{orderId}}</div>
                 <div class="col-sm-12 col-12">order date: {{orderDate}}</div>
                 <div class="col-sm-12 col-12">order status: {{orderStatus}}</div>
-                <div class="col-sm-12 col-12">name on the order: {{name}}</div>
+                <div class="col-sm-12 col-12">order name: {{name}}</div>
                  <!-- Button trigger modal -->
                 <div class="col-sm-12 col-12 mt-1">
-                    <button type="button" class="btn btn-outline-dark secondFont rounded-0" data-toggle="modal" data-target="#modal{{this._id}}">details</button>
+                    <button type="button" class="btn btn-outline-primary secondFont rounded-0" data-toggle="modal" data-target="#modal{{this._id}}">details and edit</button>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                                 <input id="orderStatus" name="orderStatus" class="secondFont" type="text" value="{{orderStatus}}" required>
                             </div>
                              <div class="col-sm-12 mt-sm-3 mt-3 text-center">
-                                <button type="submit" class="btn btn-outline-dark secondFont rounded-0">save</button>
+                                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">save</button>
                             </div>
                         </div>
                         </form>
