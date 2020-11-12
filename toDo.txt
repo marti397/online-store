@@ -4,6 +4,15 @@
 on orders, shuld have a number for just showing a few of them.
 orders should have a section for comments
 Products should be able to search
+
+quantity of products
+
+supplier db
+
+how to handle returns?
+how to handle change in status of orders?
+add a comment section -- maybe all info is included here
+
 set DEBUG=online-store:* & npm start
 
 

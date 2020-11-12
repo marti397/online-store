@@ -80,8 +80,27 @@ router.get('/order', function(req, res, next) {
         },
         order: function(callback){
             if (req.query.checkData){
-                Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
-            }else{
+                async.waterfall([
+                    function(callback){
+                        User.find({email:req.query.checkData}, function(err,docs){
+                            if(docs.length > 0){
+                                callback(null, docs[0].id);
+                            }else{
+                                callback(null, 0);
+                            }
+                            
+                        });
+                    }
+                ],function (err, result) {
+                   
+                    if(result == 0){
+                        Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
+                    }else{
+                        Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData},{user:result}]},callback);
+                    }  
+                });
+                //Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
+            } else{
                 Order.find({},callback);
             }
         }
