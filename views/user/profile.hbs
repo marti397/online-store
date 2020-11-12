@@ -27,13 +27,18 @@
                 <div class="col-12">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
-                        editar datos
+                        edit
                     </button>
                 </div>
-                <div class="col-12">nombre: {{userInfo.name}}</div>
-                <div class="col-12">correo: {{userInfo.email}}</div>
+                <div class="col-12">name: {{userInfo.name}}</div>
+                <div class="col-12">email: {{userInfo.email}}</div>
             </div>
         </div>
+        {{#if userInfo.isadmin}}
+        <div class="col text-center">
+            <a class="btn btn-outline-dark rounded-0 secondFont" href="/admin" role="button">control panel</a>
+        </div>
+        {{/if}}
         <div class="col text-center">
             <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">salir</a>
         </div>

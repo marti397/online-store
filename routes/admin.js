@@ -10,10 +10,16 @@ var User = require('../models/user');
 var Category = require('../models/category');
 var OrderSatus = require('../models/order-status');
 
+
+//protect all routes below
+router.use('/', isLoggedInAdmin, function(req, res, next){
+    next();
+});
+
 //Get the main admin page
 router.get('/', function(req, res, next) {
     var flashMessage = req.flash('error');
-    res.render('user/admin', {messages: flashMessage, noMessage: !flashMessage});
+    res.render('user/admin', {messages: flashMessage, noMessage: !flashMessage, userInfo: req.user});
 });
 
 //read all products for admin
@@ -299,3 +305,10 @@ router.post('/delete-user', function(req, res, next){
 });
 
 module.exports = router;
+
+function isLoggedInAdmin(req, res, next){
+    if (req.isAuthenticated() && (req.user.isadmin == true)){
+      return next();
+    }
+    res.redirect('/');
+}
