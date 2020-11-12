@@ -74,16 +74,20 @@ router.get('/categories', function(req, res, next) {
 //read all orders for admin
 router.get('/order', function(req, res, next) {
     var flashMessage = req.flash('error');
-    if (req.query.checkData){
-        Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},function(err, docs){
-            if (err){return res.write('Error!');}
-            res.render('user/admin-order', {order: docs});
-        })
-    }else{
-        Order.find({}, function(err, docs){
-            res.render('user/admin-order', {order: docs, messages: flashMessage, noMessage: !flashMessage});
-        });
-    }
+    async.parallel({
+        status: function(callback) {
+            OrderSatus.find({},callback);
+        },
+        order: function(callback){
+            if (req.query.checkData){
+                Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
+            }else{
+                Order.find({},callback);
+            }
+        }
+    },function (err,results){
+        res.render('user/admin-order', {data: results, messages: flashMessage, noMessage: !flashMessage});
+    })
 });
 
 //read all users for admin
