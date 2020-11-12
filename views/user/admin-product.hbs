@@ -45,7 +45,7 @@
                                 <input class="form-check-input secondFont" type="checkbox" value="nochange" id="showProduct" name="showProduct" checked>
                             </div>
                             <div class="col-sm-12 col-12 mt-3">
-                                <button type="submit" class="btn btn-outline-success secondFont rounded-0">add</button>
+                                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">add</button>
                             </div>
                         </div>
                     </form>
@@ -99,16 +99,16 @@
                     <form action="/admin/update-product" method="post">
                         <div class="row">
                             <input type="hidden" id="custId" name="custId" value="{{this._id}}">
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">titulo: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">title: <br>
                                 <input id="title" name="title" class="secondFont" type="text" value="{{title}}" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">precio: MXN $ <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">price: USD $ <br>
                                 <input id="price" name="price" class="secondFont" type="text" value="{{price}}" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">descripción: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">description: <br>
                                 <textarea class="secondFont" name="descr" id="descr" cols="20" rows="4">{{descr}}</textarea>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">detalles: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">details: <br>
                                 <textarea class="secondFont" name="details" id="details" cols="20" rows="4">{{details}}</textarea>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">category:<br>
@@ -119,7 +119,7 @@
                                     {{/each}}
                                 </select>
                             </div>
-                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">estilo: <br>
+                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">style: <br>
                                 <input id="style" name="style" class="secondFont" type="text" value="{{style}}" required>
                             </div>
                             <div class="col-sm-3 col-3 mt-sm-3 mt-3 text-center">

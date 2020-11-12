@@ -1,12 +1,10 @@
-1)subwurty to look up user
-2) how to search for more than order id, like name
-3)order details cart on the check orders?
-on orders, shuld have a number for just showing a few of them.
+order details from admin and user
+
+on orders, should have pagination
 orders should have a section for comments
-Products should be able to search
+
 
 quantity of products
-
 supplier db
 
 how to handle returns?
@@ -24,8 +22,7 @@ dar puntos por cada compra
 
 check user account and orders page
 check order design/when order displays
-carrito should be same as display todo products
-do search user - admin or customer
+
 
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
@@ -56,7 +53,6 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -add check order status when signed in or move it?
 -the search function can be seen here -> https://www.youtube.com/watch?v=9_lKMTXVk64
 -continua sin registrar/protected routes
--filtros de productos
 -for all models see if something is required/ or not like primary keys
 -do sanitation and validadion for finalizar pago
 -do sanitation and validation for admin data
@@ -71,8 +67,7 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -orden debe tener si se hizo un descuento
 -add date to the order model
 
--do site admin site to look orders
--do site admin to update/clear orders
+
 -do site admin to look at stats
 -no dejar que dos codigos de descuentos tengan el mismo nombre
 
