@@ -13,6 +13,8 @@ how to handle returns?
 how to handle change in status of orders?
 add a comment section -- maybe all info is included here
 
+*****what happens if you delete a user while logged in????????
+
 set DEBUG=online-store:* & npm start
 
 

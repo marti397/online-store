@@ -25,7 +25,7 @@ router.get('/product', function(req, res, next) {
         },
         products: function(callback){
             if(req.query.checkData){
-                var search = req.query.checkData
+                var search = req.query.checkData;
                 Product.find({$or:[{title:search},{type:search},{style:search}]},callback);
             }else{
                 Product.find({},callback);
@@ -92,7 +92,6 @@ router.get('/order', function(req, res, next) {
                         });
                     }
                 ],function (err, result) {
-                   
                     if(result == 0){
                         Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
                     }else{
@@ -112,9 +111,20 @@ router.get('/order', function(req, res, next) {
 //read all users for admin
 router.get('/users', function(req, res, next) {
     var flashMessage = req.flash('error');
-    User.find({}, function(err, docs){
-        res.render('user/admin-user', {users: docs, messages: flashMessage, noMessage: !flashMessage});
-      });
+    if(req.query.onlyAdmin){
+        User.find({isadmin:true}, function(err, docs){
+            res.render('user/admin-user', {users: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    } else if(req.query.checkData){
+        var search = req.query.checkData;
+        User.find({$or:[{email:search},{name:search}]}, function(err,docs){
+            res.render('user/admin-user', {users: docs, messages: flashMessage, noMessage: !flashMessage});
+        })
+    }else{
+        User.find({}, function(err, docs){
+            res.render('user/admin-user', {users: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    } 
 });
 
 //read all order categories for admin
@@ -165,6 +175,21 @@ router.post('/update-order', function(req, res, next){
         address:req.body.orderAddress
     }, function(err,result){
         res.redirect('/admin/order');
+    });
+});
+
+//update user
+router.post('/update-user', function(req, res, next){
+    isUserAdmin = false;
+    if(req.body.isadmin == "true"){
+        isUserAdmin = true;
+    }
+    User.findByIdAndUpdate(req.body.userId, {
+        name:req.body.username,
+        email:req.body.useremail,
+        isadmin:isUserAdmin
+    }, function(err,result){
+        res.redirect('/admin/users');
     });
 });
 
@@ -262,6 +287,14 @@ router.post('/delete-order-status', function(req, res, next){
     OrderSatus.findByIdAndRemove(req.body.orderStatusId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/order-status');
+    });
+});
+
+//delete user
+router.post('/delete-user', function(req, res, next){
+    User.findByIdAndRemove(req.body.userId,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/users');
     });
 });
 
