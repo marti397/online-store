@@ -91,6 +91,13 @@
 .ocasionIcon:hover{
     border: black 0.25px solid;
 }
+/*border change*/
+.borderChange{
+    border: #B0B0B0 0.25px solid;
+}
+.borderChange:hover{
+    border: black 0.25px solid;
+}
 /*stripe checkout view*/
 .StripeElement {
     padding: 10px 12px;

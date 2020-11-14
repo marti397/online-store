@@ -24,54 +24,26 @@
             <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">sign out</a>
         </div>
     </div>
-    <div class="row mt-sm-5 mt-4">
+    <div class="row mt-sm-2 mt-4">
         <div class="col-sm-12 col-12">
             {{#if orders}}
+                 <div class="row">
+                {{#each orders}}
+                    <div class="col-5 col-sm-3 ml-3 ml-sm-5 mt-3 mt-sm-5 text-center borderChange">
+                        <div class="mt-2">{{orderId}}</div>
+                        <div class="mt-2">{{orderDate}}</div>
+                        <div class="mt-2 text-lowercase">{{orderStatus}}</div>
+                        <div class="secondFont mt-2 mb-2"><a href="/info/{{orderId}}" class="stretched-link"></a>details</div>
+                    </div>
+                {{/each}}
+                </div>
             {{else}}
-            <div class="col text-center mt-3 mt-sm-2">
+            <div class="col text-center mt-4 mt-sm-5">
                 <div class="mb-sm-2 mb-3">there are no orders</div>
-                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-4" href="/product/all" role="button">return to the store</a></div>
-                <div class="mb-sm-5 mb-4 invisible">.</div>
-                <div class="mb-sm-3 invisible">.</div>
+                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-2 mb-sm-4" href="/product/all" role="button">return to the store</a></div>
+                <div class="mb-sm-5 invisible">.</div>
             </div>
             {{/if}}
-            <div class="row mt-sm-3">
-            {{#each orders}}
-                <div class="col-5 col-sm-3 ml-3 ml-sm-5 mt-3 mt-sm-1 text-center border border-dark">
-                    <div class="mt-2">{{orderDate}}</div>
-                    <div class="mt-2">{{orderId}}</div>
-                    <div class="mt-2 text-lowercase">{{orderStatus}}</div>
-                    <div class="mt-2 mb-2">details</div>
-                </div>
-            <!-- 
-            <div class="row-fluid mt-sm-4 mt-4 pl-2 pr-2 pl-sm-0 pr-sm-0">
-                <div class="accordion" id="accordionExample">
-                    <div class="card-fluid">
-                        <div class="card-header row bg-white border-left border-secondary rounded-0" id="headingOne">
-                            <div class="col-sm-3">Fecha de la compra: {{orderDate}}</div>
-                            <div class="col-sm-3 mt-1 mt-sm-0">No. Orden: {{orderId}}</div>
-                            <div class="col-sm-4 mt-1 mt-sm-0">{{orderStatus}}</div>
-                            <div class="col-sm-2 text-right mt-sm-0 mt-1"><a class="" type="button" data-toggle="collapse" data-target="#collapse{{_id}}">Ver detalles</a></div>  
-                        </div>
-                        <div id="collapse{{_id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                            <div class="card-body row">
-                                <div class="col-sm-12">&#9900; Dirección de envio: {{address}}</div>
-                                <div class="col-sm-12">&#9900; Nombre en la orden: {{name}}</div>
-                                <div class="col-sm-12">&#9900; Productos</div>
-                                {{#each this.items}}
-                                <div class="col-sm-2 mb-sm-2 col-4"> <img src="{{item.imagePath}}" alt="product" class="img-fluid"></div>
-                                <div class="col-sm-2 col-8">{{item.title}}</div>
-                                <div class="col-sm-8 col-12 mb-sm-0 mb-3">${{item.price}} MXN x {{qty}} piezas = ${{price}} MXN</div>
-                                {{/each}}
-                                <div class="col-sm-12">&#9900; Total de la compra: ${{cart.totalPrice}} MXN</div>
-                                <div class="col-sm-12">&#9900; Total de productos ordenados: {{cart.totalQty}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            {{/each}}
-            </div>
             <div class="mb-sm-5 mb-1 invisible">.</div>
         </div>
     </div>

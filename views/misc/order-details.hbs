@@ -1,0 +1,55 @@
+<div class="container secondFont">
+    <div class="row mt-sm-4 mt-3">
+        {{#each order}}
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-6 col-6">
+                        <div class="col-sm-12 col-12 mb-sm-1 mb-2">order id: {{orderId}}</div>
+                        <div class="col-sm-12 col-12 mb-sm-1 mb-2">order date: {{orderDate}}</div>
+                        <div class="col-sm-12 col-12 mb-sm-1 mb-2">order status: {{orderStatus}}</div>
+                        <div class="col-sm-12 col-12 mb-sm-1 mb-2">name: {{name}}</div>
+                        <div class="col-sm-12 col-12 mb-sm-1 mb-2">shipping address: {{address}}</div>
+                        <div class="col-sm-12 col-12 mb-sm-1 mb-2">number of products ordered: {{cart.totalQty}}</div>
+                    </div>
+                    <div class="col-sm-6 col-6">
+                        {{#if cart.discount}}
+                        <div class="col-sm-12 mb-sm-1 mb-2">discount code used: {{cart.discountCodeName}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">total w/o discount: ${{cart.totalPrice}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">discount: 
+                            {{#if cart.isDiscountPercent}}
+                                {{cart.discountAmount}}%
+                            {{else}}
+                                ${{cart.discountAmount}}
+                            {{/if}}
+                        </div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">discount amount: ${{cart.discount}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">total w/discount: ${{cart.totalPriceWDiscount}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">collected tax: ${{cart.tax}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">final charge: ${{cart.finalPrice}}</div>
+                        {{else}}
+                        <div class="col-sm-12 mb-sm-1 mb-2">total w/o tax: ${{cart.totalPrice}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">collected tax: ${{cart.tax}}</div>
+                        <div class="col-sm-12 mb-sm-1 mb-2">final charge: ${{cart.finalPrice}}</div>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            {{#each cart.items}}
+            <div class="col-sm-3 col-10 mt-sm-5 mt-3 border border-dark ml-sm-5 ml-4 pt-1 pb-1">
+                <div class="row">
+                    <div class="col-sm-6 col-5">
+                        <img src="{{item.imagePath.[0]}}" alt="product" class="img-fluid">
+                    </div>
+                    <div class="col-sm-6 col-7">
+                        <div>{{item.title}}</div>
+                        <div>${{item.price}} x {{qty}} pieces = ${{price}}</div>
+                        <div>
+                            <a class="btn btn-outline-dark secondFont rounded-0 mt-sm-3 mt-2" href="/product/{{item._id}}/detail" role="button">item details</a>
+                        </div>
+                    </div>
+                </div>   
+            </div>
+            {{/each}}
+        {{/each}}
+    </div>
+</div>

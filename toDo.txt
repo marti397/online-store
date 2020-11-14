@@ -1,4 +1,10 @@
 -fix spanish on help menu
+
+if email is changed it shuld change in the final order-
+
+-non registered users show wierd input
+-change spanish for final purchase
+
 -order details from admin and user
 -on orders, should have pagination
 -orders should have a section for comments
@@ -12,6 +18,7 @@
 
 set DEBUG=online-store:* & npm start
 
+-edit the photos
 -Change name to Glammy
 -dar puntos por cada compra
 -check user account and orders page
