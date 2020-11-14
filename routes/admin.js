@@ -104,7 +104,6 @@ router.get('/order', function(req, res, next) {
                         Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData},{user:result}]},callback);
                     }  
                 });
-                //Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
             } else{
                 Order.find({},callback);
             }

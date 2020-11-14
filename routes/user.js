@@ -20,7 +20,7 @@ router.get('/profile', isLoggedIn, function(req, res, next){
   Order.find({
     user: req.user
   }, function(err, orders){
-    if (err){return res.write('Error!');}
+    if (err){return res.write('error!');}
     var cart;
     orders.forEach(function(order){
       cart = new Cart(order.cart);
@@ -33,8 +33,8 @@ router.get('/profile', isLoggedIn, function(req, res, next){
 //udpate user
 router.post('/update-user', isLoggedIn, [
   //validate fields
-  check('name').isLength({ min: 1 }).withMessage('especifica un nombre'),
-  check('email').isEmail().withMessage('correo electrónico invalido'),
+  check('name').isLength({ min: 1 }).withMessage('enter a name'),
+  check('email').isEmail().withMessage('invalid email'),
 
   //sanitize fields
   sanitizeBody('name').escape(),
@@ -55,7 +55,7 @@ router.post('/update-user', isLoggedIn, [
         name:req.body.name
     }, function(err,result){
         if (err) { return next(err); }
-        req.flash('success', "tu información se ha guardado!");
+        req.flash('success', "data was saved");
         res.redirect('/user/profile');
       });
     }
@@ -71,7 +71,7 @@ router.use('/', notLoggedIn, function(req, res, next){
   next();
 });
 
-router.get('/cuenta', function(req, res, next){
+router.get('/account', function(req, res, next){
   res.render('user/registerorcreate');
 })
 
@@ -88,9 +88,9 @@ router.get('/register', function (req, res, next) {
 });
   
 router.post('/signup', [
-  check('signUpEmail').isEmail().withMessage('correo electrónico invalido'),
-  check('signUpPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres'),
-  check('fullname').isLength({ min: 1 }).withMessage('el Nombre debe ser especificado'),
+  check('signUpEmail').isEmail().withMessage('invalid email'),
+  check('signUpPassword').isLength({ min: 4 }).withMessage('password should have at least four characters'),
+  check('fullname').isLength({ min: 1 }).withMessage('enter a name'),
 
   //sanitize fields
   sanitizeBody('fullname').trim().escape(),
@@ -115,8 +115,8 @@ router.post('/signup', [
 });
   
 router.post('/signin', [
-  check('signInEmail').isEmail().withMessage('correo electrónico invalido'),
-  check('signInPassword').isLength({ min: 4 }).withMessage('la contraseña tiene que tener al menos cuatro caracteres')
+  check('signInEmail').isEmail().withMessage('invalid email'),
+  check('signInPassword').isLength({ min: 4 }).withMessage('password should have at least four characters')
   ], function (req, res, next){
     var errors = validationResult(req);
     if (!errors.isEmpty()) {

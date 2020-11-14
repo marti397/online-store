@@ -1,37 +1,28 @@
 <div class="container">
-    <div class="row">
-        <div class="col text-center secondFont text-lowercase mt-sm-2">
-            {{#each messages}}
-            <div class="alert alert-danger alert-dismissible fade show rounded-0" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                {{this}}
-            </div>
-            {{/each}}
-        </div>
-    </div>
-     <div class="row mt-sm-3 mt-3">
+     <div class="row mt-sm-4 mt-3">
         <div class="col-sm-4 col-1"></div>
         <div class="col-sm-4 col-10">
-            <div class="text-center mainFont">accesa a tu cuenta</div>
+            <div class="text-center mainFont">access your account</div>
             <form action="/user/signin" method="post">
                 <div class="row">
                     <div class="col-sm-12">
                          <input type="hidden" name="_csrf" value="{{csrfToken}}">
                     </div>
                     <div class="col-sm-12 mt-sm-5 mt-5">
-                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="correo electronico">
+                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInEmail" name="signInEmail" aria-describedby="emailHelp" placeholder="email">
                     </div>
                     <div class="col-sm-12 mt-sm-5 mt-5">
-                         <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="contraseña">
+                         <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signInPassword" name="signInPassword" placeholder="password">
                     </div>
                     <div class="col-sm-12 mt-sm-2 mb-sm-3 mt-4 text-center">
-                        <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3 mb-4">entrar</button>
+                        <button type="submit" class="btn btn-outline-dark secondFont rounded-0 mt-sm-5 mt-3">enter</button>
                     </div>
                 </div>
             </form>
-            <div class="mb-sm-5 invisible">.</div>
+            {{#each messages}}
+            <div class="col text-center text-danger secondFont text-lowercase mt-sm-0 mb-sm-1 mt-3">{{this}}</div>
+            {{/each}}
+            <div class="mb-sm-4 invisible">.</div>
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@
                 <div class="col-sm-5 col-5 border border-dark mt-sm-3 mt-3 ml-3 ml-sm-5 pt-1 pl-1 pr-1 pb-1">
                     <div class="row">
                         <div class="col-sm-6 col-12">
-                            <img class="img-fluid" src="{{item.imagePath}}" alt="product">
+                            <img class="img-fluid" src="{{item.imagePath.[0]}}" alt="product">
                             <a href="/product/{{item._id}}/detail" class="stretched-link"></a>
                         </div>
                         <div class="col-sm-6 col-12">
@@ -28,50 +28,50 @@
         <div class="col-sm-3 col-11 mt-5 mt-sm-0 ml-2 ml-sm-0">
             <form action="/shopping-cart" method="get">
                 <div class="row mb-sm-5 mb-4 mt-sm-0">
-                    <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="descuento" id="cartdiscount" name="cartdiscount"></div>
-                    <div class="col-sm-4 col-4 text-right"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">aplicar</button></div>
+                    <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="discount" id="cartdiscount" name="cartdiscount"></div>
+                    <div class="col-sm-4 col-4 text-right"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">apply</button></div>
                 </div>
             </form>
             <div class="row">
                 <div class="col-sm-6 col-6 text-left">subtotal</div>
-                <div class="col-sm-6 col-6 text-right">${{totalPrice}} MXN</div>
+                <div class="col-sm-6 col-6 text-right">${{totalPrice}}</div>
             </div>
             <div class="row border-bottom">
-                <div class="col-sm-6 col-6 text-left">descuento</div>
+                <div class="col-sm-6 col-6 text-left">discount</div>
                 {{#if isdiscount}}
                     {{#if isPercent}}
                     <div class="col-sm-2 col-2 text-right">{{discountAmount}}%</div>
-                    <div class="col-sm-4 col-4 text-right">${{discount}} MXN</div>
+                    <div class="col-sm-4 col-4 text-right">${{discount}}</div>
                     {{else}}
                     <div class="col-sm-2 col-2 text-right">-</div>
-                    <div class="col-sm-4 col-4 text-right">${{discount}} MXN</div>
+                    <div class="col-sm-4 col-4 text-right">${{discount}}</div>
                     {{/if}}
                 {{else}}
-                <div class="col-sm-6 col-6 text-right">$0 MXN</div>
+                <div class="col-sm-6 col-6 text-right">$0</div>
                 {{/if}}
             </div>
             <div class="row mt-sm-5 mt-3">
-                <div class="col-sm-6 col-6 text-left">envio</div>
-                <div class="col-sm-6 col-6 text-right">gratis</div>
+                <div class="col-sm-6 col-6 text-left">shipping</div>
+                <div class="col-sm-6 col-6 text-right">free</div>
             </div>
             <div class="row border-bottom">
-                <div class="col-sm-6 col-6 text-left">impuesto 16%</div>
-                <div class="col-sm-6 col-6 text-right">${{tax}} MXN</div>
+                <div class="col-sm-6 col-6 text-left">tax</div>
+                <div class="col-sm-6 col-6 text-right">${{tax}}</div>
             </div>
             <div class="row border-bottom mt-sm-5 mt-4 text-uppercase font-weight-bold">
                 <div class="col-sm-6 col-6 text-left">total</div>
-                <div class="col-sm-6 col-6 text-right">${{finalPrice}} MXN</div>
+                <div class="col-sm-6 col-6 text-right">${{finalPrice}}</div>
             </div>
             <div class="row mt-sm-2 mt-3">
                 <!-- Button trigger modal -->
                 {{#if login}}
                 <div class="col text-right">
-                    <a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">continuar</a>
+                    <a class="btn btn-dark secondFont rounded-0" href="/checkout" role="button">continue</a>
                 </div>
                 {{else}}
                 <div class="col text-right">
                     <button type="button" class="btn btn-outline-dark secondFont rounded-0 text-right" data-toggle="modal" data-target="#modalContinuar">
-                        continuar
+                        continue
                     </button>
                 </div>
                 {{/if}}
@@ -86,9 +86,9 @@
                                 </button>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continuar sin cuenta</a></div>
-                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">crear una cuenta</a></div>
-                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/access" role="button">acceder a tu cuenta</a></div>  
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continue as a guest</a></div>
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">create an account</a></div>
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/access" role="button">access your account</a></div>  
                                     </div>
                                 </div> 
                             </div>

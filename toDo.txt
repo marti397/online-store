@@ -1,38 +1,34 @@
-order details from admin and user
-
-on orders, should have pagination
-orders should have a section for comments
-
-
-quantity of products
-supplier db
-
-how to handle returns?
-how to handle change in status of orders?
-add a comment section -- maybe all info is included here
-
+-fix spanish on help menu
+-order details from admin and user
+-on orders, should have pagination
+-orders should have a section for comments
+-quantity of products
+-supplier db
+-how to handle returns?
+-how to handle change in status of orders?
+-add a comment section -- maybe all info is included here
 *****what happens if you delete a user while logged in????????
+--auto emails when status has been changed
 
 set DEBUG=online-store:* & npm start
 
-
-Change name to Glammy
-
-dar puntos por cada compra
-
-check user account and orders page
-check order design/when order displays
-
+-Change name to Glammy
+-dar puntos por cada compra
+-check user account and orders page
+-check order design/when order displays
+-the cart operations such as calculating tax, etc. is delayed, may require async
+-add calculation for shipping to cart
 
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
-
 
 TERMINAR CHECKOUT IF NOT LOGGEDIN
 TERMINAR CHECKOUT FINAL page
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR OCULTAR ADMIN ADRESSS
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
+
+--add feature for monthly box
 
 -fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
 -logout success msg
@@ -67,7 +63,6 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -orden debe tener si se hizo un descuento
 -add date to the order model
 
-
 -do site admin to look at stats
 -no dejar que dos codigos de descuentos tengan el mismo nombre
 
@@ -81,7 +76,6 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
 -add rewards to profile page 
 rotar productos - dar lista de productos
-
 
 WISHLIST
 -add filters color, style, price

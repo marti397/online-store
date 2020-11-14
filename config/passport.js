@@ -1,4 +1,4 @@
-var passport = require('passport'); //passport forr authentication
+var passport = require('passport'); //passport for authentication
 var User = require('../models/user'); //user model
 var LocalStrategy = require('passport-local').Strategy; //local strategy by passport
 
@@ -24,7 +24,7 @@ passport.use('local.signup', new LocalStrategy({
       User.findOne({ email: signUpEmail }, function (err, user) {
         if (err) { return done(err); }
         if (user) {
-          return done(null, false, { message: 'El correo electrónico ya esta en uso' });
+          return done(null, false, { message: 'the email is already in use' });
         }
         var newUser = new User();
         newUser.email = signUpEmail;
@@ -47,10 +47,10 @@ function(req, signInEmail, signInPassword, done) {
   User.findOne({ email: signInEmail }, function (err, user) {
     if (err) { return done(err); }
     if (!user) {
-      return done(null, false, { message: 'No se pudo encontrar al usuario' });
+      return done(null, false, { message: 'the email is not registered' });
     }
     if (!user.validatePassword(signInPassword)) {
-        return done(null, false, { message: 'Contraseña incorrecta' });
+        return done(null, false, { message: 'wrong password' });
     }
     return done(null, user);
   });

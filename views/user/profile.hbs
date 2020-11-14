@@ -1,38 +1,19 @@
 <div class="container secondFont">
-    <div class="row mt-1">
-        <div class="col secondFont text-lowercase">
-            {{#each messages}}
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">{{this}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            {{/each}}
-        </div>
-    </div>
-    {{#if goodMessage}}
-    <div class="row mt-1">
-        <div class="col secondFont text-lowercase">
-            <div class="alert alert-success alert-dismissible fade show" role="alert">{{goodMessage}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
-    </div>
-    {{/if}}
     <div class="row mt-sm-4 mt-3">
-        <div class="col text-center secondFont">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
-                        edit
-                    </button>
-                </div>
-                <div class="col-12">name: {{userInfo.name}}</div>
-                <div class="col-12">email: {{userInfo.email}}</div>
-            </div>
+        <div class="col text-center">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#editUser">
+                edit info
+            </button>
+        </div>
+        <div class="col text-center">
+            <div class="col-12">welcome {{userInfo.name}}</div>
+            {{#each messages}}
+                <div class="col text-center text-danger secondFont text-lowercase mt-sm-0 mb-sm-1 mt-1">{{this}}</div>
+            {{/each}}
+            {{#if goodMessage}}
+                <div class="col text-center text-success secondFont text-lowercase mt-sm-0 mb-sm-1 mt-1">{{goodMessage}}</div>
+            {{/if}}
         </div>
         {{#if userInfo.isadmin}}
         <div class="col text-center">
@@ -40,7 +21,7 @@
         </div>
         {{/if}}
         <div class="col text-center">
-            <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">salir</a>
+            <a class="btn btn-outline-dark rounded-0 secondFont" href="/user/logout" role="button">sign out</a>
         </div>
     </div>
     <div class="row mt-sm-5 mt-4">
@@ -48,19 +29,19 @@
             {{#if orders}}
             {{else}}
             <div class="col text-center mt-3 mt-sm-2">
-                <div class="mb-sm-2 mb-3">no tienes ninguna compra</div>
-                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-4" href="/product/todo" role="button">regresar a la tienda</a></div>
+                <div class="mb-sm-2 mb-3">there are no orders</div>
+                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-4" href="/product/all" role="button">return to the store</a></div>
                 <div class="mb-sm-5 mb-4 invisible">.</div>
                 <div class="mb-sm-3 invisible">.</div>
             </div>
             {{/if}}
             <div class="row mt-sm-3">
             {{#each orders}}
-                <div class="col-5 col-sm-3 ml-3 ml-sm-5 mt-3 mt-sm-3 text-center border border-dark">
+                <div class="col-5 col-sm-3 ml-3 ml-sm-5 mt-3 mt-sm-1 text-center border border-dark">
                     <div class="mt-2">{{orderDate}}</div>
                     <div class="mt-2">{{orderId}}</div>
                     <div class="mt-2 text-lowercase">{{orderStatus}}</div>
-                    <div class="mt-2 mb-2">ver detalles</div>
+                    <div class="mt-2 mb-2">details</div>
                 </div>
             <!-- 
             <div class="row-fluid mt-sm-4 mt-4 pl-2 pr-2 pl-sm-0 pr-sm-0">
@@ -109,9 +90,9 @@
                 <div class="row">
                     <input type="hidden" name="_csrf" value="{{csrfToken}}">
                     <input type="hidden" id="custId" name="custId" value="{{userInfo._id}}">
-                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">nombre: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
-                    <div class="col-sm-6 mb-sm-2 col-7 mb-2">correo: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
-                    <div class="col-sm-12 mb-sm-2 mt-sm-2 mt-2 col-7 mb-2"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">guardar</button></div>
+                    <div class="col-sm-6 mb-sm-2 col-12 mb-2">name: <input id="name" name="name" class="secondFont" type="text" value="{{userInfo.name}}"></div>
+                    <div class="col-sm-6 mb-sm-2 col-12 mb-2">email: <input id="email" name="email" class="secondFont" type="text" value="{{userInfo.email}}"></div>
+                    <div class="col-sm-12 mb-sm-2 mt-sm-2 mt-2 col-12 mb-2 text-center"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">save</button></div>
                 </div>
             </form>
         </div>

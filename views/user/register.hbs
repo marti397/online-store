@@ -1,56 +1,47 @@
 <div class="container">
-    <div class="row">
-        <div class="col text-center secondFont text-lowercase mt-sm-2">
-            {{#each messages}}
-            <div class="alert alert-danger alert-dismissible fade show rounded-0" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                {{this}}
-            </div>
-            {{/each}}
-        </div>
-    </div>
-    <div class="row mt-sm-3 mt-3">
+    <div class="row mt-sm-4 mt-3">
         <div class="col-sm-4 col-1"></div>
         <div class="col-sm-4 col-10">
-            <div class="text-center mainFont">crea una cuenta</div>
+            <div class="text-center mainFont">create an account</div>
             <!--validate-->
             <form action="/user/signup" method="post" class="needs-validation" id="registrar" novalidate>
                 <input type="hidden" name="_csrf" value="{{csrfToken}}">
                 <div class="form-row">
                     <div class="col-sm-12 col-12 mt-sm-4 mt-4">
-                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="nombre" id="fullname" name="fullname" required>
+                        <input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="name" id="fullname" name="fullname" required>
                         <small class="form-text text-muted smallFt"></small>
                         <div class="invalid-feedback secondFont">
-                            ingresa un nombre
+                            enter a name
                         </div>
                     </div>
                      <div class="col-sm-12 col-12 mt-sm-4 mt-4">
-                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="correo electronico" required>
+                        <input type="email" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpEmail" name="signUpEmail" aria-describedby="emailHelp" placeholder="email" required>
                         <small id="emailHelp" class="form-text text-muted smallFt"></small>
                         <div class="invalid-feedback secondFont">
-                            ingresa un correo
+                            enter an email
                         </div>
                     </div>
                      <div class="col-sm-12 col-12 mt-sm-4 mt-4">
-                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="contraseña, minimo cuatro caracteres" required>
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" id="signUpPassword" name="signUpPassword" placeholder="password with at least four characters" required>
                         <small class="form-text text-muted smallFt"></small>
                         <div class="invalid-feedback secondFont">
-                            ingresa tu contraseña
+                            enter a password
                         </div>
                     </div>
                     <div class="col-sm-12 col-12 mt-sm-4 mt-4">
-                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="repite tu contraseña" id="secondPass" required>
+                        <input type="password" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="please repeat password" id="secondPass" required>
                         <div class="invalid-feedback secondFont" id="secondPassText">
-                            repite tu contraseña
+                            repeat your password
                         </div>
                     </div>
                     <div class="col-sm-12 col-12 mt-sm-4 mt-4 mb-sm-5 text-center">
-                        <button type="submit" class="btn btn-outline-dark secondFont rounded-0">registrar</button>
+                        <button type="submit" class="btn btn-outline-dark secondFont rounded-0">register</button>
                     </div>
                 </div>
             </form>
+            {{#each messages}}
+            <div class="col text-center text-danger secondFont text-lowercase mt-sm-0 mb-sm-1 mt-3">{{this}}</div>
+            {{/each}}
         </div>
     </div>
 </div>
@@ -78,7 +69,7 @@
 $( "#registrar" ).submit(function( event ) {
     if ( $( "#signUpPassword" ).val() != $( "#secondPass" ).val() ) {
         $( "#myspan" ).text( "not valid" ).show();
-        $( "#secondPassText" ).text( "Contraseña diferente" ).show();
+        $( "#secondPassText" ).text( "different password" ).show();
         event.preventDefault();
     }
 });
