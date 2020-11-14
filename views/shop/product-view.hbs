@@ -21,11 +21,15 @@
       </div>
     </div>
     <div class="col-sm-6 col-12 mt-sm-0 mt-2">
+      {{#if product.showOnWeb}}
       <a href="/add-to-cart/{{product._id}}" class="btn btn-outline-dark secondFont rounded-0">add</a>
+      {{else}}
+      <div class="text-danger">this item is unavailable</div>
+      {{/if}}
       <div class="secondFont mt-2 mt-sm-4 font-weight-normal">{{product.title}} - ${{product.price}}</div>
       <div class="secondFont mt-1">{{product.descr}}</div>
-      <div class="secondFont mt-4">Envios y devoluciones gratis</div>
-      <div class="secondFont">En ordenes de mas de $2,000</div>
+      <div class="secondFont mt-4">free shipping in all</div>
+      <div class="secondFont">purchases over $30</div>
       <div class="secondFont mt-4">{{product.details}}</div>
     </div>
   </div>

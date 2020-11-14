@@ -66,7 +66,11 @@
         {{#each data.products}}
         <div class="col-sm-2 col-4 mt-sm-5 mt-5">
             <div class="row">
-                <div class="col-sm-12 col-12"><img src="{{imagePath.[0]}}" class="img-fluid" alt="img"></div>
+                <div class="col-sm-12 col-12">
+                    <a href="/product/{{_id}}/detail" class="stretched-link">
+                        <img src="{{imagePath.[0]}}" class="img-fluid" alt="img">
+                    </a>
+                </div>            
                 <div class="col-sm-12 col-12">{{title}}</div>
                 <div class="col-sm-8 col-12">${{price}}</div>
                 {{#if showOnWeb}}

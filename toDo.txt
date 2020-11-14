@@ -6,9 +6,12 @@ if email is changed it shuld change in the final order-
 -change spanish for final purchase
 
 -order details from admin and user
--on orders, should have pagination
+
 -orders should have a section for comments
 -quantity of products
+-tax is not updating properly - check when adding discounts and making changes here!
+-drop down menu for selecttion of products - small should display better
+check out does not accept decimals - because prices are not rounded
 -supplier db
 -how to handle returns?
 -how to handle change in status of orders?
@@ -18,6 +21,7 @@ if email is changed it shuld change in the final order-
 
 set DEBUG=online-store:* & npm start
 
+-on orders, should have pagination
 -edit the photos
 -Change name to Glammy
 -dar puntos por cada compra
@@ -29,13 +33,14 @@ set DEBUG=online-store:* & npm start
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
-TERMINAR CHECKOUT IF NOT LOGGEDIN
+TERMINAR CHECKOUT IF NOT LOGGEDIN -- check two items above
 TERMINAR CHECKOUT FINAL page
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR OCULTAR ADMIN ADRESSS
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 
 --add feature for monthly box
+--check how tax is added in purchases??????
 
 -fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
 -logout success msg
