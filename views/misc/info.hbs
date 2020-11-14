@@ -1,7 +1,7 @@
 <div class="container secondFont">
     <div class="row mt-sm-3 mt-3">
         <div class="col-12 text-center mainFont">help</div>
-        <div class="col-12 text-center mt-sm-5 mt-4">
+        <div class="col-12 text-center mt-sm-4 mt-4">
             <a href="https://wa.me/16262337315" target="_blank" class="">
                 <img src="/images/whatsapp.svg" alt="whats" width="20px" height="20px"> WhatsApp
             </a>
@@ -14,63 +14,26 @@
         <div class="col-sm-12 text-center text-danger mb-3 mb-sm-0">the order was not found, please try again</div>
         {{/if}}
         {{#if orderdata}}
-        
-        <div class="col-sm-12 text-center mb-3 mb-sm-0">
-            <button type="button" class="btn btn-outline-dark rounded-0 secondFont" data-toggle="modal" data-target="#checkOrderInfo" id="orderInfoBtn">see info again</button>
-        </div>
             {{#each orderdata}}
-            <div class="col-sm-12 text-center mb-3 mb-sm-0">your order status is: {{orderStatus}}. for details 
-                <a href="/info/{{orderId}}" class="stretched-link" id="#orderInfoBtn">click here</a>
+            <div class="col-sm-12 text-center mb-3 mb-sm-0">your order status is {{orderStatus}}, for details 
+                <a href="/info/{{orderId}}/details" class="stretched-link" id="#orderInfoBtn">click here</a>
             </div>
-            <!-- Modal for display order data-->
-            <div class="modal fade" id="checkOrderInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-body">
-                    <div class="col-sm-12 col-12">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="col-sm-12">{{orderId}}</div>
-                    <div class="col-sm-12">{{orderDate}}</div>
-                    <div class="col-sm-12">{{orderStatus}}</div>
-                    <div class="secondFont mt-2 mb-2">
-                        <button type="button" class="btn btn-outline-dark rounded-0 secondFont" id="testlink">
-                            <a href="/info/{{orderId}}" class="stretched-link" id="#orderInfoBtn"></a>details
-                        </button>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-            <!-- Modal -->
             {{/each}}
-        <script>    
-        jQuery(function(){
-            jQuery('#orderInfoBtn').click();
-            jQuery('#testlink').trigger('click');
-        });
-        </script>
         {{/if}}
-        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3">
-            <a href="/info/atencion" class="text-primary">customer service</a>
+        <div class="col-sm-6 col-6 text-center mt-sm-5 mt-4">
+            <a href="/info/customer-service" class="text-primary">customer service</a>
         </div>
-        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3">
-            <a href="/info/envios" class="text-primary">shipping and returns</a>
-        </div>
-        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3">
-            <a href="/info/condiciones" class="text-primary">términos y condiciones</a>
-        </div>
-        <div class="col-sm-3 col-6 text-center mt-sm-4 mt-3 mb-sm-5">
-            <a href="/info/politicas" class="text-primary">políticas</a>
+        <div class="col-sm-6 col-6 text-center mt-sm-5 mt-4">
+            <a href="/info/shipping-and-returns" class="text-primary">shipping and returns</a>
         </div>
     </div>
-    <div class="row mt-sm-4 mt-4">
+    <div class="row mt-sm-5 mt-4">
         <div class="col-12 text-center mainFont">about us</div>
-        <div class="col-12 mt-sm-2 mt-2 text-center">somos una tienda en línea con sede en la Ciudad de Mexico, MX. nuestro ojetivo es proponer estilos a la vanguardia del cambio con un atractivo atemporal. Lupita es estilo antes que moda.</div>
+        <div class="col-12 mt-sm-3 mt-2 mb-sm-4 text-center">
+            we are an online store with offices in atlanta, ga. 
+            our goal is to propose styles at the forefront of change with a timeless appeal.
+        </div>
     </div>
-
 <!-- Modal for check order -->
 <div class="modal fade" id="checkOrder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

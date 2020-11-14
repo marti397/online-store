@@ -19,28 +19,20 @@ router.get('/', function(req, res, next){
     }
 });
 
-router.get('/:id', function(req,res, next){
+router.get('/customer-service', function(req, res, next){
+    res.render('misc/atencion');
+});
+
+router.get('/shipping-and-returns', function(req, res, next){
+    res.render('misc/envios');
+});
+
+router.get('/:id/details', function(req,res, next){
     var search = req.params.id;
     Order.find({orderId:search},function(err,docs){
         if (err){return res.write('Error!');}
         res.render('misc/order-details', {order:docs});
     }) 
-});
-
-router.get('/atencion', function(req, res, next){
-    res.render('misc/atencion');
-});
-
-router.get('/envios', function(req, res, next){
-    res.render('misc/envios');
-});
-
-router.get('/condiciones', function(req, res, next){
-    res.render('misc/condiciones');
-});
-
-router.get('/politicas', function(req, res, next){
-    res.render('misc/politicas');
 });
 
 function escapeRegex(text) {

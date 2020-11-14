@@ -1,5 +1,3 @@
--fix spanish on help menu
-
 if email is changed it shuld change in the final order-
 
 -non registered users show wierd input
@@ -41,6 +39,7 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 
 --add feature for monthly box
 --check how tax is added in purchases??????
+-fix spanish customer service and shipping and returns - how are we going to handle this?
 
 -fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
 -logout success msg
@@ -48,6 +47,9 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -confirmacion de compra email
 -when creating user say congratulations
 -when loggin is success say something
+
+-do console for people selling products with analytics
+-do console for point of sale so they can admin easily this crap
 
 -space when registering as user should be allowed
 -when adding 1 more it takes a little to process (async)

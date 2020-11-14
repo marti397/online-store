@@ -12,7 +12,7 @@
         {{#each data.order}}
         <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
             <div class="row">
-                <div class="col-sm-12 col-12">order id: <a href="/info/{{orderId}}">{{orderId}}</a></div>
+                <div class="col-sm-12 col-12">order id: <a href="/info/{{orderId}}/details">{{orderId}}</a></div>
                 <div class="col-sm-12 col-12">order date: {{orderDate}}</div>
                 <div class="col-sm-12 col-12">order status: {{orderStatus}}</div>
                 <div class="col-sm-12 col-12">order name: {{name}}</div>
@@ -34,7 +34,7 @@
                         <form action="/admin/update-order" method="post">
                         <div class="row">
                             <input type="hidden" id="orderId" name="orderId" value="{{this._id}}">
-                            <div class="col-sm-6 mb-sm-3 col-12 mb-3">order id: <a href="/info/{{orderId}}">{{orderId}}</a></div>
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-3">order id: <a href="/info/{{orderId}}/details">{{orderId}}</a></div>
                             <div class="col-sm-6 mb-sm-3 col-12 mb-3">order date: {{orderDate}}</div>
                             <div class="col-sm-6 mb-sm-3 col-12 mb-3">payment id: {{paymentId}}</div>
                             <div class="col-sm-6 mb-sm-3 col-12 mb-3">user id: {{user}}</div>

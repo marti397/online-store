@@ -127,7 +127,7 @@ router.post('/checkout', function(req, res, next){
     amount: cart.finalPrice * 100,
     currency: "mxn",
     source: req.body.stripeToken, // obtained with Stripe.js
-    statement_descriptor: 'Lupita Accesorios Co',
+    statement_descriptor: 'Glammy MX',
     description: "Charge for " + req.body.name
   }, function(err, charge) {
     // asynchronously called
@@ -159,7 +159,7 @@ router.post('/checkout', function(req, res, next){
     });
     order.save(function(err, result){
       if (err) { return next(err); }
-      req.flash('success', "correo: " +  req.user.email + " - confirmación: "  + order.orderId);
+      req.flash('success', "email: " +  req.user.email + " - confirmation: "  + order.orderId);
       req.session.cart = null;
       res.redirect('/');
     });
