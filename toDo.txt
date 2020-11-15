@@ -1,11 +1,7 @@
-if email is changed it shuld change in the final order-
-
+-need to add email to the order
 -non registered users show wierd input
--change spanish for final purchase
-
--order details from admin and user
-
 -orders should have a section for comments
+-quick access to orders to ship
 -quantity of products
 -tax is not updating properly - check when adding discounts and making changes here!
 -drop down menu for selecttion of products - small should display better

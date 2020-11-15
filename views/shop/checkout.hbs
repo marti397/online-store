@@ -2,9 +2,10 @@
   <div class="row mt-sm-3 mt-3">
     <div class="col-sm-4 col-1"></div>
      <div class="col-sm-4 col-10">
-       <div class="text-center font-weight-bold mt-sm-4 mt-3">${{finalPrice}}
+       <div class="text-center font-weight-bold mt-sm-4 mt-3">
+         ${{finalPrice}}
        </div>
-       <div id="payment-errors" class="{{#if noError}}hidden{{/if}} text-danger mt-sm-3 mt-3 secondFont">{{messages}}</div>
+       <div id="payment-errors" class="{{#if noError}}hidden{{/if}} text-danger mt-sm-3 mt-3 secondFont text-center">{{messages}}</div>
        <form action="/checkout" method="post" id="payment-form">
         <div class="row">
           <div class="col-sm-12 mt-sm-3 mt-2">

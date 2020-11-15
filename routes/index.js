@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var csurf = require('csurf');
-var Cart = require('../models/cart');
+var { check, validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
 var csrfProtection = csurf({ cookie: true });
 
+var Cart = require('../models/cart');
 var Product = require('../models/product');
 var Order = require('../models/order');
 var Discount = require('../models/discount');
@@ -116,54 +118,73 @@ router.get('/checkout', function(req, res, next) {
 });
 
 //checkout post
-router.post('/checkout', function(req, res, next){
+router.post('/checkout', [
+  //validate fields
+  check('name').isLength({ min: 1 }).withMessage('enter a name'),
+  check('email').isEmail().withMessage('invalid email'),
+  check('address').isLength({ min: 1 }).withMessage('enter an address'),
+
+  //sanitize fields
+  sanitizeBody('name').escape(),
+  sanitizeBody('address').escape(),
+  sanitizeBody('email').escape()
+], function(req, res, next){
   if (!req.session.cart){
     return res.redirect('/shopping-cart');
   }
-  var cart = new Cart(req.session.cart);
-  var stripe = require("stripe")("sk_test_zm6Fa5KELRS1ERYX19A7LvXz");
+
+  var errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    var messages = [];
+    errors.array().forEach(function(error){
+      messages.push(error.msg);
+    })
+    req.flash('error', messages);
+    res.redirect('/checkout');
+  } else{
+    var cart = new Cart(req.session.cart);
+    var stripe = require("stripe")("sk_test_zm6Fa5KELRS1ERYX19A7LvXz");
   
-  stripe.charges.create({
-    amount: cart.finalPrice * 100,
-    currency: "mxn",
-    source: req.body.stripeToken, // obtained with Stripe.js
-    statement_descriptor: 'Glammy MX',
-    description: "Charge for " + req.body.name
-  }, function(err, charge) {
-    // asynchronously called
-    if (err){
-      req.flash('error', err.message);
-      return res.redirect('/checkout');
-    }
-    const purchaseEvent = new Date();
-    const dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric' };
-    const regexEmail = new RegExp(escapeRegex(req.body.email), 'gi');
-    const regexName= new RegExp(escapeRegex(req.body.name), 'gi');
-    if(!req.user){
-      var myperson = new User({
-        email: regexEmail,
-        password:"default",
-        name: regexName
+    stripe.charges.create({
+      amount: cart.finalPrice * 100,
+      currency: "mxn",
+      source: req.body.stripeToken, // obtained with Stripe.js
+      statement_descriptor: 'Glammy MX',
+      description: "Charge for " + req.body.name
+    }, function(err, charge) {
+      // asynchronously called
+      if (err){
+        req.flash('error', err.message);
+        return res.redirect('/checkout');
+      }
+      const purchaseEvent = new Date();
+      const dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric' };
+      if(!req.user){
+        var myperson = new User({
+          email: req.body.email,
+          password:"default",
+          name: req.body.name
+        });
+        req.user = myperson
+      }
+      var order = new Order({
+        user: req.user,
+        cart: cart,
+        address: req.body.address,
+        name: req.body.name,
+        paymentId: charge.id,
+        orderId: Math.floor(Math.random() * 10) + Date.now().toString(),
+        orderStatus: "processing",
+        orderDate: purchaseEvent.toLocaleString("en-GB", dateOptions)
       });
-      req.user = myperson
-    }
-    var order = new Order({
-      user: req.user,
-      cart: cart,
-      address: req.body.address,
-      name: req.body.name,
-      paymentId: charge.id,
-      orderId: Math.floor(Math.random() * 10) + Date.now().toString(),
-      orderStatus: "processing",
-      orderDate: purchaseEvent.toLocaleString("en-GB", dateOptions)
+      order.save(function(err, result){
+        if (err) { return next(err); }
+        req.flash('success', "email: " +  req.body.email + " - confirmation: "  + order.orderId);
+        req.session.cart = null;
+        res.redirect('/');
+      });
     });
-    order.save(function(err, result){
-      if (err) { return next(err); }
-      req.flash('success', "email: " +  req.user.email + " - confirmation: "  + order.orderId);
-      req.session.cart = null;
-      res.redirect('/');
-    });
-  });
+  }
 });
 
 module.exports = router;
