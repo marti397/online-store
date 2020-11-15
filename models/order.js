@@ -9,8 +9,8 @@ var orderSchema = new Schema({
     paymentId:{type: String, required: true},
     orderId:{type: String, required: true},
     orderStatus: String,
-    email:String,
-    comments:String,
+    email: String,
+    comments: String,
     orderDate:{type: String, required: true}
 });
 

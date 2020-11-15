@@ -1,6 +1,4 @@
--orders should have a section for comments
--quick access to orders to ship
--quantity of products
+-quantity of products, ir quantity 0, do not show in webiste
 -tax is not updating properly - check when adding discounts and making changes here!
 -drop down menu for selecttion of products - small should display better
 check out does not accept decimals - because prices are not rounded

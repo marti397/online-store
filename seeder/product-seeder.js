@@ -12,6 +12,7 @@ var products = [
         price: 140,
         type: 'bracelets',
         style: 'casual',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -22,6 +23,7 @@ var products = [
         price: 140,
         type: 'bracelets',
         style: 'ejecutiva',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -32,6 +34,7 @@ var products = [
         price: 360,
         type: 'necklaces',
         style: 'especiales',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -42,6 +45,7 @@ var products = [
         price: 360,
         type: 'earings',
         style: 'invierno',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -52,6 +56,7 @@ var products = [
         price: 1340,
         type: 'bracelets',
         style: 'noche',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -62,6 +67,7 @@ var products = [
         price: 1600,
         type: 'rings',
         style: 'especiales',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -72,6 +78,7 @@ var products = [
         price: 900,
         type: 'earings',
         style: 'ejecutiva',
+        quantityAvailable: 2,
         showOnWeb: true
     }),
     new Product({
@@ -82,6 +89,7 @@ var products = [
         price: 100,
         type: 'rings',
         style: 'invierno',
+        quantityAvailable: 2,
         showOnWeb: true
     })
 ];

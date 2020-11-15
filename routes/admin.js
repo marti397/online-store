@@ -143,7 +143,11 @@ router.get('/order-status', function(req, res, next) {
 //update products
 router.post('/update-product', function(req, res, next){
     var showOnWeb = true;
+    var quantityOfProducts = req.body.quantity;
     if(req.body.showProduct==undefined){
+        showOnWeb = false;
+    }
+    if(quantityOfProducts == 0){
         showOnWeb = false;
     }
     Product.findByIdAndUpdate(req.body.custId, {
@@ -153,6 +157,7 @@ router.post('/update-product', function(req, res, next){
         price:req.body.price,
         type:req.body.type,
         style:req.body.style,
+        quantityAvailable:req.body.quantity,
         showOnWeb:showOnWeb
     }, function(err,result){
         res.redirect('/admin/product');
@@ -178,7 +183,8 @@ router.post('/update-order', function(req, res, next){
         name:req.body.orderName,
         orderStatus:req.body.orderStatus,
         address:req.body.orderAddress,
-        email:req.body.email
+        email:req.body.email,
+        comments:req.body.comments
     }, function(err,result){
         res.redirect('/admin/order');
     });
@@ -206,8 +212,12 @@ router.post('/add-product', function(req, res, next){
         myphotoarr[index] = "/images/products/" + item;
     })
     var showOnWeb = true;
+    var quantityOfProducts = req.body.quantity;
     if(req.body.showProduct==undefined){
         var showOnWeb = false;
+    }
+    if(quantityOfProducts == 0){
+        showOnWeb = false;
     }
     var newProduct = new Product({
         imagePath: myphotoarr,
@@ -217,6 +227,7 @@ router.post('/add-product', function(req, res, next){
         price:req.body.price,
         type:req.body.type,
         style:req.body.style,
+        quantityAvailable:req.body.quantity,
         showOnWeb:showOnWeb
     });
 
