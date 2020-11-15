@@ -4,6 +4,24 @@
             <a href="/admin" class="btn btn-outline-primary secondFont rounded-0">return</a>
         </div>
         <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
+            <form action="/admin/product" method="get">
+                <input type="hidden" class="form-control form-control-sm" id="nostock" name="nostock" value="true">
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">out of stock</button>
+            </form>
+        </div>
+        <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
+            <form action="/admin/product" method="get">
+                <input type="hidden" class="form-control form-control-sm" id="noshow" name="noshow" value="true">
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">do not show</button>
+            </form>
+        </div>
+        <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
+            <form action="/admin/product" method="get">
+                <input type="hidden" class="form-control form-control-sm" id="yesshow" name="yesshow" value="true">
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">show</button>
+            </form>
+        </div>
+        <div class="col-sm-2 col-4 mt-sm-5 mt-4 text-center">
             <button type="button" class="btn btn-outline-primary secondFont rounded-0" data-toggle="modal" data-target="#add">add</button>
             <!-- Modal for adding -->
             <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -75,12 +93,15 @@
                     </a>
                 </div>            
                 <div class="col-sm-12 col-12">{{title}}</div>
-                <div class="col-sm-8 col-12">${{price}}</div>
+                <div class="col-sm-7 col-12">${{price}}</div>
                 {{#if showOnWeb}}
-                    <div class="col-sm-4 col-12">&#10003;</div>
+                    <div class="col-sm-1 col-12">&#10003;</div>
                 {{else}}
-                    <div class="col-sm-4 col-12">&#10005;</div>
+                    <div class="col-sm-1 col-12">&#10005;</div>
                 {{/if}}
+                {{#unless quantityAvailable}}
+                    <div class="col-sm-1 col-12">&#8709;</div>
+                {{/unless}}
                 <div class="col-sm-12 col-12">{{type}}</div>
                 <div class="col-sm-12 col-12">{{style}}</div>
                 <!-- Button trigger modal -->

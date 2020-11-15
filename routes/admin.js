@@ -30,7 +30,13 @@ router.get('/product', function(req, res, next) {
             Category.find({},callback);
         },
         products: function(callback){
-            if(req.query.checkData){
+            if(req.query.nostock){
+                Product.find({quantityAvailable:0},callback); //showOnWeb
+            }else if(req.query.noshow){
+                Product.find({showOnWeb:false},callback);
+            }else if(req.query.yesshow){
+                Product.find({showOnWeb:true},callback);
+            }else if(req.query.checkData){
                 var search = req.query.checkData;
                 Product.find({$or:[{title:search},{type:search},{style:search}]},callback);
             }else{
