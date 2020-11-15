@@ -171,6 +171,7 @@ router.post('/checkout', [
         user: req.user,
         cart: cart,
         address: req.body.address,
+        email: req.body.email,
         name: req.body.name,
         paymentId: charge.id,
         orderId: Math.floor(Math.random() * 10) + Date.now().toString(),

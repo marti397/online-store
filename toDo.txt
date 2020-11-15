@@ -1,5 +1,3 @@
--need to add email to the order
--non registered users show wierd input
 -orders should have a section for comments
 -quick access to orders to ship
 -quantity of products
@@ -14,6 +12,9 @@ check out does not accept decimals - because prices are not rounded
 --auto emails when status has been changed
 
 set DEBUG=online-store:* & npm start
+
+(node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
+
 
 -on orders, should have pagination
 -edit the photos

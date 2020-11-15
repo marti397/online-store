@@ -99,7 +99,7 @@ router.get('/order', function(req, res, next) {
                     }
                 ],function (err, result) {
                     if(result == 0){
-                        Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData}]},callback);
+                        Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData},{email:req.query.checkData}]},callback);
                     }else{
                         Order.find({$or:[{orderId:req.query.checkData},{name:req.query.checkData},{orderStatus:req.query.checkData},{user:result}]},callback);
                     }  
@@ -177,7 +177,8 @@ router.post('/update-order', function(req, res, next){
     Order.findByIdAndUpdate(req.body.orderId, {
         name:req.body.orderName,
         orderStatus:req.body.orderStatus,
-        address:req.body.orderAddress
+        address:req.body.orderAddress,
+        email:req.body.email
     }, function(err,result){
         res.redirect('/admin/order');
     });
@@ -270,6 +271,16 @@ router.post('/delete-product', function(req, res, next){
         res.redirect('/admin/product');
     });
 });
+
+//delete order
+router.post('/delete-order', function(req, res, next){
+    Order.findByIdAndRemove(req.body.custId,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/order');
+    });
+});
+
+
 
 //delete discount code
 router.post('/delete-discount', function(req, res, next){
