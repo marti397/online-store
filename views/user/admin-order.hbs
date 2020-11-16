@@ -6,7 +6,7 @@
         <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
             <form action="/admin/order" method="get">
                 <input type="hidden" class="form-control form-control-sm" id="onlyGuest" name="onlyGuest" value="true">
-                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">guest only</button>
+                <button type="submit" class="btn btn-outline-primary secondFont rounded-0">guests only</button>
             </form>
         </div>
         <div class="col-sm-2 col-6 mt-sm-5 mt-4 text-center">
@@ -62,7 +62,7 @@
                             <div class="col-sm-6 mb-sm-3 col-12 mb-3">payment id: {{paymentId}}</div>
                             <div class="col-sm-6 mb-sm-3 col-12 mb-3">user id: {{user}}</div>
                             {{#if isguest}}
-                            <div class="col-sm-6 mb-sm-3 col-12 mb-3">order completed as guest</div>
+                            <div class="col-sm-6 mb-sm-3 col-12 mb-3 text-danger">order completed as guest</div>
                             {{/if}}
                             <div class="col-sm-6 mb-sm-3 col-12 mb-3">email: <br>
                                 <input id="email" name="email" class="secondFont" type="text" value="{{email}}" required>

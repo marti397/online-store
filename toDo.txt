@@ -1,4 +1,3 @@
-guest, logged in, processing
 -quantity of products, ir quantity 0, do not show in webiste    
 -tax is not updating properly - check when adding discounts and making changes here!
 -drop down menu for selecttion of products - small should display better
