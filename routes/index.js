@@ -99,11 +99,15 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
         req.session.cart = cart;
         res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
       } else{
+        cart.addTax();
+        cart.getFinalPrice();
         req.session.cart = cart;
         res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
       }
     });
   } else{
+    cart.addTax();
+    cart.getFinalPrice();
     req.session.cart = cart;
     res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
   }

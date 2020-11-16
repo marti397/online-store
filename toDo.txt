@@ -1,13 +1,7 @@
--quantity of products, ir quantity 0, do not show in webiste    
--tax is not updating properly - check when adding discounts and making changes here!
--drop down menu for selecttion of products - small should display better
-check out does not accept decimals - because prices are not rounded
+--auto emails when status has been changed
 -supplier db
 -how to handle returns?
--add a comment section -- maybe all info is included here
 search user by id!
-*****what happens if you delete a user while logged in????????
---auto emails when status has been changed
 
 set DEBUG=online-store:* & npm start
 
@@ -48,13 +42,16 @@ TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 -change/reset password - how to do it?
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
 -add rewards to profile page 
+-check out does not accept decimals - because prices are not rounded
 -rotar productos - dar lista de productos
 
 FUTURE DEVELOPMENT
+-message when you cannot add more because there is no stock
 -add filters color, style, price
 -when you buy three the third one is free, three for the price of two
 -do console for people selling products with analytics
 -do console for point of sale so they can admin easily this crap
 -how to handle double confirmaiton of admin tasks if I hire somebody
+-analytics what products sold fast? date of first web show vs sold?
 stainless steel
 silver plated
