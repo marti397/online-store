@@ -4,6 +4,8 @@ var csurf = require('csurf');
 var { check, validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
 var csrfProtection = csurf({ cookie: true });
+var async = require('async');
+const Mongoose = require("mongoose");
 
 var Cart = require('../models/cart');
 var Product = require('../models/product');
@@ -178,11 +180,36 @@ router.post('/checkout', [
         orderStatus: "processing",
         orderDate: purchaseEvent.toLocaleString("en-GB", dateOptions)
       });
-      order.save(function(err, result){
-        if (err) { return next(err); }
-        req.flash('success', "email: " +  req.body.email + " - confirmation: "  + order.orderId);
-        req.session.cart = null;
-        res.redirect('/');
+      async.parallel({
+        product: function(callback){
+          let input = []
+          for (const item in cart.items) {
+            input.push({
+              "id": item,
+              "quantityAvailable": cart.items[item].qty
+            })
+          }
+          let bulkArr = [];
+          for (const i of input) {
+              bulkArr.push({
+                  updateOne: {
+                      "filter": { "_id": Mongoose.Types.ObjectId(i.id) },
+                      "update": { $inc: { "quantityAvailable": - i.quantityAvailable } }
+                  }
+              })
+          }
+          Product.bulkWrite(bulkArr, callback);
+        },
+        productUpdate: function(callback){
+          Product.update({quantityAvailable:0},{showOnWeb:false},{ multi: true }, callback);
+        }
+      }, function(err,results){
+        order.save(function(err, result){
+          if (err) { return next(err); }
+          req.flash('success', "email: " +  req.body.email + " - confirmation: "  + order.orderId);
+          req.session.cart = null;
+          res.redirect('/');
+        });
       });
     });
   }

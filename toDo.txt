@@ -1,4 +1,5 @@
 -quantity of products, ir quantity 0, do not show in webiste
+-how to know if user had an account or guest?
 -tax is not updating properly - check when adding discounts and making changes here!
 -drop down menu for selecttion of products - small should display better
 check out does not accept decimals - because prices are not rounded
@@ -22,6 +23,9 @@ set DEBUG=online-store:* & npm start
 -check order design/when order displays
 -the cart operations such as calculating tax, etc. is delayed, may require async
 -add calculation for shipping to cart
+
+stainless steel
+silver plated
 
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
