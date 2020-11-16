@@ -161,13 +161,15 @@ router.post('/checkout', [
       }
       const purchaseEvent = new Date();
       const dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric' };
+      var isguest = false;
       if(!req.user){
         var myperson = new User({
           email: req.body.email,
           password:"default",
-          name: req.body.name
+          name: req.body.name,
         });
-        req.user = myperson
+        req.user = myperson;
+        isguest = true;
       }
       var order = new Order({
         user: req.user,
@@ -176,6 +178,7 @@ router.post('/checkout', [
         email: req.body.email,
         name: req.body.name,
         paymentId: charge.id,
+        isguest: isguest,
         orderId: Math.floor(Math.random() * 10) + Date.now().toString(),
         orderStatus: "processing",
         orderDate: purchaseEvent.toLocaleString("en-GB", dateOptions)

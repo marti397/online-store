@@ -11,6 +11,7 @@ var orderSchema = new Schema({
     orderStatus: String,
     email: String,
     comments: String,
+    isguest: {type: Boolean, default: false},
     orderDate:{type: String, required: true}
 });
 

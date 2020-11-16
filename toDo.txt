@@ -1,12 +1,12 @@
--quantity of products, ir quantity 0, do not show in webiste
--how to know if user had an account or guest?
+guest, logged in, processing
+-quantity of products, ir quantity 0, do not show in webiste    
 -tax is not updating properly - check when adding discounts and making changes here!
 -drop down menu for selecttion of products - small should display better
 check out does not accept decimals - because prices are not rounded
 -supplier db
 -how to handle returns?
--how to handle change in status of orders?
 -add a comment section -- maybe all info is included here
+search user by id!
 *****what happens if you delete a user while logged in????????
 --auto emails when status has been changed
 
@@ -14,81 +14,48 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
-
 -on orders, should have pagination
 -edit the photos
 -Change name to Glammy
 -dar puntos por cada compra
--check user account and orders page
+-check user account and orders page should be simetrical
 -check order design/when order displays
 -the cart operations such as calculating tax, etc. is delayed, may require async
 -add calculation for shipping to cart
-
-stainless steel
-silver plated
-
 EXPRESS references for mongo db encryption, live production and queries
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
-
 TERMINAR CHECKOUT IF NOT LOGGEDIN -- check two items above
 TERMINAR CHECKOUT FINAL page
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
-TERMINAR OCULTAR ADMIN ADRESSS
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
-
 --add feature for monthly box
 --check how tax is added in purchases??????
 -fix spanish customer service and shipping and returns - how are we going to handle this?
-
 -fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
--logout success msg
 -check that the email is not in use when modfying data
--confirmacion de compra email
--when creating user say congratulations
--when loggin is success say something
-
--do console for people selling products with analytics
--do console for point of sale so they can admin easily this crap
-
+-confirmacion de compra email (actual send email)
 -space when registering as user should be allowed
 -when adding 1 more it takes a little to process (async)
 -search order for admin
 -caluclate shipping
--add discount coupon button, descuentos, en la compra de dos o mas monos llevate el tercero gratis, etc
 -to checout add credit cards accepted? -> https://stripe.com/payments/features#local-payment-methods
--another good checkout site -> https://www.accesorioslupita.com/checkout?appSectionParams=%7B%22a11y%22%3Afalse%2C%22cartId%22%3A%225f2c5898-7355-42f6-a0f2-4d4fcf6a92da%22%2C%22storeUrl%22%3A%22https%3A%2F%2Fwww.accesorioslupita.com%2F%22%2C%22isFastFlow%22%3Afalse%2C%22isPickupFlow%22%3Afalse%2C%22cashierPaymentId%22%3A%22%22%7D
--change check out to -> https://needsupply.com/on/demandware.store/Sites-NeedSupply-Site/en_US/Checkout-Begin?stage=payment#payment
--break the app when submitting a payment wihtout being logged in
--add check order status when signed in or move it?
 -the search function can be seen here -> https://www.youtube.com/watch?v=9_lKMTXVk64
--continua sin registrar/protected routes
--for all models see if something is required/ or not like primary keys
--do sanitation and validadion for finalizar pago
 -do sanitation and validation for admin data
--ADD 'on stock' field to product model
--choose what products to be displayed on the website
------when doing check out post / i am assuming the user is logged in!!! needs to change that
 --tipo y estilo en edit solo deben tener dropdown menu
 --debe haber una tabla extra para add y edit styles and types
---ver si admin es user type general o admin
--user profile page/if no orders - say no orders
--estatus de la orden debe estar en el modelo
--orden debe tener si se hizo un descuento
--add date to the order model
-
 -do site admin to look at stats
 -no dejar que dos codigos de descuentos tengan el mismo nombre
-
--change db to accept mulitple images
--two image sizes for modal and quick view
--discounts/final sale - see photo in images
 -Chnage stripe keys from test to live
 -change/reset password - how to do it?
--agree to terms and conditions when registering
--encrypt database password/user connection for mongo db
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
 -add rewards to profile page 
-rotar productos - dar lista de productos
+-rotar productos - dar lista de productos
 
-WISHLIST
+FUTURE DEVELOPMENT
 -add filters color, style, price
+-when you buy three the third one is free, three for the price of two
+-do console for people selling products with analytics
+-do console for point of sale so they can admin easily this crap
+-how to handle double confirmaiton of admin tasks if I hire somebody
+stainless steel
+silver plated

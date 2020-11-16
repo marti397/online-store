@@ -91,7 +91,13 @@ router.get('/order', function(req, res, next) {
             OrderSatus.find({},callback);
         },
         order: function(callback){
-            if (req.query.checkData){
+            if(req.query.onlyGuest){
+                Order.find({isguest:true}, callback);
+            } else if(req.query.onlyUsers){
+                Order.find({isguest:false}, callback);
+            } else if(req.query.onlyProcessing){
+                Order.find({orderStatus:"processing"}, callback);
+            } else if (req.query.checkData){
                 async.waterfall([
                     function(callback){
                         User.find({email:req.query.checkData}, function(err,docs){
