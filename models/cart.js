@@ -18,10 +18,12 @@ module.exports = function Cart(oldCart){
         if (!storedItem){
             storedItem = this.items[id] = {item: item, qty: 0, price: 0};
         }
-        storedItem.qty++;
-        storedItem.price = storedItem.item.price * storedItem.qty;
-        this.totalQty++;
-        this.totalPrice += storedItem.item.price;
+        if(storedItem.item.quantityAvailable > storedItem.qty){
+            storedItem.qty++;
+            storedItem.price = storedItem.item.price * storedItem.qty;
+            this.totalQty++;
+            this.totalPrice += storedItem.item.price;
+        }
     };
 
     this.reduceByOne = function(id){
@@ -36,10 +38,12 @@ module.exports = function Cart(oldCart){
     };
 
     this.increaseByOne = function(id){
-        this.items[id].qty++;
-        this.items[id].price += this.items[id].item.price;
-        this.totalQty++;
-        this.totalPrice += this.items[id].item.price;
+        if(this.items[id].item.quantityAvailable > this.items[id].qty){
+            this.items[id].qty++;
+            this.items[id].price += this.items[id].item.price;
+            this.totalQty++;
+            this.totalPrice += this.items[id].item.price;
+        }  
     };
 
     this.addDiscount = function(isPercent, discountAmount){
