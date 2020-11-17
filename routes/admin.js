@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var async = require('async');
+var nodemailer = require('nodemailer');
 
 var Product = require('../models/product');
 var Discount = require('../models/discount');
@@ -198,6 +199,31 @@ router.post('/update-order', function(req, res, next){
         email:req.body.email,
         comments:req.body.comments
     }, function(err,result){
+        if(result.orderStatus != req.body.orderStatus){
+            //email confimartion
+            var transporter = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'chris.m.servin@gmail.com',
+                    pass: 'Notredame10!'
+                }
+            });
+          
+            var mailOptions = {
+                from: 'chris.m.servin@gmail.com',
+                to: req.body.email,
+                subject: 'glammy order update',
+                text: 'the status of your order has been updated: ' + req.body.orderStatus + '. You can check your order details here: http://localhost:3000/info/' + result.orderId + '/details'
+            };
+          
+            transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email sent: ' + info.response);
+                }
+            });
+        }
         res.redirect('/admin/order');
     });
 });

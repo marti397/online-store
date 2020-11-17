@@ -6,6 +6,7 @@ const { sanitizeBody } = require('express-validator');
 var csrfProtection = csurf({ cookie: true });
 var async = require('async');
 const Mongoose = require("mongoose");
+var nodemailer = require('nodemailer');
 
 var Cart = require('../models/cart');
 var Product = require('../models/product');
@@ -215,6 +216,26 @@ router.post('/checkout', [
           if (err) { return next(err); }
           req.flash('success', "email: " +  req.body.email + " - confirmation: "  + order.orderId);
           req.session.cart = null;
+          //email confimartion
+          var transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+              user: 'chris.m.servin@gmail.com',
+              pass: 'Notredame10!'
+            }
+          });
+          
+          var mailOptions = {
+            from: 'chris.m.servin@gmail.com',
+            to: req.body.email,
+            subject: 'glammy order confirmation',
+            text: 'thank you for your recent purchase with glammy you can check your order details here: http://localhost:3000/info/' + order.orderId + '/details'
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {console.log(error);} 
+            else {console.log('Email sent: ' + info.response);}
+          });
           res.redirect('/');
         });
       });
