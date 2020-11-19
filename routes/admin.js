@@ -10,6 +10,7 @@ var Order = require('../models/order');
 var User = require('../models/user');
 var Category = require('../models/category');
 var OrderSatus = require('../models/order-status');
+var Supplier = require('../models/supplier');
 
 
 //protect all routes below
@@ -82,6 +83,21 @@ router.get('/categories', function(req, res, next) {
     Categories.find({}, function(err, docs){
         res.render('user/admin-categories', {categories: docs, messages: flashMessage, noMessage: !flashMessage});
       });
+});
+
+//read all suppliers for admin
+router.get('/supplier', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    if(req.query.checkData){
+        Supplier.find({name:req.query.checkData}, function(err, docs){
+            res.render('user/admin-supplier', {supplier: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    }else{
+        Supplier.find({}, function(err, docs){
+            res.render('user/admin-supplier', {supplier: docs, messages: flashMessage, noMessage: !flashMessage});
+        });
+    }
+    
 });
 
 //read all orders for admin
@@ -243,6 +259,20 @@ router.post('/update-user', function(req, res, next){
     });
 });
 
+//update supplier
+router.post('/update-supplier', function(req, res, next){
+    myphoto = "/images/suppliers/" + req.body.myphotofile;
+    Supplier.findByIdAndUpdate(req.body.supplierId, {
+        name:req.body.name,
+        email:req.body.email,
+        address:req.body.address,
+        comments:req.body.comments,
+        photo:myphoto
+    }, function(err,result){
+        res.redirect('/admin/supplier');
+    });
+});
+
 //add product
 router.post('/add-product', function(req, res, next){
     var myphotoarr = req.body.myphotofile;
@@ -313,6 +343,22 @@ router.post('/add-order-status', function(req, res, next){
     });
 });
 
+//add new supplier
+router.post('/add-supplier', function(req, res, next){
+    myphoto = "/images/suppliers/" + req.body.myphotofile;
+    var newSupplier = new Supplier({
+        name:req.body.name,
+        address:req.body.address,
+        photo:myphoto,
+        email:req.body.email,
+        comments:req.body.comments
+    });
+    newSupplier.save(function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/supplier');
+    });
+});
+
 //delete product
 router.post('/delete-product', function(req, res, next){
     Product.findByIdAndRemove(req.body.custId,function(err,result){
@@ -328,8 +374,6 @@ router.post('/delete-order', function(req, res, next){
         res.redirect('/admin/order');
     });
 });
-
-
 
 //delete discount code
 router.post('/delete-discount', function(req, res, next){
@@ -360,6 +404,14 @@ router.post('/delete-user', function(req, res, next){
     User.findByIdAndRemove(req.body.userId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/users');
+    });
+});
+
+//delete supplier
+router.post('/delete-supplier', function(req, res, next){
+    Supplier.findByIdAndRemove(req.body.supplierId,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/supplier');
     });
 });
 
