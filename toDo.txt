@@ -1,5 +1,5 @@
--supplier db
--how to handle returns?
+-retial price vs true price
+-how to handle returns? - logg returns
 search user by id!
 
 set DEBUG=online-store:* & npm start
@@ -7,7 +7,7 @@ set DEBUG=online-store:* & npm start
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
 -on orders, should have pagination
--edit the photos
+-edit the photos allow in products
 -check user account and orders page should be simetrical
 -check order design/when order displays
 -add calculation for shipping to cart
@@ -51,5 +51,6 @@ FUTURE DEVELOPMENT
 -do console for point of sale so they can admin easily this crap
 -how to handle double confirmaiton of admin tasks if I hire somebody
 -analytics what products sold fast? date of first web show vs sold?
+-analytics what supplier products sold faster
 stainless steel
 silver plated

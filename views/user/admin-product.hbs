@@ -36,7 +36,18 @@
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">title: <br>
                                 <input id="title" name="title" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">price: USD $ <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">supplier:<br>
+                                <select class="custom-select custom-select-sm secondFont" id="supplier" name="supplier">
+                                    <option selected></option>
+                                    {{#each data.supplier}}
+                                    <option value="{{name}}">{{name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">true price: USD $ <br>
+                                <input id="trueprice" name="trueprice" class="secondFont" type="text" required>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">retail price: USD $ <br>
                                 <input id="price" name="price" class="secondFont" type="text" required>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">description: <br>
@@ -130,7 +141,18 @@
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">title: <br>
                                 <input id="title" name="title" class="secondFont" type="text" value="{{title}}" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">price: USD $ <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">supplier: {{supplier}}<br>
+                                <select class="custom-select custom-select-sm secondFont" id="supplier" name="supplier">
+                                    <option selected>{{supplier}}</option>
+                                    {{#each ../data.supplier}}
+                                    <option value="{{name}}">{{name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">true price: USD $ <br>
+                                <input id="trueprice" name="trueprice" class="secondFont" type="text" value="{{trueprice}}" required>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">retial price: USD $ <br>
                                 <input id="price" name="price" class="secondFont" type="text" value="{{price}}" required>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">description: <br>

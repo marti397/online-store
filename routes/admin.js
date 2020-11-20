@@ -31,6 +31,9 @@ router.get('/product', function(req, res, next) {
         categories: function(callback) {
             Category.find({},callback);
         },
+        supplier: function(callback){
+            Supplier.find({},callback);
+        },
         products: function(callback){
             if(req.query.nostock){
                 Product.find({quantityAvailable:0},callback); //showOnWeb
@@ -187,7 +190,9 @@ router.post('/update-product', function(req, res, next){
         type:req.body.type,
         style:req.body.style,
         quantityAvailable:req.body.quantity,
-        showOnWeb:showOnWeb
+        showOnWeb:showOnWeb,
+        supplier:req.body.supplier,
+        trueprice:req.body.trueprice
     }, function(err,result){
         res.redirect('/admin/product');
     });
@@ -296,7 +301,9 @@ router.post('/add-product', function(req, res, next){
         type:req.body.type,
         style:req.body.style,
         quantityAvailable:req.body.quantity,
-        showOnWeb:showOnWeb
+        showOnWeb:showOnWeb,
+        supplier:req.body.supplier,
+        trueprice:req.body.trueprice
     });
 
     newProduct.save(function(err,result){
