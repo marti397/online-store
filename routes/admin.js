@@ -39,6 +39,8 @@ router.get('/product', function(req, res, next) {
                 Product.find({quantityAvailable:0},callback); //showOnWeb
             }else if(req.query.noshow){
                 Product.find({showOnWeb:false},callback);
+            }else if(req.query.showsuppliers){
+                Product.find({supplier:req.query.showsuppliers}, callback);
             }else if(req.query.yesshow){
                 Product.find({showOnWeb:true},callback);
             }else if(req.query.checkData){
