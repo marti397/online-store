@@ -1,4 +1,5 @@
 -retial price vs true price
+-migrate mlab to Mondo DB atlas (all databases)
 -how to handle returns? - logg returns
 search user by id!
 
@@ -39,6 +40,7 @@ TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
 -rotar productos - dar lista de productos
 -beautify email body sent to customer- order confirmation and status update
 -get domain
+-get stickers for computer, car and termos
 -get email
 -host site
 
