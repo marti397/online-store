@@ -19,7 +19,7 @@ var ocasionRouter = require('./routes/ocasion');
 
 var app = express();
 
-mongoose.connect('mongodb://chrm11:chrm11@ds157559.mlab.com:57559/online-store-db', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://chrm11:chrm11@online-store.gyt5p.mongodb.net/online-store-db?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 require('./config/passport');
 
 // view engine setup

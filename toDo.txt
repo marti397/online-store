@@ -1,4 +1,3 @@
--migrate mlab to Mondo DB atlas (all databases)
 -how to handle returns? - logg returns
 search user by id!
 
