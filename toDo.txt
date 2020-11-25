@@ -1,4 +1,3 @@
--retial price vs true price
 -migrate mlab to Mondo DB atlas (all databases)
 -how to handle returns? - logg returns
 search user by id!
@@ -22,7 +21,6 @@ TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
 --add feature for monthly box
 --check how tax is added in purchases??????
 -fix spanish customer service and shipping and returns - how are we going to handle this?
--fuzzy search - https://www.youtube.com/watch?v=9_lKMTXVk64
 -check that the email is not in use when modfying data
 -confirmacion de compra email (actual send email)
 -to checout add credit cards accepted? -> https://stripe.com/payments/features#local-payment-methods
@@ -45,7 +43,6 @@ TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
 -host site
 
 FUTURE DEVELOPMENT
--message when you cannot add more because there is no stock
 -add filters color, style, price
 -when you buy three the third one is free, three for the price of two
 -points for purchases/rewards to profile page
@@ -53,6 +50,7 @@ FUTURE DEVELOPMENT
 -do console for point of sale so they can admin easily this crap
 -how to handle double confirmaiton of admin tasks if I hire somebody
 -analytics what products sold fast? date of first web show vs sold?
+-analytics for profit margins
 -analytics what supplier products sold faster
 stainless steel
 silver plated

@@ -54,19 +54,32 @@
                                     {{/each}}
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">true price:
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">cost: 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="yuan">
-                                    <label class="form-check-label" for="inlineRadio1">yuan</label>
+                                    <input class="form-check-input" type="radio" name="currency" id="radioyuan" value="yuan">
+                                    <label class="form-check-label" for="radioyuan">yuan</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="dollar">
-                                    <label class="form-check-label" for="inlineRadio2">dollar</label>
+                                    <input class="form-check-input" type="radio" name="currency" id="radiodollar" value="dollar">
+                                    <label class="form-check-label" for="radiodollar">dollar</label>
                                 </div>
                                 <br>
                                 <input id="trueprice" name="trueprice" class="secondFont" type="text" required>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">retail price: USD $ <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">retail price: USD $ 
+                                <select class="custom-select custom-select-sm secondFont col-sm-4" id="profitmargin" name="profitmargin" onchange="myFunction(this.value)">
+                                    <option selected></option>
+                                    <option value="2">x2</option>
+                                    <option value="3">x3</option>
+                                    <option value="4">x4</option>
+                                    <option value="5">x5</option>
+                                    <option value="6">x6</option>
+                                    <option value="7">x7</option>
+                                    <option value="8">x8</option>
+                                    <option value="9">x9</option>
+                                    <option value="10">x10</option>
+                                </select>
+                                <br>
                                 <input id="price" name="price" class="secondFont" type="text" required>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">description: <br>
@@ -168,7 +181,7 @@
                                     {{/each}}
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">true price: <br>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">cost: USD $ (xr 0.15)<br>
                                 <input id="trueprice" name="trueprice" class="secondFont" type="text" value="{{trueprice}}" required>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">retail price: USD $ <br>
@@ -241,3 +254,13 @@
         {{/each}}
     </div>
 </div>
+<script>
+    function myFunction(profitmargin) {
+        var myTruePrice = parseFloat(document.getElementById("trueprice").value);
+        if (document.getElementById("radioyuan").checked){
+            myTruePrice = myTruePrice * 0.15 // //exchange rate Nov 21, 2020
+        }
+        var myProfitMargin = Math.ceil(myTruePrice * profitmargin)
+        document.getElementById("price").value = myProfitMargin;
+}
+</script>

@@ -282,6 +282,10 @@ router.post('/update-supplier', function(req, res, next){
 
 //add product
 router.post('/add-product', function(req, res, next){
+    truePrice = req.body.trueprice;
+    if (req.body.currency == "yuan"){
+        truePrice = req.body.trueprice * 0.15 ;//exchange rate Nov 21, 2020
+    }
     var myphotoarr = req.body.myphotofile;
     myphotoarr.forEach(function(item,index,myphotoarr){
         myphotoarr[index] = "/images/products/" + item;
@@ -305,7 +309,7 @@ router.post('/add-product', function(req, res, next){
         quantityAvailable:req.body.quantity,
         showOnWeb:showOnWeb,
         supplier:req.body.supplier,
-        trueprice:req.body.trueprice
+        trueprice:truePrice
     });
 
     newProduct.save(function(err,result){
