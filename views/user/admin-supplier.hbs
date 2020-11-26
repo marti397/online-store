@@ -89,13 +89,13 @@
                                 <input id="email" name="email" class="secondFont" type="email" value="{{email}}">
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">change photo: <br>
-                                <input type="file" id="myphotofile" name="myphotofile" class="secondFont" value="{{photo}}" onchange="myFunction()">
+                                <input type="file" id="myphotofileupdate" name="myphotofileupdate" class="secondFont" value="{{photo}}" onchange="myFunction()">
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12 text-center">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">save</button>
                             </div>
                             <div class="col-sm-12 mb-sm-3 mb-3 col-12">
-                                <img src="{{photo}}" class="img-fluid" alt="img">
+                                <img src="{{photo}}" class="img-fluid" alt="img" id="displayimg">
                             </div>
                         </div>
                     </form>
@@ -129,3 +129,10 @@
         {{/each}}
     </div>
 </div>
+
+<script>
+    function myFunction() {
+        var img = document.getElementById('myphotofileupdate').files[0].name;
+        document.getElementById("displayimg").src = "/images/suppliers/" + img;
+    }
+</script>

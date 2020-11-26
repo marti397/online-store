@@ -12,7 +12,6 @@ var Category = require('../models/category');
 var OrderSatus = require('../models/order-status');
 var Supplier = require('../models/supplier');
 
-
 //protect all routes below
 router.use('/', isLoggedInAdmin, function(req, res, next){
     next();
@@ -184,7 +183,13 @@ router.post('/update-product', function(req, res, next){
     if(quantityOfProducts == 0){
         showOnWeb = false;
     }
+    var myphotoarr = req.body.myphotofileupdate;
+    console.log(myphotoarr)
+    myphotoarr.forEach(function(item,index,myphotoarr){
+        myphotoarr[index] = "/images/products/" + item;
+    })
     Product.findByIdAndUpdate(req.body.custId, {
+        imagePath:myphotoarr,
         title:req.body.title,
         descr:req.body.descr,
         details:req.body.details,
@@ -268,7 +273,7 @@ router.post('/update-user', function(req, res, next){
 
 //update supplier
 router.post('/update-supplier', function(req, res, next){
-    myphoto = "/images/suppliers/" + req.body.myphotofile;
+    myphoto = "/images/suppliers/" + req.body.myphotofileupdate;
     Supplier.findByIdAndUpdate(req.body.supplierId, {
         name:req.body.name,
         email:req.body.email,

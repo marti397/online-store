@@ -219,8 +219,14 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-9 col-9 mt-sm-3 mt-3 text-center">
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">change photos: {{imagePath}}<br>
+                                <input type="file" id="myphotofileupdate" name="myphotofileupdate" class="secondFont" value="{{imagePath}}" multiple>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12 text-center">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">save</button>
+                            </div>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12 text-center">
+                                <img src="{{imagePath.[0]}}" class="img-fluid" alt="img" id="displayimg">
                             </div>
                         </div>
                     </form>
@@ -262,5 +268,5 @@
         }
         var myProfitMargin = Math.ceil(myTruePrice * profitmargin)
         document.getElementById("price").value = myProfitMargin;
-}
+    }
 </script>

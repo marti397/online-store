@@ -1,23 +1,15 @@
--how to handle returns? - logg returns
-search user by id!
-
 set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
--on orders, should have pagination
--edit the photos allow in products
+-edit the photos allow new products (last thing I did was update photos for suppliers and products)
 -check user account and orders page should be simetrical
 -check order design/when order displays
 -add calculation for shipping to cart
-EXPRESS references for mongo db encryption, live production and queries
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
-TERMINAR CHECKOUT IF NOT LOGGEDIN -- check two items above
-TERMINAR CHECKOUT FINAL page
+-beautify email body sent to customer- order confirmation and status update
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
---add feature for monthly box
 --check how tax is added in purchases??????
 -fix spanish customer service and shipping and returns - how are we going to handle this?
 -check that the email is not in use when modfying data
@@ -32,14 +24,19 @@ TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
 -Chnage stripe keys from test to live
 -change/reset password - how to do it?
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
--Change name to Glammy
+
 -check out does not accept decimals - because prices are not rounded
 -rotar productos - dar lista de productos
--beautify email body sent to customer- order confirmation and status update
--get domain
--get stickers for computer, car and termos
--get email
 -host site
+-how to handle returns? - if order is damaged or if product wants to be replaced.
+FINAL
+-glammy Logo
+    *stickers for car, thermo, computer
+-get domain
+-get email help@glammy.com
+-get instagram
+-db encryption and move to production (refer to mozilla tutorial)
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
 
 FUTURE DEVELOPMENT
 -add filters color, style, price
