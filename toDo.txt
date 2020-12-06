@@ -4,7 +4,14 @@ set DEBUG=online-store:* & npm start
 
 -check user account and orders page should be simetrical
 -check order design/when order displays
+-change add btn from left to right
+-check cart when deleting an item it does not delete instanteanuosly
 -add calculation for shipping to cart
+-change to dollars
+error
+Amount must convert to at least 50 cents. $8.00 MXN converts to approximately $0.40 USD.
+-how to add tax?? how much tax???
+-final calculation check out does not allow 9.1 or decimals
 -beautify email body sent to customer- order confirmation and status update
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
