@@ -2,7 +2,6 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
--edit the photos allow new products (last thing I did was update photos for suppliers and products)
 -check user account and orders page should be simetrical
 -check order design/when order displays
 -add calculation for shipping to cart

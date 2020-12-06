@@ -183,11 +183,14 @@ router.post('/update-product', function(req, res, next){
     if(quantityOfProducts == 0){
         showOnWeb = false;
     }
-    var myphotoarr = req.body.myphotofileupdate;
-    console.log(myphotoarr)
-    myphotoarr.forEach(function(item,index,myphotoarr){
-        myphotoarr[index] = "/images/products/" + item;
-    })
+    if(req.body.myphotofileupdate){
+        myphotoarr = req.body.myphotofileupdate;
+        myphotoarr.forEach(function(item,index,myphotoarr){
+            myphotoarr[index] = "/images/products/" + item;
+        })
+    }else{
+        myphotoarr = req.body.hiddenimagePath.split(",");
+    }
     Product.findByIdAndUpdate(req.body.custId, {
         imagePath:myphotoarr,
         title:req.body.title,
@@ -273,7 +276,11 @@ router.post('/update-user', function(req, res, next){
 
 //update supplier
 router.post('/update-supplier', function(req, res, next){
-    myphoto = "/images/suppliers/" + req.body.myphotofileupdate;
+    if(req.body.myphotofileupdate){
+        myphoto = "/images/suppliers/" + req.body.myphotofileupdate;
+    }else{
+        myphoto = req.body.hiddenPhoto;
+    }    
     Supplier.findByIdAndUpdate(req.body.supplierId, {
         name:req.body.name,
         email:req.body.email,

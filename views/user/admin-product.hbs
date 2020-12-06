@@ -170,6 +170,7 @@
                     <form action="/admin/update-product" method="post">
                         <div class="row">
                             <input type="hidden" id="custId" name="custId" value="{{this._id}}">
+                            <input type="hidden" id="hiddenimagePath" name="hiddenimagePath" value="{{imagePath}}">
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">title: <br>
                                 <input id="title" name="title" class="secondFont" type="text" value="{{title}}" required>
                             </div>
@@ -219,8 +220,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">change photos: {{imagePath}}<br>
-                                <input type="file" id="myphotofileupdate" name="myphotofileupdate" class="secondFont" value="{{imagePath}}" multiple>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">change photos:<br>
+                                <input type="file" id="myphotofileupdate" name="myphotofileupdate" class="secondFont" multiple>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12 text-center">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">save</button>

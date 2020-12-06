@@ -76,6 +76,7 @@
                     <form action="/admin/update-supplier" method="post">
                         <div class="row">
                             <input type="hidden" id="supplierId" name="supplierId" value="{{this._id}}">
+                            <input type="hidden" id="hiddenPhoto" name="hiddenPhoto" value="{{photo}}">
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">name: <br>
                                 <input id="name" name="name" class="secondFont" type="text" value="{{name}}">
                             </div>
@@ -89,7 +90,7 @@
                                 <input id="email" name="email" class="secondFont" type="email" value="{{email}}">
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">change photo: <br>
-                                <input type="file" id="myphotofileupdate" name="myphotofileupdate" class="secondFont" value="{{photo}}" onchange="myFunction()">
+                                <input type="file" id="myphotofileupdate" name="myphotofileupdate" class="secondFont">
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12 text-center">
                                 <button type="submit" class="btn btn-outline-success secondFont rounded-0">save</button>
@@ -129,10 +130,3 @@
         {{/each}}
     </div>
 </div>
-
-<script>
-    function myFunction() {
-        var img = document.getElementById('myphotofileupdate').files[0].name;
-        document.getElementById("displayimg").src = "/images/suppliers/" + img;
-    }
-</script>
