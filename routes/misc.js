@@ -1,3 +1,4 @@
+const { reduce } = require('async');
 var express = require('express');
 var router = express.Router();
 
@@ -11,8 +12,11 @@ router.get('/', function(req, res, next){
             var isEmpty = false;
             if (docs.length == 0){
                 isEmpty = true;
+                res.render('misc/info', {empty:isEmpty});
+            }else{
+                var redirectURL = 'info/' + docs[0].orderId + '/details'
+                res.redirect(redirectURL)
             }
-            res.render('misc/info', {orderdata:docs, empty:isEmpty});
         })
     }else{
         res.render('misc/info');

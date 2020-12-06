@@ -1,16 +1,16 @@
 <div class="container">
     <div class="row mt-sm-4 secondFont">
         {{#if products}}
-        <div class="col-sm-9 col-12 border-right">
+        <div class="col-md-9 col-12 border-right">
             <div class="row">
             {{#each products}}
-                <div class="col-sm-5 col-5 border border-dark mt-sm-3 mt-3 ml-3 ml-sm-5 pt-1 pl-1 pr-1 pb-1">
+                <div class="col-lg-5 col-sm-4 col-5 border border-dark mt-sm-4 mt-4 ml-3 ml-sm-5 pt-1 pl-1 pr-1 pb-1">
                     <div class="row">
-                        <div class="col-sm-6 col-12">
+                        <div class="col-lg-6 col-12">
                             <img class="img-fluid" src="{{item.imagePath.[0]}}" alt="product">
                             <a href="/product/{{item._id}}/detail" class="stretched-link"></a>
                         </div>
-                        <div class="col-sm-6 col-12">
+                        <div class="col-lg-6 col-12">
                             <div class="text-right">
                                 <a href="/product/{{item._id}}/detail" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> &#x2315; </a>
                                 <a href="/reduce/{{item._id}}" class="btn btn-outline-dark secondFont rounded-0 pt-0 pl-1 pr-1 pb-0"> - </a>
@@ -25,12 +25,12 @@
             {{/each}}
             </div>
         </div>
-        <div class="col-sm-3 col-11 mt-5 mt-sm-0 ml-2 ml-sm-0">
+        <div class="col-md-3 col-11 mt-5 mt-md-0 ml-2 ml-md-0">
             <form action="/shopping-cart" method="get">
                 <div class="row mb-sm-5 mb-4 mt-sm-0">
                     <div class="col-sm-8 col-8 text-left"><input type="text" class="form-control form-control-sm border-top-0 border-right-0 rounded-0 border-dark secondFont text-dark" placeholder="discount" id="cartdiscount" name="cartdiscount"></div>
                     <div class="col-sm-4 col-4 text-right"><button type="submit" class="btn btn-outline-dark secondFont rounded-0">apply</button></div>
-                </div>
+                </div>  
             </form>
             <div class="row">
                 <div class="col-sm-6 col-6 text-left">subtotal</div>
@@ -50,7 +50,7 @@
                 <div class="col-sm-6 col-6 text-right">$0</div>
                 {{/if}}
             </div>
-            <div class="row mt-sm-5 mt-3">
+            <div class="row mt-sm-5 mt-4">
                 <div class="col-sm-6 col-6 text-left">shipping</div>
                 <div class="col-sm-6 col-6 text-right">free</div>
             </div>
@@ -58,7 +58,7 @@
                 <div class="col-sm-6 col-6 text-left">tax</div>
                 <div class="col-sm-6 col-6 text-right">${{tax}}</div>
             </div>
-            <div class="row border-bottom mt-sm-5 mt-4 text-uppercase font-weight-bold">
+            <div class="row border-bottom mt-sm-5 mt-5 text-uppercase font-weight-bold">
                 <div class="col-sm-6 col-6 text-left">total</div>
                 <div class="col-sm-6 col-6 text-right">${{finalPrice}}</div>
             </div>
@@ -86,9 +86,9 @@
                                 </button>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continue as a guest</a></div>
-                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">create an account</a></div>
-                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-6 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/access" role="button">access your account</a></div>  
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-12 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/checkout" role="button">continue as a guest</a></div>
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-12 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/register" role="button">create your account</a></div>
+                                        <div class="col-sm-4 mt-sm-4 mt-2 mb-2 col-12 text-center"><a class="btn btn-outline-dark secondFont rounded-0" href="/user/access" role="button">access your account</a></div>  
                                     </div>
                                 </div> 
                             </div>

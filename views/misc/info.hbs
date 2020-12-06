@@ -13,13 +13,6 @@
         {{#if empty}}
         <div class="col-sm-12 text-center text-danger mb-3 mb-sm-0">the order was not found, please try again</div>
         {{/if}}
-        {{#if orderdata}}
-            {{#each orderdata}}
-            <div class="col-sm-12 text-center mb-3 mb-sm-0">your order status is {{orderStatus}}, for details 
-                <a href="/info/{{orderId}}/details" class="stretched-link" id="#orderInfoBtn">click here</a>
-            </div>
-            {{/each}}
-        {{/if}}
         <div class="col-sm-6 col-6 text-center mt-sm-5 mt-4">
             <a href="/info/customer-service" class="text-primary">customer service</a>
         </div>

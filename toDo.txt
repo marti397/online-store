@@ -2,10 +2,10 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
--change add btn from left to right
--check cart when deleting an item it does not delete instanteanuosly
+
 -add calculation for shipping to cart
--change to dollars
+-is tax added before or after vat
+-change to dollars stripe
 error
 Amount must convert to at least 50 cents. $8.00 MXN converts to approximately $0.40 USD.
 -how to add tax?? how much tax???
