@@ -25,27 +25,23 @@
         </div>
     </div>
     <div class="row mt-sm-2 mt-4">
-        <div class="col-sm-12 col-12">
-            {{#if orders}}
-                 <div class="row">
-                {{#each orders}}
-                    <div class="col-5 col-sm-3 ml-3 ml-sm-5 mt-3 mt-sm-5 text-center borderChange">
-                        <div class="mt-2">{{orderId}}</div>
-                        <div class="mt-2">{{orderDate}}</div>
-                        <div class="mt-2 text-lowercase">{{orderStatus}}</div>
-                        <div class="secondFont mt-2 mb-2"><a href="/info/{{orderId}}/details" class="stretched-link"></a>details</div>
-                    </div>
-                {{/each}}
+        {{#if orders}}
+            {{#each orders}}
+                <div class="col-5 mt-3 ml-3 col-sm-3 ml-sm-4 mt-sm-5 col-md-3 ml-md-5 text-center borderChange ">
+                    <div class="mt-2">{{orderId}}</div>
+                    <div class="mt-2">{{orderDate}}</div>
+                    <div class="mt-2 text-lowercase">{{orderStatus}}</div>
+                    <div class="secondFont mt-2 mb-2"><a href="/info/{{orderId}}/details" class="stretched-link"></a>details</div>
                 </div>
-            {{else}}
-            <div class="col text-center mt-4 mt-sm-5">
-                <div class="mb-sm-2 mb-3">there are no orders</div>
-                <div><a class="btn btn-outline-dark secondFont rounded-0 mb-2 mb-sm-4" href="/product/all" role="button">return to the store</a></div>
-                <div class="mb-sm-5 invisible">.</div>
-            </div>
-            {{/if}}
-            <div class="mb-sm-5 mb-1 invisible">.</div>
+            {{/each}}
+        {{else}}
+        <div class="col text-center mt-4 mt-sm-5">
+            <div class="mb-sm-2 mb-3">there are no orders</div>
+            <div><a class="btn btn-outline-dark secondFont rounded-0 mb-2 mb-sm-4" href="/product/all" role="button">return to the store</a></div>
+            <div class="mb-sm-5 invisible">.</div>
         </div>
+        {{/if}}
+        <div class="mb-sm-5 mb-1 invisible">.</div>
     </div>
     <div class="row">
         <div class="col-12 mb-sm-5 invisible">.</div>
