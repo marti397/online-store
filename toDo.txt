@@ -2,6 +2,7 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
+LAST-when add, the user can select multiple seelcts
 -beautify email body sent to customer- order confirmation and status update
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
