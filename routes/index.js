@@ -98,19 +98,34 @@ router.get('/shopping-cart', csrfProtection, function(req, res, next) {
         cart.addTax();
         cart.getFinalPrice();
         req.session.cart = cart;
-        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
+        if(cart.totalPrice < 30){
+          var shippingCost = '$4'
+        }else{
+          var shippingCost = 'free'
+        }
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice, shipping: shippingCost});
       } else{
         cart.addTax();
         cart.getFinalPrice();
         req.session.cart = cart;
-        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
+        if(cart.totalPrice < 30){
+          var shippingCost = '$4'
+        }else{
+          var shippingCost = 'free'
+        }
+        res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice, shipping: shippingCost});
       }
     });
   } else{
     cart.addTax();
     cart.getFinalPrice();
     req.session.cart = cart;
-    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice});
+    if(cart.totalPrice < 30){
+      var shippingCost = '$4'
+    }else{
+      var shippingCost = 'free'
+    }
+    res.render('shop/shopping-cart', { products: cart.generateArray(), totalPrice: cart.totalPrice, csrfToken: req.csrfToken(), isdiscount: cart.discountCodeName, discountAmount: cart.discountAmount, discount: cart.discount, isPercent: cart.isDiscountPercent, tax: cart.tax, finalPrice: cart.finalPrice, shipping: shippingCost});
   }
 });
 
@@ -154,7 +169,7 @@ router.post('/checkout', [
   
     stripe.charges.create({
       amount: cart.finalPrice * 100,
-      currency: "mxn",
+      currency: "usd",
       source: req.body.stripeToken, // obtained with Stripe.js
       statement_descriptor: 'Glammy MX',
       description: "Charge for " + req.body.name

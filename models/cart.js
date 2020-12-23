@@ -48,7 +48,7 @@ module.exports = function Cart(oldCart){
 
     this.addDiscount = function(isPercent, discountAmount){
         if(isPercent){
-            this.discount = this.totalPrice * (discountAmount / 100);
+            this.discount = +((this.totalPrice * (discountAmount / 100)).toFixed(2));
         } else{
             this.discount = discountAmount;
         }
@@ -73,18 +73,21 @@ module.exports = function Cart(oldCart){
     //add tax
     this.addTax = function(){
         if (this.totalPriceWDiscount == 0){
-            this.tax = Math.round(this.totalPrice * 0.16);
+            this.tax = +((this.totalPrice * 0.07).toFixed(2));
         } else{
-            this.tax = Math.round(this.totalPriceWDiscount * 0.16);
+            this.tax = +((this.totalPriceWDiscount * 0.07).toFixed(2));
         }
     }
 
     //get final price
     this.getFinalPrice = function(){
         if (this.totalPriceWDiscount == 0){
-            this.finalPrice = this.totalPrice + this.tax;
+            this.finalPrice = +((this.totalPrice + this.tax).toFixed(2));
         } else{
-            this.finalPrice = this.totalPriceWDiscount + this.tax;
+            this.finalPrice = +((this.totalPriceWDiscount + this.tax).toFixed(2));
+        }
+        if(this.totalPrice < 30){
+            this.finalPrice = this.finalPrice + 4
         }
     }
 

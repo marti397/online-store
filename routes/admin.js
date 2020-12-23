@@ -11,6 +11,7 @@ var User = require('../models/user');
 var Category = require('../models/category');
 var OrderSatus = require('../models/order-status');
 var Supplier = require('../models/supplier');
+var Style = require('../models/style');
 
 //protect all routes below
 router.use('/', isLoggedInAdmin, function(req, res, next){
@@ -29,6 +30,9 @@ router.get('/product', function(req, res, next) {
     async.parallel({
         categories: function(callback) {
             Category.find({},callback);
+        },
+        allstyles: function(callback){
+            Style.find({},callback)
         },
         supplier: function(callback){
             Supplier.find({},callback);
@@ -170,6 +174,14 @@ router.get('/order-status', function(req, res, next) {
     var flashMessage = req.flash('error');
     OrderSatus.find({}, function(err, docs){
         res.render('user/admin-order-status', {orderStatus: docs, messages: flashMessage, noMessage: !flashMessage});
+      });
+});
+
+//read all styles for admin
+router.get('/style', function(req, res, next) {
+    var flashMessage = req.flash('error');
+    Style.find({}, function(err, docs){
+        res.render('user/admin-style', {productStyle: docs, messages: flashMessage, noMessage: !flashMessage});
       });
 });
 
@@ -384,6 +396,17 @@ router.post('/add-supplier', function(req, res, next){
     });
 });
 
+//add style
+router.post('/add-style', function(req, res, next){
+    var newStyle = new Style({
+        style: req.body.style
+    });
+    newStyle.save(function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/style');
+    });
+});
+
 //delete product
 router.post('/delete-product', function(req, res, next){
     Product.findByIdAndRemove(req.body.custId,function(err,result){
@@ -437,6 +460,14 @@ router.post('/delete-supplier', function(req, res, next){
     Supplier.findByIdAndRemove(req.body.supplierId,function(err,result){
         if (err) return console.error(err);
         res.redirect('/admin/supplier');
+    });
+});
+
+//delete style
+router.post('/delete-style', function(req, res, next){
+    Style.findByIdAndRemove(req.body.style,function(err,result){
+        if (err) return console.error(err);
+        res.redirect('/admin/style');
     });
 });
 

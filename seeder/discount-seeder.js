@@ -1,16 +1,9 @@
 var Discount = require('../models/discount');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://chrm11:chrm11@ds157559.mlab.com:57559/online-store-db', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://chrm11:chrm11@online-store.gyt5p.mongodb.net/online-store-db?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 
 var discounts = [
-    new Discount({
-        code: "galletita",
-        isPercent: false,
-        amount: 50,
-        expireDate: 'no',
-        isActive: true
-    }),  
     new Discount({
         code: "pistacho",
         isPercent: true,

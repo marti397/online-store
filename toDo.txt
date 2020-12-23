@@ -2,34 +2,20 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
-
--add calculation for shipping to cart
--is tax added before or after vat
--change to dollars stripe
-error
-Amount must convert to at least 50 cents. $8.00 MXN converts to approximately $0.40 USD.
--how to add tax?? how much tax???
--final calculation check out does not allow 9.1 or decimals
 -beautify email body sent to customer- order confirmation and status update
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
---check how tax is added in purchases??????
 -fix spanish customer service and shipping and returns - how are we going to handle this?
 -check that the email is not in use when modfying data
--confirmacion de compra email (actual send email)
--to checout add credit cards accepted? -> https://stripe.com/payments/features#local-payment-methods
 -the search function can be seen here -> https://www.youtube.com/watch?v=9_lKMTXVk64
 -do sanitation and validation for admin data
 --tipo y estilo en edit solo deben tener dropdown menu
 --debe haber una tabla extra para add y edit styles and types
--do site admin to look at stats
 -no dejar que dos codigos de descuentos tengan el mismo nombre
 -Chnage stripe keys from test to live
 -change/reset password - how to do it?
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
-
--check out does not accept decimals - because prices are not rounded
 -rotar productos - dar lista de productos
 -host site
 -how to handle returns? - if order is damaged or if product wants to be replaced.
@@ -37,7 +23,7 @@ FINAL
 -glammy Logo
     *stickers for car, thermo, computer
 -get domain
--get email help@glammy.com
+-get email help@glammy.com and send emails from there when confirmaiton
 -get instagram
 -db encryption and move to production (refer to mozilla tutorial)
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose
@@ -45,10 +31,11 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoo
 FUTURE DEVELOPMENT
 -add filters color, style, price
 -when you buy three the third one is free, three for the price of two
--points for purchases/rewards to profile page
+-loyalty points for purchases/rewards to profile page
 -do console for people selling products with analytics
 -do console for point of sale so they can admin easily this crap
 -how to handle double confirmaiton of admin tasks if I hire somebody
+-do site admin to look at stats
 -analytics what products sold fast? date of first web show vs sold?
 -analytics for profit margins
 -analytics what supplier products sold faster
