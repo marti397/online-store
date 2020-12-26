@@ -96,8 +96,13 @@
                                     {{/each}}
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">style: <br>
-                                <input id="style" name="style" class="secondFont" type="text" required>
+                            <div class="col-sm-6 mb-sm-3 mb-3 col-12">style:<br>
+                                <select class="custom-select custom-select-sm secondFont" id="style" name="style">
+                                    <option selected></option>
+                                    {{#each data.allstyles}}
+                                    <option value="{{style}}">{{style}}</option>
+                                    {{/each}}
+                                </select>
                             </div>
                             <div class="col-sm-6 mb-sm-3 mb-3 col-12">quantity: <br>
                                 <input id="quantity" name="quantity" class="secondFont" type="number" value="{{quantityAvailable}}" min="0" max="50" required>

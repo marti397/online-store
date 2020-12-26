@@ -2,8 +2,9 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
-LAST-when add, the user can select multiple seelcts
+LAST ITEM I DID WAS TRY beautify EMAIL
 -beautify email body sent to customer- order confirmation and status update
+https://www.smartrmail.com/blog/thank-you-for-your-purchase-email-examples-tips/
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
@@ -11,8 +12,6 @@ TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
 -check that the email is not in use when modfying data
 -the search function can be seen here -> https://www.youtube.com/watch?v=9_lKMTXVk64
 -do sanitation and validation for admin data
---tipo y estilo en edit solo deben tener dropdown menu
---debe haber una tabla extra para add y edit styles and types
 -no dejar que dos codigos de descuentos tengan el mismo nombre
 -Chnage stripe keys from test to live
 -change/reset password - how to do it?

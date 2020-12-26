@@ -240,11 +240,18 @@ router.post('/checkout', [
             }
           });
           
+          //CHECK html and atachments
           var mailOptions = {
             from: 'chris.m.servin@gmail.com',
             to: req.body.email,
             subject: 'glammy order confirmation',
-            text: 'thank you for your recent purchase with glammy you can check your order details here: http://localhost:3000/info/' + order.orderId + '/details'
+            text: 'thank you for your recent purchase with glammy you can check your order details here: http://localhost:3000/info/' + order.orderId + '/details',
+            html: '<p>HTML version of the message</p><h1>HOLA<h1>Embedded image: <img src="cid:cmarti397"/>',
+            attachments: [{
+              filename: 'lupita.png',
+              path:'../online-store/public/images/mainLogo/lupita.png',
+              cid: 'cmarti397' //same cid value as in the html img src
+          }]
           };
           
           transporter.sendMail(mailOptions, function(error, info){
