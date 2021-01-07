@@ -22,7 +22,10 @@ var helmet = require('helmet');///////////******added for production */
 
 var app = express();
 
-mongoose.connect('mongodb+srv://chrm11:chrm11@online-store.gyt5p.mongodb.net/online-store-db?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
+var dev_db_url = 'mongodb+srv://chrm11:chrm11@online-store.gyt5p.mongodb.net/online-store-db?retryWrites=true&w=majority'
+var mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 require('./config/passport');
 
 // view engine setup
