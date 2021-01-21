@@ -17,23 +17,15 @@ var adminRouter = require('./routes/admin');
 var miscRouter = require('./routes/misc');
 var ocasionRouter = require('./routes/ocasion');
 
-var compression = require('compression');///////////******added for production */
-var helmet = require('helmet');///////////******added for production */
-
 var app = express();
 
-var dev_db_url = 'mongodb+srv://chrm11:chrm11@online-store.gyt5p.mongodb.net/online-store-db?retryWrites=true&w=majority'
-var mongoDB = process.env.MONGODB_URI || dev_db_url;
-
-mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://chrm11:chrm11@online-store.gyt5p.mongodb.net/online-store-db?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 require('./config/passport');
 
 // view engine setup
 app.engine('.hbs', expressHbs({defaultLayout:'layout', extname:'.hbs'}));
 app.set('view engine', '.hbs');
 
-app.use(compression()); //Compress all routes///////////******added for production */
-app.use(helmet());//Compress all routes///////////******added for production */
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
