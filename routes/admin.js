@@ -255,8 +255,14 @@ router.post('/update-order', function(req, res, next){
             var mailOptions = {
                 from: 'chris.m.servin@gmail.com',
                 to: req.body.email,
-                subject: 'glammy order update',
-                text: 'the status of your order has been updated: ' + req.body.orderStatus + '. You can check your order details here: http://localhost:3000/info/' + result.orderId + '/details'
+                subject: 'glammy',
+                text: 'Order Update',
+                html:"<div><p><img src='cid:cmarti397'/></p><h2>The status of your order has been udated: " + req.body.orderStatus +"</h2><p>You can check your order details here:</p><a href='http://localhost:3000/info/"+ result.orderId +"/details' target='_blank'>View Order</a></div>",
+                attachments: [{
+                    filename: 'glammy-gray.png',
+                    path:'../online-store/public/images/mainLogo/glammy-gray.png',
+                    cid: 'cmarti397' //same cid value as in the html img src
+                }]
             };
           
             transporter.sendMail(mailOptions, function(error, info){

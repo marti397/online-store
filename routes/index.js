@@ -244,12 +244,12 @@ router.post('/checkout', [
           var mailOptions = {
             from: 'chris.m.servin@gmail.com',
             to: req.body.email,
-            subject: 'glammy order confirmation',
-            text: 'thank you for your recent purchase with glammy you can check your order details here: http://localhost:3000/info/' + order.orderId + '/details',
-            html: '<p>HTML version of the message</p><h1>HOLA<h1>Embedded image: <img src="cid:cmarti397"/>',
+            subject: 'glammy',
+            text: 'Order Confirmation',
+            html:"<div><p><img src='cid:cmarti397'/></p><h2>Thanks for your purchase</h2><p>Hi " + req.body.name + ",</p><p>We got your order! We'll let you know when it ships and is headed your way</p><a href='http://localhost:3000/info/"+ order.orderId +"/details' target='_blank'>View Order Status</a></div>",
             attachments: [{
-              filename: 'lupita.png',
-              path:'../online-store/public/images/mainLogo/lupita.png',
+              filename: 'glammy-gray.png',
+              path:'../online-store/public/images/mainLogo/glammy-gray.png',
               cid: 'cmarti397' //same cid value as in the html img src
           }]
           };

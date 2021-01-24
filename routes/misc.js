@@ -34,8 +34,12 @@ router.get('/shipping-and-returns', function(req, res, next){
 router.get('/:id/details', function(req,res, next){
     var search = req.params.id;
     Order.find({orderId:search},function(err,docs){
+        var shipping = 4;
         if (err){return res.write('Error!');}
-        res.render('misc/order-details', {order:docs});
+        if (docs[0].cart.totalPrice >= 30){
+            shipping = 0
+        }
+        res.render('misc/order-details', {order:docs, shipping:shipping});
     }) 
 });
 

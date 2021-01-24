@@ -8,7 +8,6 @@ https://www.smartrmail.com/blog/thank-you-for-your-purchase-email-examples-tips/
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
--fix spanish customer service and shipping and returns - how are we going to handle this?
 -check that the email is not in use when modfying data
 -the search function can be seen here -> https://www.youtube.com/watch?v=9_lKMTXVk64
 -do sanitation and validation for admin data
@@ -18,9 +17,7 @@ TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
 -after adding to shopping cart, redirect to the page where the user was. now is redirecting to all products
 -rotar productos - dar lista de productos
 -host site
--how to handle returns? - if order is damaged or if product wants to be replaced.
 FINAL
--glammy Logo
     *stickers for car, thermo, computer
 -get domain
 -get email help@glammy.com and send emails from there when confirmaiton
