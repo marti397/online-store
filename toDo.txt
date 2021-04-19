@@ -2,9 +2,6 @@ set DEBUG=online-store:* & npm start
 
 (node:14012) DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated. See: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
 
-LAST ITEM I DID WAS TRY beautify EMAIL
--beautify email body sent to customer- order confirmation and status update
-https://www.smartrmail.com/blog/thank-you-for-your-purchase-email-examples-tips/
 TERMINAR REDIRECTION WHEN CHECKING OUT ACADEMIND
 TERMINAR ENCRYPTION OF DB AND ALL THINGS FOR PRODUCTION
 TERMINAR ENRIPTION OF EMAIL PASSWORD FOR SENDING EMAILS
@@ -36,5 +33,7 @@ FUTURE DEVELOPMENT
 -analytics what products sold fast? date of first web show vs sold?
 -analytics for profit margins
 -analytics what supplier products sold faster
+-beautify email body sent to customer - order confirmation and status update
+https://www.smartrmail.com/blog/thank-you-for-your-purchase-email-examples-tips/
 stainless steel
 silver plated
